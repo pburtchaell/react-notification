@@ -1,0 +1,30 @@
+{
+  "name": "react-notification",
+  "version": "0.1.0",
+  "description": "A React component designed for snackbar style notifications.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/pburtchaell/react-notification"
+  },
+  "keywords": [
+    "react",
+    "ui",
+    "notify",
+    "notification",
+    "snackbar"
+  ],
+  "author": "Patrick Burtchaell <patrick@pburtchaell.com> (pburtchaell.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pburtchaell/react-notification/issues"
+  },
+  "homepage": "https://github.com/pburtchaell/react-notification",
+  "devDependencies": {
+    "react": "^0.12.2",
+    "react-classes": "^1.0.3"
+  }
+}
