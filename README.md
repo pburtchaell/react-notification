@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a component designed to provide "snackbard" notification messages.
+This is a component designed to provide "[snackbar](http://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-usage)" notification messages.
 
 ## Getting Started
 
