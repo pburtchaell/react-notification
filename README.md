@@ -1,4 +1,4 @@
-# react-notification
+# react-notification [![Dependency Status](https://david-dm.org/pburtchaell/react-classes.svg)](https://david-dm.org/pburtchaell/react-notification)
 
 ## Overview
 
