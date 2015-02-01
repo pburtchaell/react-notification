@@ -4,6 +4,8 @@
 
 This is a component designed to provide "[snackbar](http://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-usage)" notification messages.
 
+*Warning: this is a major version zero release. The component is still under development and the API may change at any time. Please report issues and bugs [on GitHub](https://github.com/pburtchaell/react-notification/issues).*
+
 ## Getting Started
 
 1. First, install the component via npm: `npm install react-notification`
