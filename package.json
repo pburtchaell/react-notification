@@ -1,7 +1,7 @@
 {
   "name": "react-notification",
-  "version": "0.1.0",
-  "description": "A React component designed for snackbar style notifications.",
+  "version": "0.1.1",
+  "description": "Snackbar style notification component for React.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
