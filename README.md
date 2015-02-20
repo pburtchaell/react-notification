@@ -57,4 +57,4 @@ As this component does not include CSS styles to use, you will need to add your 
 ---
 Built with care in New Orleans by [Patrick Burtchaell](http://twitter.com/pburtchaell).
 
-Copyright 2014 Patrick Burtchaell. Licensed MIT.
+Copyright 2015 Patrick Burtchaell. Licensed MIT.
