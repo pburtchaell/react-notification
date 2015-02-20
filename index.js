@@ -1,7 +1,7 @@
 var React = require('react/addons');
 var classes = require('react-classes');
 
-var Input = React.createClass({
+var Notfication = React.createClass({
 
   mixins: [classes],
 
@@ -65,4 +65,4 @@ var Input = React.createClass({
 
 });
 
-module.exports = Input;
+module.exports = Notfication;
