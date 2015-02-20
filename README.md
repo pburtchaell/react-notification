@@ -1,4 +1,4 @@
-# react-notification [![npm version](https://badge.fury.io/js/react-notifications.svg)](http://badge.fury.io/js/react-notifications) [![Dependency Status](https://david-dm.org/pburtchaell/react-classes.svg)](https://david-dm.org/pburtchaell/react-notification)
+# react-notification [![npm version](https://badge.fury.io/js/react-notification.svg)](http://badge.fury.io/js/react-notification) [![Dependency Status](https://david-dm.org/pburtchaell/react-classes.svg)](https://david-dm.org/pburtchaell/react-notification)
 
 ## Overview
 
