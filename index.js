@@ -47,7 +47,7 @@ var Notfication = React.createClass({
     };
   },
 
-  render: function () {\
+  render: function () {
 
     var classes = this.getClass('notficiation-bar', {
       'notification-active': this.state.active || false
