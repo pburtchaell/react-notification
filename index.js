@@ -51,7 +51,7 @@ var Notfication = React.createClass({
           <span className="notification-bar-action">{this.props.action}</span>
         </div>
       </div>
-    )
+    );
   }
 
 });
