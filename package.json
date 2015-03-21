@@ -25,6 +25,12 @@
     "url": "https://github.com/pburtchaell/react-notification/issues"
   },
   "homepage": "https://github.com/pburtchaell/react-notification",
+  "peerDependencies": {
+    "react": "0.13.x"
+  },
+  "dependencies": {
+    "react": "^0.13.x"
+  },
   "devDependencies": {
     "jest": "^0.1.39",
     "react": "^0.13.1",
