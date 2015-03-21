@@ -1,9 +1,6 @@
 var React = require('react/addons');
-var classes = require('react-classes');
 
 var Notfication = React.createClass({
-
-  mixins: [classes],
 
   /**
    * @function hide
@@ -48,13 +45,8 @@ var Notfication = React.createClass({
   },
 
   render: function () {
-
-    var classes = this.getClass('notficiation-bar', {
-      'notification-active': this.state.active || false
-    });
-
     return (
-      <div className={classes}>
+      <div className="notficiation-bar">
         <div className="notfication-bar-wrapper" onClick={this.props.onClick}>
           <span className="notfication-bar-message">{this.props.message}</span>
           <span className="notification-bar-action">{this.props.action}</span>
