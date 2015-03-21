@@ -23,7 +23,7 @@ var Notfication = React.createClass({
   },
 
   propTypes: {
-    message: React.PropTypes.string,
+    message: React.PropTypes.string.isRequired,
     action: React.PropTypes.string,
     onClick: React.PropTypes.func
   },
