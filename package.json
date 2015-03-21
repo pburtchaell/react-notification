@@ -4,7 +4,7 @@
   "description": "Snackbar style notification component for React.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,19 @@
   },
   "homepage": "https://github.com/pburtchaell/react-notification",
   "devDependencies": {
-    "react": "^0.12.2",
-    "react-classes": "^1.0.3"
+    "jest": "^0.1.39",
+    "react": "^0.13.1",
+    "react-tools": "^0.13.1"
+  },
+  "jest": {
+    "scriptPreprocessor": "./bin/tests/preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "./node_modules/react"
+    ],
+    "testDirectoryName": "tests/",
+    "testPathDirs": [
+      "./bin/"
+    ],
+    "globals": {}
   }
 }
