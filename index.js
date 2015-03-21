@@ -36,7 +36,6 @@ var Notfication = React.createClass({
 
   getDefaultProps: function () {
     return {
-      message: '',
       action: 'Dismiss',
       onClick: function () {
         this.hide();
