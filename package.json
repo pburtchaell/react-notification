@@ -5,8 +5,8 @@
   "main": "dist/notification.js",
   "scripts": {
     "prebuild": "rm -rf dist",
-    "build:js": "./node_modules/.bin/jsx --harmony ./web_modules ./dist",
-    "build:jsx": "./node_modules/.bin/jsx --harmony -x jsx ./web_modules ./dist",
+    "build:js": "./node_modules/.bin/jsx --harmony ./src ./dist",
+    "build:jsx": "./node_modules/.bin/jsx --harmony -x jsx ./src ./dist",
     "build": "npm run build:js && npm run build:jsx",
     "test": "jest",
     "start": "webpack --watch --progress --colors",
