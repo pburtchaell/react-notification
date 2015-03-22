@@ -2,6 +2,8 @@
 
 ## Overview
 
+![](https://raw.githubusercontent.com/pburtchaell/react-notification/master/bin/example.gif)
+
 This is a component designed to provide "[snackbar](http://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-usage)" notification messages. I would suggest reading the usage guidelines for [snackbars](http://www.google.com/design/spec/components/snackbars-toasts.html#).
 
 *Warning: this is a major version zero release. The component is still under development and the API may change at any time. Please report issues and bugs [on GitHub](https://github.com/pburtchaell/react-notification/issues).*
