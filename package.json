@@ -32,16 +32,16 @@
     "react": "^0.13.x"
   },
   "devDependencies": {
-    "jest": "^0.1.39",
     "react": "^0.13.1",
     "react-tools": "^0.13.1"
+    "jest-cli": "^0.4.0",
   },
   "jest": {
     "scriptPreprocessor": "./bin/tests/preprocessor.js",
     "unmockedModulePathPatterns": [
       "./node_modules/react"
     ],
-    "testDirectoryName": "tests/",
+    "testDirectoryName": "tests",
     "testPathDirs": [
       "./bin/"
     ],
