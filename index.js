@@ -1,6 +1,6 @@
 var React = require('react/addons');
 
-var Notfication = React.createClass({
+var Notification = React.createClass({
 
   /**
    * @function hide
@@ -45,9 +45,9 @@ var Notfication = React.createClass({
 
   render: function () {
     return (
-      <div className="notficiation-bar">
-        <div className="notfication-bar-wrapper" onClick={this.props.onClick}>
-          <span className="notfication-bar-message">{this.props.message}</span>
+      <div className="notificiation-bar">
+        <div className="notification-bar-wrapper" onClick={this.props.onClick}>
+          <span className="notification-bar-message">{this.props.message}</span>
           <span className="notification-bar-action">{this.props.action}</span>
         </div>
       </div>
@@ -56,4 +56,4 @@ var Notfication = React.createClass({
 
 });
 
-module.exports = Notfication;
+module.exports = Notification;
