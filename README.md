@@ -2,14 +2,14 @@
 
 ## Overview
 
-This is a component designed to provide "[snackbar](http://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-usage)" notification messages.
+This is a component designed to provide "[snackbar](http://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-usage)" notification messages. I would suggest reading the usage guidelines for [snackbars](http://www.google.com/design/spec/components/snackbars-toasts.html#).
 
 *Warning: this is a major version zero release. The component is still under development and the API may change at any time. Please report issues and bugs [on GitHub](https://github.com/pburtchaell/react-notification/issues).*
 
 ## Getting Started
 
 1. First, install the component via npm: `npm install react-notification`
-2. Require the component: `var Notification = require('react-notification');`
+2. Require the component: `import Notification from 'react-notification';`
 
 ## Usage
 
@@ -17,16 +17,24 @@ This is a component designed to provide "[snackbar](http://www.google.com/design
 <Notfication
   message={string}
   action={string}
+  styles={object}
   onClick={func}
 />
 ```
 
+## Example
+
+See [here](/bin/tests/test.js).
+
 ### Props
 
-| Name      | Type     | Description                                     |
-|---------  |--------  |-----------------------------------------------  |
-| message   | string   | The message for the notification                |
-| action    | string   | The name of the action, e.g., "close" or "undo" |
+| Name      | Type            | Description                                         | Required  |
+|---------  |---------------  |---------------------------------------------------  |---------- |
+| message   | string          | The message for the notification                    | true      |
+| action    | string          | The name of the action, e.g., "close" or "undo"     |           |
+| styles    | object || bool  | Styles to apply to the component*                   |           |
+
+*Setting this prop to `false` will disable all inline styles. This is useful if you aren't using React inline styles and would like to use CSS instead. See [styles](#styles) for more.
 
 ### Methods
 
@@ -35,15 +43,21 @@ This is a component designed to provide "[snackbar](http://www.google.com/design
 | show     | `Notification.show()`  | Opens the notification.  |
 | hide     | `Notification.hide()`  | Hides the notifciation.  |
 
+
 ## Events
 
-| Event     | Description                               |
-|---------  |-----------------------------------------  |
-| onClick   | Fuction runs on change                    |
+| Event     | Description                                         |
+|---------  |---------------------------------------------------  |
+| onClick   | Callback function to run when the action is clicked |
 
-### DOM Nodes
+## Styles
 
-As this component does not include CSS styles to use, you will need to add your own styles. The DOM tree of the component is included below for reference.
+This component does use basic inline CSS to style the position and visibility of the notification. You have two options for adding additional styles:
+
+1. Remove all inline styles and use only CSS.
+2. Add additional inline styles via the style prop.
+
+The DOM tree of the component for reference:
 
 ```html
 <div class="notficiation-bar">
@@ -52,6 +66,38 @@ As this component does not include CSS styles to use, you will need to add your 
     <span class="notification-bar-action">{this.props.action}</span>
   </div>
 </div>
+```
+
+To use additional inline styles, return two objects. The `bar` object applies styles to the entire notification "snackbar" and the `action` object applies styles to the action message. Under the hood, this uses `Object.assign` to handle properly combining styles. 
+
+I would highly suggest using this method since the styles included in the component by default handle the visibility of the notification. If you remove these styles, the component won't actually show or hide itself.
+
+```
+getNotificationStyles() {
+
+  var bar = {
+    background: '#263238'
+  };
+
+  var action = {
+    color: '#FFCCBC'
+  };
+
+  return { bar, action };
+
+},
+
+render() {
+  return (
+    <div>
+      <Notification
+        ref="notification"
+        message={this.state.message}
+        action={this.state.action}
+        styles={this.getNotificationStyles()}
+    </div>
+  );
+}
 ```
 
 ---

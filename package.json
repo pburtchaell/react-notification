@@ -1,10 +1,11 @@
 {
   "name": "react-notification",
-  "version": "0.1.4",
+  "version": "1.0.0",
   "description": "Snackbar style notification component for React.",
-  "main": "index.js",
+  "main": "web_modules/notification.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "start": "webpack --watch --progress --colors"
   },
   "repository": {
     "type": "git",
@@ -25,8 +26,29 @@
     "url": "https://github.com/pburtchaell/react-notification/issues"
   },
   "homepage": "https://github.com/pburtchaell/react-notification",
+  "peerDependencies": {
+    "react": "0.13.x"
+  },
+  "dependencies": {
+    "object-assign": "^2.0.0",
+    "react": "^0.13.x"
+  },
   "devDependencies": {
-    "react": "^0.12.2",
-    "react-classes": "^1.0.3"
+    "babel-core": "^4.7.16",
+    "babel-loader": "^4.2.0",
+    "jest-cli": "^0.4.0",
+    "react-tools": "^0.13.1",
+    "webpack": "^1.7.3"
+  },
+  "jest": {
+    "scriptPreprocessor": "./bin/tests/preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "./node_modules/react"
+    ],
+    "testDirectoryName": "tests",
+    "testPathDirs": [
+      "./bin/"
+    ],
+    "globals": {}
   }
 }
