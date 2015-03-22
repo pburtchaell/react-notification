@@ -2,7 +2,7 @@
   "name": "react-notification",
   "version": "0.1.4",
   "description": "Snackbar style notification component for React.",
-  "main": "index.js",
+  "main": "web_modules/notification.js",
   "scripts": {
     "test": "jest"
   },
