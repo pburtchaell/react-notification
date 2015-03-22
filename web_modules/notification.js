@@ -125,7 +125,7 @@ var Notification = React.createClass({
 
   render: function () {
     return (
-      <div className="notificiation-bar" style={this.getBarStyles()}>
+      <div className="notification-bar" style={this.getBarStyles()}>
         <div className="notification-bar-wrapper" onClick={this.handleClick}>
           <span className="notification-bar-message">{this.props.message}</span>
           <span className="notification-bar-action" style={this.getActionStyles()}>{this.props.action}</span>

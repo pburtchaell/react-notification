@@ -14,7 +14,7 @@ This is a component designed to provide "[snackbar](http://www.google.com/design
 ## Usage
 
 ```
-<Notfication
+<Notification
   message={string}
   action={string}
   styles={object}
@@ -60,8 +60,8 @@ This component does use basic inline CSS to style the position and visibility of
 The DOM tree of the component for reference:
 
 ```html
-<div class="notficiation-bar">
-  <div class="notfication-bar-wrapper" onClick={this.props.onClick}>
+<div class="notification-bar">
+  <div class="notification-bar-wrapper" onClick={this.props.onClick}>
     <span class="notification-bar-message">{this.props.message}</span>
     <span class="notification-bar-action">{this.props.action}</span>
   </div>
