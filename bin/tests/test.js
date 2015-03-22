@@ -17,6 +17,20 @@ var View = React.createClass({
     console.log('Notification action clicked:', true);
   },
 
+  getNotificationStyles() {
+
+    var bar = {
+      background: '#263238'
+    };
+
+    var action = {
+      color: '#FFCCBC'
+    };
+
+    return { bar, action };
+
+  },
+
   getInitialState() {
     return {
       message: 'Todo added',
@@ -33,6 +47,7 @@ var View = React.createClass({
           ref="notification"
           message={this.state.message}
           action={this.state.action}
+          styles={this.getNotificationStyles()}
           onClick={this.handleNotificationActionClick}/>
       </div>
     );
