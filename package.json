@@ -4,7 +4,8 @@
   "description": "Snackbar style notification component for React.",
   "main": "web_modules/notification.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "webpack --watch --progress --colors"
   },
   "repository": {
     "type": "git",
@@ -34,7 +35,11 @@
   "devDependencies": {
     "react": "^0.13.1",
     "react-tools": "^0.13.1"
+    "babel-core": "^4.7.16",
+    "babel-loader": "^4.2.0",
     "jest-cli": "^0.4.0",
+    "react-tools": "^0.13.1",
+    "webpack": "^1.7.3"
   },
   "jest": {
     "scriptPreprocessor": "./bin/tests/preprocessor.js",
