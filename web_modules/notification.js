@@ -44,12 +44,6 @@ var Notification = React.createClass({
 
   },
 
-  getActiveBarStyles: function () {
-    return {
-      left: '1rem'
-    }
-  },
-
   getActionStyles: function () {
 
     var styles = {};
