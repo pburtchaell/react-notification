@@ -62,7 +62,7 @@ The DOM tree of the component for reference:
 ```html
 <div class="notficiation-bar">
   <div class="notfication-bar-wrapper" onClick={this.props.onClick}>
-    <span class="notfication-bar-message">{this.props.message}</span>
+    <span class="notification-bar-message">{this.props.message}</span>
     <span class="notification-bar-action">{this.props.action}</span>
   </div>
 </div>
