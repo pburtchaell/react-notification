@@ -6,7 +6,7 @@ var Notification = React.createClass({
    * @function hide
    * @description Focus on the element.
    */
-  open: function () {
+  show: function () {
     this.setState({
       active: true
     });
