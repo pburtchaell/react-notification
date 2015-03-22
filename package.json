@@ -30,11 +30,10 @@
     "react": "0.13.x"
   },
   "dependencies": {
+    "object-assign": "^2.0.0",
     "react": "^0.13.x"
   },
   "devDependencies": {
-    "react": "^0.13.1",
-    "react-tools": "^0.13.1"
     "babel-core": "^4.7.16",
     "babel-loader": "^4.2.0",
     "jest-cli": "^0.4.0",
