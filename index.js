@@ -3,8 +3,8 @@ var React = require('react/addons');
 var Notification = React.createClass({
 
   /**
-   * @function hide
-   * @description Focus on the element.
+   * @function show
+   * @description Show the notification message.
    */
   show: function () {
     this.setState({
@@ -14,7 +14,7 @@ var Notification = React.createClass({
 
   /**
    * @function hide
-   * @description Focus on the element.
+   * @description Hide the notification message.
    */
   hide: function () {
     this.setState({
