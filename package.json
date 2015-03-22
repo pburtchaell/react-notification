@@ -4,8 +4,13 @@
   "description": "Snackbar style notification component for React.",
   "main": "web_modules/notification.js",
   "scripts": {
+    "prebuild": "rm -rf dist",
+    "build:js": "./node_modules/.bin/jsx --harmony ./web_modules ./dist",
+    "build:jsx": "./node_modules/.bin/jsx --harmony -x jsx ./web_modules ./dist",
+    "build": "npm run build:js && npm run build:jsx",
     "test": "jest",
-    "start": "webpack --watch --progress --colors"
+    "start": "webpack --watch --progress --colors",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
