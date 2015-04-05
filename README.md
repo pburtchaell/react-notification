@@ -95,6 +95,7 @@ render() {
         message={this.state.message}
         action={this.state.action}
         styles={this.getNotificationStyles()}
+      />
     </div>
   );
 }
