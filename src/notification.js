@@ -11,7 +11,7 @@ var Notification = React.createClass({
      * If styles is set to false,
      * then return nothing.
      */
-    if (!this.props.styles) {
+    if (this.props.styles === false) {
       return styles;
     }
 
@@ -36,7 +36,7 @@ var Notification = React.createClass({
 
     styles = !this.state.active ? styles.default : objectAssign(styles.default, styles.active);
 
-    if (this.props.styles.bar) {
+    if (this.props.styles && this.props.styles.bar) {
       styles = objectAssign(styles, this.props.styles.bar);
     }
 
@@ -52,7 +52,7 @@ var Notification = React.createClass({
      * If styles is set to false,
      * then return nothing.
      */
-    if (!this.props.styles) {
+    if (this.props.styles === false) {
       return styles;
     }
 
@@ -68,7 +68,7 @@ var Notification = React.createClass({
       font: '.75rem normal Roboto, sans-serif',
     };
 
-    if (this.props.styles.action) {
+    if (this.props.styles && this.props.styles.action) {
       styles = objectAssign(styles, this.props.styles.action);
     }
 
