@@ -33,6 +33,7 @@ See [here](/bin/tests/test.js).
 | message   | string          | The message for the notification                    | true      |
 | action    | string          | The name of the action, e.g., "close" or "undo"     |           |
 | styles    | object || bool  | Styles to apply to the component*                   |           |
+| dismissAfter | integer      | Time in milliseconds to dismiss the notification (eg. `2000` for 2 seconds) |           |
 
 *Setting this prop to `false` will disable all inline styles. This is useful if you aren't using React inline styles and would like to use CSS instead. See [styles](#styles) for more.
 

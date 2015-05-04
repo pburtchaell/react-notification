@@ -123,6 +123,15 @@ var Notification = React.createClass({
     };
   },
 
+  componentWillReceiveProps: function (nextProps) {
+    if (!nextProps.dismissAfter) return;
+
+    if (this.state.timeoutId) clearTimeout( this.state.timeoutId );
+    this.state.timeoutId = setTimeout( this.hide(), nextProps.dismissAfter );
+
+    this.setState(this.state);
+  },
+
   render: function () {
     return (
       <div className="notification-bar" style={this.getBarStyles()}>
