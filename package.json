@@ -1,6 +1,6 @@
 {
   "name": "react-notification",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Snackbar style notification component for React.",
   "main": "dist/notification.js",
   "scripts": {
@@ -19,6 +19,7 @@
   "keywords": [
     "react",
     "component",
+    "react-component",
     "components",
     "ui",
     "notify",
