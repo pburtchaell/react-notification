@@ -127,7 +127,7 @@ var Notification = React.createClass({
     if (!nextProps.dismissAfter) return;
 
     if (this.state.timeoutId) clearTimeout( this.state.timeoutId );
-    this.state.timeoutId = setTimeout( this.hide(), nextProps.dismissAfter );
+    this.state.timeoutId = setTimeout( this.hide, nextProps.dismissAfter );
 
     this.setState(this.state);
   },
