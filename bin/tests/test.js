@@ -13,6 +13,15 @@ var View = React.createClass({
     this.refs.notification.hide();
   },
 
+  handleShowDefaultTimed() {
+    this.refs.timedNotification.show();
+  },
+
+  handleShowCustomTimed() {
+    this.setState({timer: 5000});
+    this.refs.timedNotification.show();
+  },
+
   handleNotificationActionClick() {
     console.log('Notification action clicked:', true);
   },
@@ -34,7 +43,8 @@ var View = React.createClass({
   getInitialState() {
     return {
       message: 'Todo added',
-      action: 'Undo'
+      action: 'Undo',
+      timer: 2000
     };
   },
 
@@ -43,11 +53,20 @@ var View = React.createClass({
       <div>
         <button onClick={this.handleShow}>Show</button>
         <button onClick={this.handleHide}>Hide</button>
+        <button onClick={this.handleShowDefaultTimed}>ShowTimedDefault</button>
+        <button onClick={this.handleShowCustomTimed}>ShowTimed5s</button>
         <Notification
           ref="notification"
           message={this.state.message}
           action={this.state.action}
           styles={this.getNotificationStyles()}
+          onClick={this.handleNotificationActionClick}/>
+        <Notification
+          ref="timedNotification"
+          message={this.state.message}
+          action={this.state.action}
+          styles={this.getNotificationStyles()}
+          dismissAfter={this.state.timer}
           onClick={this.handleNotificationActionClick}/>
       </div>
     );
