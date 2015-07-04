@@ -1,16 +1,11 @@
 {
   "name": "react-notification",
-  "version": "1.4.0",
+  "version": "1.3.2",
   "description": "Snackbar style notification component for React.",
   "main": "dist/notification.js",
   "scripts": {
-    "prebuild": "rm -rf dist",
-    "build:js": "./node_modules/.bin/jsx --harmony ./src ./dist",
-    "build:jsx": "./node_modules/.bin/jsx --harmony -x jsx ./src ./dist",
-    "build": "npm run build:js && npm run build:jsx",
-    "test": "jest",
-    "start": "webpack --watch --progress --colors",
-    "prepublish": "npm run build"
+    "start": "NODE_ENV=development node webpack.server.js",
+    "prepublish": "make js"
   },
   "repository": {
     "type": "git",
@@ -32,29 +27,17 @@
     "url": "https://github.com/pburtchaell/react-notification/issues"
   },
   "homepage": "https://github.com/pburtchaell/react-notification",
-  "peerDependencies": {
-    "react": "0.13.x"
-  },
   "dependencies": {
     "object-assign": "^2.0.0",
     "react": "^0.13.x"
   },
   "devDependencies": {
-    "babel-core": "^4.7.16",
-    "babel-loader": "^4.2.0",
-    "jest-cli": "^0.4.0",
-    "react-tools": "^0.13.1",
-    "webpack": "^1.7.3"
-  },
-  "jest": {
-    "scriptPreprocessor": "./bin/tests/preprocessor.js",
-    "unmockedModulePathPatterns": [
-      "./node_modules/react"
-    ],
-    "testDirectoryName": "tests",
-    "testPathDirs": [
-      "./bin/"
-    ],
-    "globals": {}
+    "babel": "^5.5.8",
+    "babel-core": "^5.5.8",
+    "babel-loader": "^5.1.4",
+    "html-webpack-plugin": "^1.5.2",
+    "react-hot-loader": "^1.2.7",
+    "webpack": "^1.7.3",
+    "webpack-dev-server": "^1.9.0"
   }
 }

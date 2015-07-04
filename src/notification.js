@@ -1,143 +1,176 @@
-var React = require('react');
-var objectAssign = require('object-assign');
+import React from 'react';
+import objectAssign from 'object-assign';
 
-var Notification = React.createClass({
+export default class Notification extends React.Component {
+  constructor(props) {
+    super(props);
 
-  getBarStyles: function () {
+    // Bind lexical scope of "this" to class
+    this.hide = this.hide.bind(this);
+    this.show = this.show.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
-    var styles = {};
-
-    /**
-     * If styles is set to false,
-     * then return nothing.
-     */
-    if (this.props.styles === false) {
-      return styles;
-    }
-
-    styles.active = {
-      left: '1rem'
+    // Initial state
+    this.state = {
+      isActive: false,
     };
+  }
 
-    styles.default = {
-      padding: '1rem',
-      background: '#212121',
-      color: '#FAFAFA',
-      width: 'auto',
-      position: 'fixed',
-      left: '-100%',
-      bottom: '1rem',
-      boxShadow: '0 0 1px 1px rgba(10,10,11,0.125)',
-      borderRadius: '5px',
-      cursor: 'default',
-      font: '1rem normal Roboto, sans-serif',
-      transition: '.5s ease'
-    };
+  static propTypes = {
+    message: React.PropTypes.string.isRequired,
+    action: React.PropTypes.string,
+    onClick: React.PropTypes.func,
+  }
 
-    styles = !this.state.active ? styles.default : objectAssign(styles.default, styles.active);
-
-    if (this.props.styles && this.props.styles.bar) {
-      styles = objectAssign(styles, this.props.styles.bar);
+  static defaultProps = {
+    action: 'Dismiss',
+    onClick: function () {
+      return
     }
+  }
 
-    return styles;
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.dismissAfter) return;
 
+    if (this.state.timeoutId) clearTimeout(this.state.timeoutId);
+    this.state.timeoutId = setTimeout(this.hide, nextProps.dismissAfter);
+
+    this.setState(this.state);
   },
 
-  getActionStyles: function () {
+  /**
+   * @description Dynamically get the styles for the bar.
+   * @returns {object} result The style.
+   */
+  get barStyle() {
+    let result;
 
-    var styles = {};
+    let style = {
+      base: {
+        position: 'fixed',
+        top: '6rem',
+        left: '-100%',
+        width: 'auto',
+        padding: '1rem',
+        margin: 0,
+        color: '#fafafa',
+        font: '1rem normal Roboto, sans-serif',
+        borderRadius: '5px',
+        background: '#212121',
+        boxShadow: '0 0 1px 1px rgba(10, 10, 11, .125)',
+        cursor: 'default',
+        transition: '.5s ease',
+      },
+      active: {
+        left: '1rem',
+      },
+    };
 
     /**
-     * If styles is set to false,
-     * then return nothing.
+     * If styles is set to false, then return nothing.
      */
     if (this.props.styles === false) {
-      return styles;
+      return {};
     }
 
-    styles = {
+    /**
+     * If `this.props.styles.active` exists (which means
+     * custom active styles should be used, override the
+     * default active styles with those from the prop.
+     */
+    if (this.props.styles.active) {
+      style.active = this.props.styles.active;
+    }
+
+    /**
+     * If `this.props.styles.bar` exists (which means custom
+     * styles should be applied to the bar) combine those
+     * styles with the existing base style.
+     */
+    if (this.props.styles.bar) {
+      style.base = objectAssign(style.base, this.props.styles.bar);
+    }
+
+    result = !this.state.active ? style.base : objectAssign(style.base, style.active);
+
+    return result;
+  }
+
+  /**
+   * @description Dynamically get the styles for the action text.
+   * @returns {object} result The style.
+   */
+  get actionStyle() {
+
+    let result;
+
+    /**
+     * If styles is set to false, then return nothing.
+     */
+    if (this.props.styles === false) {
+      return {};
+    }
+
+    let style = {
       padding: '0.125rem',
       marginLeft: '1rem',
       color: '#f44336',
-      textTransform: 'uppercase',
+      font: '.75rem normal Roboto, sans-serif',
+      lineHeight: '1rem',
       letterSpacing: '.125ex',
+      textTransform: 'uppercase',
       borderRadius: '5px',
       cursor: 'pointer',
-      lineHeight: '1rem',
-      font: '.75rem normal Roboto, sans-serif',
     };
 
     if (this.props.styles && this.props.styles.action) {
-      styles = objectAssign(styles, this.props.styles.action);
+      result = objectAssign(styles, this.props.styles.action);
     }
 
-    return styles;
-
-  },
+    return result;
+  }
 
   /**
    * @function show
    * @description Show the notification message.
    */
-  show: function () {
+  show() {
     this.setState({
-      active: true
+      isActive: true
     });
-  },
+  }
 
   /**
    * @function hide
    * @description Hide the notification message.
    */
-  hide: function () {
+  hide() {
     this.setState({
-      active: false
+      isActive: false
     });
-  },
+  }
 
-  handleClick: function (event) {
+  /**
+   * @function handleClick
+   * @description
+   */
+  handleClick(event) {
     event.preventDefault();
     this.props.onClick();
     this.hide();
   },
 
-  propTypes: {
-    message: React.PropTypes.string.isRequired,
-    action: React.PropTypes.string,
-    onClick: React.PropTypes.func
-  },
-
-  getInitialState: function () {
-    return {
-      active: false
-    };
-  },
-
-  getDefaultProps: function () {
-    return {
-      action: 'Dismiss',
-      onClick: function () {
-        return;
-      }
-    };
-  },
-
-  render: function () {
-    if(this.props.dismissAfter && this.state.active) {
-      if (this.timeoutId) clearTimeout( this.timeoutId );
-      this.timeoutId = setTimeout( this.hide, this.props.dismissAfter );
-    }
+  render() {
     return (
-      <div className="notification-bar" style={this.getBarStyles()}>
+      <div className="notification-bar" style={this.barStyle}>
         <div className="notification-bar-wrapper" onClick={this.handleClick}>
           <span className="notification-bar-message">{this.props.message}</span>
-          <span className="notification-bar-action" style={this.getActionStyles()}>{this.props.action}</span>
+          <span className="notification-bar-action" style={this.actionStyle}>
+            {this.props.action}
+          </span>
         </div>
       </div>
     );
   }
 
 });
-
-module.exports = Notification;
