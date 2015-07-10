@@ -1,0 +1,111 @@
+import React, { Component } from 'react';
+import Notification from 'notification';
+
+class Example extends Component {
+  state = {
+    notificationReact: {
+      message: 'React is awesome!',
+      action: 'I agree',
+      isActive: false
+    },
+    notificationJavaScript: {
+      message: 'JavaScript is awesome!',
+      action: 'I agree',
+      isActive: false
+    }
+  }
+
+  /*
+   * @function handleNotificationClick
+   * @description When the notfication action button
+   * is clicked, dismiss the notfication by setting
+   * the isActive prop to false.
+   */
+  handleNotificationClick = (notification) => {
+    event.preventDefault();
+    if (notification === 'react') {
+      this.setState({
+        notificationReact: {
+          ...this.state.notificationReact,
+          isActive: false
+        }
+      });
+    } else {
+      this.setState({
+        notificationJavaScript: {
+          ...this.state.notificationJavaScript,
+          isActive: false
+        }
+      });
+    }
+  }
+
+  handleButtonClick = (notification) => {
+    if (notification === 'react') {
+      this.setState({
+        notificationReact: {
+          ...this.state.notificationReact,
+          isActive: true
+        }
+      });
+    } else {
+      this.setState({
+        notificationJavaScript: {
+          ...this.state.notificationJavaScript,
+          isActive: true
+        }
+      });
+    }
+  }
+
+  render() {
+    let { notificationReact, notificationJavaScript } = this.state;
+
+    return (
+      <div>
+        <button onClick={this.handleButtonClick.bind(null, 'react')}>
+          Show 1
+        </button>
+        <button onClick={this.handleButtonClick.bind(null, 'javascript')}>
+          Show 2
+        </button>
+        <Notification
+          ref="notificationOne"
+          style={{
+            bar: {
+              backgroundColor: 'rgb(97, 172, 234)'
+            },
+            action: {
+              color: 'rgb(20, 27, 32)'
+            }
+          }}
+          count={this.state.activeNotifications}
+          message={notificationReact.message}
+          action={notificationReact.action}
+          isActive={notificationReact.isActive}
+          onClick={this.handleNotificationClick.bind(null, 'react')}
+        />
+        <Notification
+          ref="notficationTwo"
+          style={{
+            bar: {
+              bottom: '6rem',
+              backgroundColor: 'rgb(249, 211, 18)',
+              color: 'rgb(0, 0, 0)'
+            },
+            action: {
+              color: 'rgb(0, 0, 0)'
+            }
+          }}
+          count={this.state.currentlyActiveNotifications}
+          message={notificationJavaScript.message}
+          action={notificationJavaScript.action}
+          isActive={notificationJavaScript.isActive}
+          onClick={this.handleNotificationClick.bind(null, 'javascript')}
+        />
+      </div>
+    );
+  }
+}
+
+React.render(<Example />, document.body);
