@@ -1,54 +1,35 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import objectAssign from 'object-assign';
 
-export default class Notification extends React.Component {
-  constructor(props) {
-    super(props);
-
-    // Bind lexical scope of "this" to class
-    this.hide = this.hide.bind(this);
-    this.show = this.show.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-
-    // Initial state
-    this.state = {
-      isActive: false,
-    };
-  }
-
+export default class Notification extends Component {
   static propTypes = {
-    message: React.PropTypes.string.isRequired,
-    action: React.PropTypes.string,
-    onClick: React.PropTypes.func,
+    message: PropTypes.string.isRequired,
+    action: PropTypes.string.isRequired,
+    onClick: PropTypes.func,
+    styles: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.bool
+    ])
   }
 
   static defaultProps = {
-    action: 'Dismiss',
-    onClick: function () {
-      return
-    }
+    isActive: false
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (!nextProps.dismissAfter) return;
-
-    if (this.state.timeoutId) clearTimeout(this.state.timeoutId);
-    this.state.timeoutId = setTimeout(this.hide, nextProps.dismissAfter);
-
-    this.setState(this.state);
-  },
-
-  /**
+  /*
    * @description Dynamically get the styles for the bar.
    * @returns {object} result The style.
    */
-  get barStyle() {
-    let result;
+  getBarStyle = () => {
+    const { isActive } = this.props;
 
-    let style = {
-      base: {
+    let activeStateStyle;
+    let defaultStateStyle;
+
+    const baseStyle = {
+      defaultState: {
         position: 'fixed',
-        top: '6rem',
+        bottom: '2rem',
         left: '-100%',
         width: 'auto',
         padding: '1rem',
@@ -57,19 +38,20 @@ export default class Notification extends React.Component {
         font: '1rem normal Roboto, sans-serif',
         borderRadius: '5px',
         background: '#212121',
+        borderSizing: 'border-box',
         boxShadow: '0 0 1px 1px rgba(10, 10, 11, .125)',
         cursor: 'default',
-        transition: '.5s ease',
+        transition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)'
       },
-      active: {
-        left: '1rem',
-      },
+      activeState: {
+        left: '1rem'
+      }
     };
 
     /**
      * If styles is set to false, then return nothing.
      */
-    if (this.props.styles === false) {
+    if (this.props.style === false) {
       return {};
     }
 
@@ -78,8 +60,10 @@ export default class Notification extends React.Component {
      * custom active styles should be used, override the
      * default active styles with those from the prop.
      */
-    if (this.props.styles.active) {
-      style.active = this.props.styles.active;
+    if (this.props.style && this.props.style.active) {
+      activeStateStyle = objectAssign(baseStyle.activeState, this.props.style.active);
+    } else {
+      activeStateStyle = baseStyle.activeState;
     }
 
     /**
@@ -87,31 +71,22 @@ export default class Notification extends React.Component {
      * styles should be applied to the bar) combine those
      * styles with the existing base style.
      */
-    if (this.props.styles.bar) {
-      style.base = objectAssign(style.base, this.props.styles.bar);
+    if (this.props.style && this.props.style.bar) {
+      defaultStateStyle = objectAssign(baseStyle.defaultState, this.props.style.bar);
+    } else {
+      defaultStateStyle = baseStyle.defaultState;
     }
 
-    result = !this.state.active ? style.base : objectAssign(style.base, style.active);
-
-    return result;
+    return isActive ? objectAssign(defaultStateStyle, activeStateStyle) : defaultStateStyle;
   }
 
-  /**
+  /*
+   * @function getActionStyle
    * @description Dynamically get the styles for the action text.
    * @returns {object} result The style.
    */
-  get actionStyle() {
-
-    let result;
-
-    /**
-     * If styles is set to false, then return nothing.
-     */
-    if (this.props.styles === false) {
-      return {};
-    }
-
-    let style = {
+  getActionStyle = () => {
+    const baseStyle = {
       padding: '0.125rem',
       marginLeft: '1rem',
       color: '#f44336',
@@ -120,52 +95,39 @@ export default class Notification extends React.Component {
       letterSpacing: '.125ex',
       textTransform: 'uppercase',
       borderRadius: '5px',
-      cursor: 'pointer',
+      cursor: 'pointer'
     };
 
-    if (this.props.styles && this.props.styles.action) {
-      result = objectAssign(styles, this.props.styles.action);
+    if (this.props.style === false) {
+      return {};
     }
 
-    return result;
+    if (this.props.style && this.props.style.action) {
+      return objectAssign(baseStyle, this.props.style.action);
+    }
+
+    return baseStyle;
   }
 
-  /**
-   * @function show
-   * @description Show the notification message.
-   */
-  show() {
-    this.setState({
-      isActive: true
-    });
-  }
-
-  /**
-   * @function hide
-   * @description Hide the notification message.
-   */
-  hide() {
-    this.setState({
-      isActive: false
-    });
-  }
-
-  /**
+  /*
    * @function handleClick
-   * @description
+   * @description Handle click events on the
    */
-  handleClick(event) {
+  handleClick = (event) => {
     event.preventDefault();
-    this.props.onClick();
-    this.hide();
-  },
+    if (this.props.onClick && typeof this.props.onClick === 'function') {
+      this.props.onClick();
+    } else {
+      return;
+    }
+  }
 
   render() {
     return (
-      <div className="notification-bar" style={this.barStyle}>
+      <div className="notification-bar" style={this.getBarStyle()}>
         <div className="notification-bar-wrapper" onClick={this.handleClick}>
           <span className="notification-bar-message">{this.props.message}</span>
-          <span className="notification-bar-action" style={this.actionStyle}>
+          <span className="notification-bar-action" style={this.getActionStyle()}>
             {this.props.action}
           </span>
         </div>
@@ -173,4 +135,4 @@ export default class Notification extends React.Component {
     );
   }
 
-});
+}
