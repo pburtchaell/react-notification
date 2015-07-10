@@ -13,27 +13,25 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
  * For more information, see: http://webpack.github.io/docs/configuration.html
  */
 module.exports = {
-  devtool: 'eval-source-map',
+  devtool: 'inline-source-map',
   entry: {
     app: [
-      'webpack-dev-server/client?//localhost:8000',
+      'webpack-dev-server/client?//',
       'webpack/hot/only-dev-server',
-      './example/index',
+      './examples/es2015/index',
     ]
   },
   output: {
-    publicPath: '//localhost:8000/',
-    path: path.join(__dirname, '/dist/'),
+    publicPath: '/',
+    path: path.join(__dirname, '/'),
     filename: '[name].js',
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.WEB_ENV': JSON.stringify(process.env.NODE_ENV),
-      'process.env.BASE_URL': 'http://localhost:8000/',
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin(),
-    new webpack.NoErrorsPlugin(),
   ],
   resolve: {
     modulesDirectories: ['node_modules', 'src']
@@ -48,7 +46,6 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: './dist',
     quiet: true,
     hot: true,
     inline: true,
