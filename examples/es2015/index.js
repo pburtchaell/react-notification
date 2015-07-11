@@ -22,7 +22,6 @@ class Example extends Component {
    * the isActive prop to false.
    */
   handleNotificationClick = (notification) => {
-    event.preventDefault();
     if (notification === 'react') {
       this.setState({
         notificationReact: {
@@ -79,11 +78,12 @@ class Example extends Component {
               color: 'rgb(20, 27, 32)'
             }
           }}
-          count={this.state.activeNotifications}
           message={notificationReact.message}
           action={notificationReact.action}
+          dismissAfter={2000}
           isActive={notificationReact.isActive}
           onClick={this.handleNotificationClick.bind(null, 'react')}
+          onDismiss={this.handleNotificationClick.bind(null, 'react')}
         />
         <Notification
           ref="notficationTwo"
@@ -97,11 +97,12 @@ class Example extends Component {
               color: 'rgb(0, 0, 0)'
             }
           }}
-          count={this.state.currentlyActiveNotifications}
           message={notificationJavaScript.message}
           action={notificationJavaScript.action}
+          dismissAfter={2000}
           isActive={notificationJavaScript.isActive}
           onClick={this.handleNotificationClick.bind(null, 'javascript')}
+          onDismiss={this.handleNotificationClick.bind(null, 'javascript')}
         />
       </div>
     );

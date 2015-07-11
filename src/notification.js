@@ -9,11 +9,20 @@ export default class Notification extends Component {
     styles: PropTypes.oneOfType([
       PropTypes.object,
       PropTypes.bool
-    ])
+    ]),
+    dismissAfter: PropTypes.number,
+    onDismis: PropTypes.func
   }
 
   static defaultProps = {
-    isActive: false
+    isActive: false,
+    dismissAfter: 2000
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.onDismiss && nextProps.isActive) {
+      setTimeout(nextProps.onDismiss, this.props.dismissAfter);
+    }
   }
 
   /*
