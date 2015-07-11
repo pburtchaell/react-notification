@@ -2,7 +2,7 @@
 
 ## Overview
 
-![](https://raw.githubusercontent.com/pburtchaell/react-notification/master/bin/example.gif)
+![](https://raw.githubusercontent.com/pburtchaell/react-notification/master/examples/example.gif)
 
 This is a component designed to provide "[snackbar](http://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-usage)" notification messages. I would suggest reading the usage guidelines for [snackbars](http://www.google.com/design/spec/components/snackbars-toasts.html#).
 
