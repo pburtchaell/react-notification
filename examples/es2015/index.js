@@ -6,12 +6,14 @@ class Example extends Component {
     notificationReact: {
       message: 'React is awesome!',
       action: 'I agree',
-      isActive: false
+      isActive: false,
+      dismissAfter: 2000
     },
     notificationJavaScript: {
       message: 'JavaScript is awesome!',
       action: 'I agree',
-      isActive: false
+      isActive: false,
+      dismissAfter: 2000
     }
   }
 
@@ -78,10 +80,7 @@ class Example extends Component {
               color: 'rgb(20, 27, 32)'
             }
           }}
-          message={notificationReact.message}
-          action={notificationReact.action}
-          dismissAfter={2000}
-          isActive={notificationReact.isActive}
+          {...notificationReact}
           onClick={this.handleNotificationClick.bind(null, 'react')}
           onDismiss={this.handleNotificationClick.bind(null, 'react')}
         />
@@ -97,10 +96,7 @@ class Example extends Component {
               color: 'rgb(0, 0, 0)'
             }
           }}
-          message={notificationJavaScript.message}
-          action={notificationJavaScript.action}
-          dismissAfter={2000}
-          isActive={notificationJavaScript.isActive}
+          {...notificationJavaScript}
           onClick={this.handleNotificationClick.bind(null, 'javascript')}
           onDismiss={this.handleNotificationClick.bind(null, 'javascript')}
         />
