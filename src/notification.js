@@ -1,143 +1,147 @@
-var React = require('react');
-var objectAssign = require('object-assign');
+import React, { Component, PropTypes } from 'react';
+import objectAssign from 'object-assign';
 
-var Notification = React.createClass({
+export default class Notification extends Component {
+  static propTypes = {
+    message: PropTypes.string.isRequired,
+    action: PropTypes.string.isRequired,
+    onClick: PropTypes.func,
+    styles: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.bool
+    ]),
+    dismissAfter: PropTypes.number,
+    onDismis: PropTypes.func
+  }
 
-  getBarStyles: function () {
+  static defaultProps = {
+    isActive: false,
+    dismissAfter: 2000
+  }
 
-    var styles = {};
-
-    /**
-     * If styles is set to false,
-     * then return nothing.
-     */
-    if (this.props.styles === false) {
-      return styles;
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.onDismiss && nextProps.isActive) {
+      setTimeout(nextProps.onDismiss, this.props.dismissAfter);
     }
+  }
 
-    styles.active = {
-      left: '1rem'
+  /*
+   * @description Dynamically get the styles for the bar.
+   * @returns {object} result The style.
+   */
+  getBarStyle = () => {
+    const { isActive } = this.props;
+
+    let activeStateStyle;
+    let defaultStateStyle;
+
+    const baseStyle = {
+      defaultState: {
+        position: 'fixed',
+        bottom: '2rem',
+        left: '-100%',
+        width: 'auto',
+        padding: '1rem',
+        margin: 0,
+        color: '#fafafa',
+        font: '1rem normal Roboto, sans-serif',
+        borderRadius: '5px',
+        background: '#212121',
+        borderSizing: 'border-box',
+        boxShadow: '0 0 1px 1px rgba(10, 10, 11, .125)',
+        cursor: 'default',
+        transition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)'
+      },
+      activeState: {
+        left: '1rem'
+      }
     };
 
-    styles.default = {
-      padding: '1rem',
-      background: '#212121',
-      color: '#FAFAFA',
-      width: 'auto',
-      position: 'fixed',
-      left: '-100%',
-      bottom: '1rem',
-      boxShadow: '0 0 1px 1px rgba(10,10,11,0.125)',
-      borderRadius: '5px',
-      cursor: 'default',
-      font: '1rem normal Roboto, sans-serif',
-      transition: '.5s ease'
-    };
-
-    styles = !this.state.active ? styles.default : objectAssign(styles.default, styles.active);
-
-    if (this.props.styles && this.props.styles.bar) {
-      styles = objectAssign(styles, this.props.styles.bar);
+    /**
+     * If styles is set to false, then return nothing.
+     */
+    if (this.props.style === false) {
+      return {};
     }
-
-    return styles;
-
-  },
-
-  getActionStyles: function () {
-
-    var styles = {};
 
     /**
-     * If styles is set to false,
-     * then return nothing.
+     * If `this.props.styles.active` exists (which means
+     * custom active styles should be used, override the
+     * default active styles with those from the prop.
      */
-    if (this.props.styles === false) {
-      return styles;
+    if (this.props.style && this.props.style.active) {
+      activeStateStyle = objectAssign(baseStyle.activeState, this.props.style.active);
+    } else {
+      activeStateStyle = baseStyle.activeState;
     }
 
-    styles = {
+    /**
+     * If `this.props.styles.bar` exists (which means custom
+     * styles should be applied to the bar) combine those
+     * styles with the existing base style.
+     */
+    if (this.props.style && this.props.style.bar) {
+      defaultStateStyle = objectAssign(baseStyle.defaultState, this.props.style.bar);
+    } else {
+      defaultStateStyle = baseStyle.defaultState;
+    }
+
+    return isActive ? objectAssign(defaultStateStyle, activeStateStyle) : defaultStateStyle;
+  }
+
+  /*
+   * @function getActionStyle
+   * @description Dynamically get the styles for the action text.
+   * @returns {object} result The style.
+   */
+  getActionStyle = () => {
+    const baseStyle = {
       padding: '0.125rem',
       marginLeft: '1rem',
       color: '#f44336',
-      textTransform: 'uppercase',
-      letterSpacing: '.125ex',
-      borderRadius: '5px',
-      cursor: 'pointer',
-      lineHeight: '1rem',
       font: '.75rem normal Roboto, sans-serif',
+      lineHeight: '1rem',
+      letterSpacing: '.125ex',
+      textTransform: 'uppercase',
+      borderRadius: '5px',
+      cursor: 'pointer'
     };
 
-    if (this.props.styles && this.props.styles.action) {
-      styles = objectAssign(styles, this.props.styles.action);
+    if (this.props.style === false) {
+      return {};
     }
 
-    return styles;
+    if (this.props.style && this.props.style.action) {
+      return objectAssign(baseStyle, this.props.style.action);
+    }
 
-  },
+    return baseStyle;
+  }
 
-  /**
-   * @function show
-   * @description Show the notification message.
+  /*
+   * @function handleClick
+   * @description Handle click events on the
    */
-  show: function () {
-    this.setState({
-      active: true
-    });
-  },
-
-  /**
-   * @function hide
-   * @description Hide the notification message.
-   */
-  hide: function () {
-    this.setState({
-      active: false
-    });
-  },
-
-  handleClick: function (event) {
+  handleClick = (event) => {
     event.preventDefault();
-    this.props.onClick();
-    this.hide();
-  },
-
-  propTypes: {
-    message: React.PropTypes.string.isRequired,
-    action: React.PropTypes.string,
-    onClick: React.PropTypes.func
-  },
-
-  getInitialState: function () {
-    return {
-      active: false
-    };
-  },
-
-  getDefaultProps: function () {
-    return {
-      action: 'Dismiss',
-      onClick: function () {
-        return;
-      }
-    };
-  },
-
-  render: function () {
-    if(this.props.dismissAfter && this.state.active) {
-      if (this.timeoutId) clearTimeout( this.timeoutId );
-      this.timeoutId = setTimeout( this.hide, this.props.dismissAfter );
+    if (this.props.onClick && typeof this.props.onClick === 'function') {
+      this.props.onClick();
+    } else {
+      return;
     }
+  }
+
+  render() {
     return (
-      <div className="notification-bar" style={this.getBarStyles()}>
+      <div className="notification-bar" style={this.getBarStyle()}>
         <div className="notification-bar-wrapper" onClick={this.handleClick}>
           <span className="notification-bar-message">{this.props.message}</span>
-          <span className="notification-bar-action" style={this.getActionStyles()}>{this.props.action}</span>
+          <span className="notification-bar-action" style={this.getActionStyle()}>
+            {this.props.action}
+          </span>
         </div>
       </div>
     );
   }
 
-});
-
-module.exports = Notification;
+}

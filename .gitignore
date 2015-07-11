@@ -1,3 +1,4 @@
 node_modules/
 bin/tests/.tmp/
 dist/
+*.log*
