@@ -6,7 +6,7 @@
 
 This is a component designed to provide "[snackbar](http://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-usage)" notification messages. I would suggest reading the usage guidelines for [snackbars](http://www.google.com/design/spec/components/snackbars-toasts.html#).
 
-Please read the [contributing guide](/CONTRUBUTING.md) if you are interested in contributing. If you are coming from version 1.0.0, there is an [upgrade guide](/UPGRADING.md) to help you make the switch.
+Please read the [contributing guide](/CONTRUBUTING.md) if you are interested in contributing. If you are coming from version 1.0.0, there is an [upgrade guide](/UPGRADING.md) to help you make the switch. If you have questions, please feel free to create an issue on GitHub or message me (@pburtchaell) on the [Reactiflux Slack community](http://www.reactiflux.com/).
 
 ## Getting Started
 
@@ -16,28 +16,31 @@ Install the component via npm: `npm install react-notification`.
 
 ```
 <Notification
+  isActive={boolean}
   message={string}
   action={string}
-  styles={object}
-  onClick={func}
+  onClick={myClickHander}
 />
 ```
 
 ### Props
 
-| Name      | Type            | Description                                       | Required  |
-|-----------|-----------------|---------------------------------------------------|---------- |
-| message   | string          | The message for the notification                  | true      |
-| action    | string          | The name of the action, e.g., "close" or "undo"   | true      |
-| styles    | object || bool  | Styles to apply to the component*                 |           |
+| Name      | Type               | Description                                       | Required  | Default  |
+|-----------|--------------------|---------------------------------------------------|---------- |----------|
+| isActive  | boolean            | If true, the notification is visible              | true      | `false`  |
+| message   | string             | The message for the notification                  | true      |          |
+| action    | string             | The name of the action, e.g., "close" or "undo"   | true      |          |
+| styles    | object || boolean  | Custom styles to apply to the component*          |           |          |
+| styles    | boolean            | Timeout for onDismiss event                       |           | `2000`   |
 
 *Setting this prop to `false` will disable all inline styles. This is useful if you aren't using React inline styles and would like to use CSS instead. See [styles](#styles) for more.
 
 ## Events
 
-| Event     | Description                                         |
-|---------  |---------------------------------------------------  |
-| onClick   | Callback function to run when the action is clicked |
+| Event     | Description                                                |
+|-----------|------------------------------------------------------------|
+| onClick   | Callback function to run when the action is clicked        |
+| onDismiss | Callback function to run when dismissAfter timer runs out |
 
 ## Styles
 
