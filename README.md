@@ -31,7 +31,7 @@ Install the component via npm: `npm install react-notification`.
 | message   | string             | The message for the notification                  | true      |          |
 | action    | string             | The name of the action, e.g., "close" or "undo"   | true      |          |
 | styles    | object || boolean  | Custom styles to apply to the component*          |           |          |
-| styles    | boolean            | Timeout for onDismiss event                       |           | `2000`   |
+| dismissAfter | number            | Timeout for onDismiss event                       |           | `2000`   |
 
 *Setting this prop to `false` will disable all inline styles. This is useful if you aren't using React inline styles and would like to use CSS instead. See [styles](#styles) for more.
 
