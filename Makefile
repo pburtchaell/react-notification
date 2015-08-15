@@ -13,8 +13,10 @@ js: $(DIST_JS)
 
 # Task: test-all
 # Runs all unit tests
-test-all:
-	NODE_ENV=test `npm bin`/mocha --compilers js:babel/register --recursive
-	`npm bin`/eslint ./src/*.js
-	`npm bin`/eslint ./test/*.js
-	`npm bin`/eslint ./examples/es2015/*.js
+test:
+	@NODE_ENV=test `npm bin`/mocha --compilers js:babel/register --recursive
+	@`npm bin`/eslint ./src/*.js
+	@`npm bin`/eslint ./test/*.js
+	@`npm bin`/eslint ./examples/es2015/*.js
+
+.PHONY: test

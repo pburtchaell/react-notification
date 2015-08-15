@@ -5,8 +5,8 @@
   "main": "dist/notification.js",
   "scripts": {
     "start": "NODE_ENV=development node webpack.local.server.js",
-    "prepublish": "make test-all && make js",
-    "test": "make test-all"
+    "prepublish": "make test && make js",
+    "test": "make test"
   },
   "repository": {
     "type": "git",
