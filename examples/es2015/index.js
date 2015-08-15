@@ -11,7 +11,7 @@ class Example extends Component {
     },
     notificationJavaScript: {
       message: 'JavaScript is awesome!',
-      action: 'I agree',
+      action: false,
       isActive: false,
       dismissAfter: 2000
     }

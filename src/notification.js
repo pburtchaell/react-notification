@@ -136,9 +136,11 @@ export default class Notification extends Component {
       <div className="notification-bar" style={this.getBarStyle()}>
         <div className="notification-bar-wrapper" onClick={this.handleClick}>
           <span className="notification-bar-message">{this.props.message}</span>
-          <span className="notification-bar-action" style={this.getActionStyle()}>
-            {this.props.action}
-          </span>
+          {this.props.action !== false ? (
+            <span className="notification-bar-action" style={this.getActionStyle()}>
+              {this.props.action}
+            </span>
+          ) : null}
         </div>
       </div>
     );
