@@ -4,6 +4,8 @@
 
 ![](https://raw.githubusercontent.com/pburtchaell/react-notification/master/examples/example.gif)
 
+If you are using the React 0.14.0 beta, you can install the compatible version of this component with `npm i react-input@3.0.0-beta -S`.
+
 This is a component designed to provide "[snackbar](http://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-usage)" notification messages. I would suggest reading the usage guidelines for [snackbars](http://www.google.com/design/spec/components/snackbars-toasts.html#).
 
 Please read the [contributing guide](/CONTRUBUTING.md) if you are interested in contributing. If you are coming from version 1.0.0, there is an [upgrade guide](/UPGRADING.md) to help you make the switch. If you have questions, please feel free to create an issue on GitHub or message me (@pburtchaell) on the [Reactiflux Slack community](http://www.reactiflux.com/).
