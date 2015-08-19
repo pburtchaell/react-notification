@@ -141,10 +141,10 @@ export default class Notification extends Component {
   handleClick = (event) => {
     event.preventDefault();
     if (this.props.onClick && typeof this.props.onClick === 'function') {
-      this.props.onClick();
-    } else {
-      return;
+      return this.props.onClick(event);
     }
+
+    return;
   }
 
   render() {
