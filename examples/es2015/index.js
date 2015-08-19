@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { render } from 'react-dom';
 import Notification from 'notification';
 
 class Example extends Component {
@@ -105,4 +106,4 @@ class Example extends Component {
   }
 }
 
-React.render(<Example />, document.body);
+render(<Example />, document.querySelector('#mount'));
