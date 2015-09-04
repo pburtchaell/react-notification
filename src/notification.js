@@ -53,13 +53,13 @@ export default class Notification extends Component {
         WebKittransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
         MozTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
         msTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
-        oTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
+        OTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
         transition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
         // Trigger GPU acceleration
         WebkitTransform: 'translatez(0)',
         MozTransform: 'translatez(0)',
         msTransform: 'translatez(0)',
-        oTransform: 'translatez(0)',
+        OTransform: 'translatez(0)',
         transform: 'translatez(0)'
       },
       activeState: {
