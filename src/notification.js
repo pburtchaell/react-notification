@@ -11,7 +11,8 @@ export default class Notification extends Component {
       PropTypes.bool
     ]),
     dismissAfter: PropTypes.number,
-    onDismis: PropTypes.func
+    onDismis: PropTypes.func,
+    className: PropTypes.string
   }
 
   static defaultProps = {
@@ -142,8 +143,9 @@ export default class Notification extends Component {
   }
 
   render() {
+    const className = 'notification-bar ' + (this.props.className || '');
     return (
-      <div className="notification-bar" style={this.getBarStyle()}>
+      <div className={className} style={this.getBarStyle()}>
         <div className="notification-bar-wrapper" onClick={this.handleClick}>
           <span className="notification-bar-message">{this.props.message}</span>
           {this.props.action !== false ? (
