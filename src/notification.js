@@ -21,7 +21,7 @@ export default class Notification extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.onDismiss && nextProps.isActive) {
-      setTimeout(nextProps.onDismiss, this.props.dismissAfter);
+      setTimeout(nextProps.onDismiss, nextProps.dismissAfter);
     }
   }
 
