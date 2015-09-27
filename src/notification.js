@@ -4,7 +4,10 @@ import objectAssign from 'object-assign';
 export default class Notification extends Component {
   static propTypes = {
     message: PropTypes.string.isRequired,
-    action: PropTypes.string.isRequired,
+    action: PropTypes.oneOfType([
+      PropTypes.bool,
+      Proptypes.string
+    ]),
     onClick: PropTypes.func,
     styles: PropTypes.oneOfType([
       PropTypes.object,
