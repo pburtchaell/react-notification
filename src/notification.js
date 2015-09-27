@@ -6,7 +6,7 @@ export default class Notification extends Component {
     message: PropTypes.string.isRequired,
     action: PropTypes.oneOfType([
       PropTypes.bool,
-      Proptypes.string
+      PropTypes.string
     ]),
     onClick: PropTypes.func,
     styles: PropTypes.oneOfType([
