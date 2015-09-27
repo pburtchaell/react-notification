@@ -146,6 +146,7 @@ export default class Notification extends Component {
 
   render() {
     let className = 'notification-bar';
+
     if (this.props.isActive) className += ' ' + this.props.activeClassName;
     if (this.props.className) className += ' ' + this.props.className;
 
