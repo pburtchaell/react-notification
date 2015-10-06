@@ -14,7 +14,7 @@ export default class Notification extends Component {
       PropTypes.bool
     ]),
     dismissAfter: PropTypes.number,
-    onDismis: PropTypes.func,
+    onDismiss: PropTypes.func,
     className: PropTypes.string,
     activeClassName: PropTypes.string
   }
