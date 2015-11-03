@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/pburtchaell/react-notification"
+    "url": "https+git://github.com/pburtchaell/react-notification"
   },
   "keywords": [
     "react",
