@@ -141,11 +141,12 @@ export default class Notification extends Component {
    */
   handleClick = (event) => {
     event.preventDefault();
+
     if (this.props.onClick && typeof this.props.onClick === 'function') {
       return this.props.onClick(event);
     }
 
-    return;
+    return event;
   }
 
   render() {
@@ -157,9 +158,18 @@ export default class Notification extends Component {
     return (
       <div className={className} style={this.getBarStyle()}>
         <div className="notification-bar-wrapper" onClick={this.handleClick}>
-          <span className="notification-bar-message">{this.props.message}</span>
+          <span
+            ref="message"
+            className="notification-bar-message"
+          >
+            {this.props.message}
+          </span>
           {this.props.action !== false ? (
-            <span className="notification-bar-action" style={this.getActionStyle()}>
+            <span
+              ref="action"
+              className="notification-bar-action"
+              style={this.getActionStyle()}
+            >
               {this.props.action}
             </span>
           ) : null}
@@ -167,5 +177,4 @@ export default class Notification extends Component {
       </div>
     );
   }
-
 }
