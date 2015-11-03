@@ -26,7 +26,19 @@ const MOCK = {
 describe('Notification', () => {
   jsdom();
 
-  it('should render message and action text', done => {
+  it('should be a valid element', done => {
+    const component = (
+      <Notification
+        message={MOCK.message}
+        action={MOCK.action}
+        onClick={MOCK.onClick}
+      />
+    );
+
+    if (TestUtils.isElement(component)) done();
+  });
+
+  it('should render correct message and action text', done => {
     const tree = TestUtils.renderIntoDocument(
       <Notification
         message={MOCK.message}
