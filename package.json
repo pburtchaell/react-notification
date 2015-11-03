@@ -29,7 +29,8 @@
   },
   "homepage": "https://github.com/pburtchaell/react-notification",
   "peerDependencies": {
-    "react": "0.14.x"
+    "react": "0.14.x",
+    "react-dom": "0.14.x"
   },
   "dependencies": {
     "object-assign": "^3.0.0"
