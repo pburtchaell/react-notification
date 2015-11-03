@@ -35,12 +35,11 @@ describe('Notification', () => {
       />
     );
 
-    let message = TestUtils.findRenderedDOMComponentWithClass(tree, 'notification-bar-message');
+    let { message, action } = tree.refs;
 
-    let action = TestUtils.findRenderedDOMComponentWithClass(tree, 'notification-bar-action');
+    expect(message.innerHTML).toBe(MOCK.message);
+    expect(action.innerHTML).toBe(MOCK.action);
 
-    expect(message.props.children).toBe(MOCK.message);
-    expect(action.props.children).toBe(MOCK.action);
     done();
   });
 
