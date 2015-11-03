@@ -9,7 +9,7 @@ export default class Notification extends Component {
       PropTypes.string
     ]),
     onClick: PropTypes.func,
-    styles: PropTypes.oneOfType([
+    style: PropTypes.oneOfType([
       PropTypes.object,
       PropTypes.bool
     ]),
