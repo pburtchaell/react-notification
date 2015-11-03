@@ -1,6 +1,6 @@
 {
   "name": "react-notification",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "description": "Snackbar style notification component for React.",
   "main": "dist/notification.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/pburtchaell/react-notification"
+    "url": "https+git://github.com/pburtchaell/react-notification"
   },
   "keywords": [
     "react",
@@ -28,26 +28,31 @@
     "url": "https://github.com/pburtchaell/react-notification/issues"
   },
   "homepage": "https://github.com/pburtchaell/react-notification",
+  "peerDependencies": {
+    "react": "0.14.x"
+  },
   "dependencies": {
-    "object-assign": "^2.0.0",
-    "react": "^0.13.3"
+    "object-assign": "^3.0.0"
   },
   "devDependencies": {
-    "babel": "^5.5.8",
-    "babel-core": "^5.5.8",
-    "babel-eslint": "^3.1.23",
-    "babel-loader": "^5.1.4",
-    "eslint": "^0.24.0",
-    "eslint-config-airbnb": "0.0.6",
-    "eslint-plugin-react": "^2.6.4",
+    "babel": "^5.8.21",
+    "babel-core": "^5.8.22",
+    "babel-eslint": "^4.0.10",
+    "babel-loader": "^5.3.2",
+    "eslint": "^1.2.0",
+    "eslint-config-airbnb": "^0.0.7",
+    "eslint-plugin-react": "^3.2.3",
     "expect": "^1.6.0",
     "html-webpack-plugin": "^1.6.0",
     "jsdom": "^5.6.0",
     "mocha": "^2.2.5",
     "mocha-jsdom": "^1.0.0",
     "node-libs-browser": "^0.5.2",
-    "react-hot-loader": "^1.2.7",
-    "webpack": "^1.7.3",
-    "webpack-dev-server": "^1.9.0"
+    "react": "^0.14.2",
+    "react-addons-test-utils": "^0.14.2",
+    "react-dom": "^0.14.2",
+    "react-hot-loader": "^1.2.8",
+    "webpack": "^1.11.0",
+    "webpack-dev-server": "^1.10.1"
   }
 }

@@ -1,10 +1,8 @@
-import React from 'react/addons';
-import ExecutionEnvironment from 'react/lib/ExecutionEnvironment';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 import jsdom from 'mocha-jsdom';
 import expect from 'expect';
 import Notification from '../src/notification';
-
-let TestUtils = React.addons.TestUtils;
 
 const MOCK = {
   message: 'Test',
@@ -27,7 +25,6 @@ const MOCK = {
 
 describe('Notification', () => {
   jsdom();
-  ExecutionEnvironment.canUseDOM = true;
 
   it('should render message and action text', done => {
     const tree = TestUtils.renderIntoDocument(

@@ -61,6 +61,7 @@ export default class Notification extends Component {
         msTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
         OTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
         transition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
+
         // Trigger GPU acceleration
         WebkitTransform: 'translatez(0)',
         MozTransform: 'translatez(0)',
@@ -141,10 +142,10 @@ export default class Notification extends Component {
   handleClick = (event) => {
     event.preventDefault();
     if (this.props.onClick && typeof this.props.onClick === 'function') {
-      this.props.onClick();
-    } else {
-      return;
+      return this.props.onClick(event);
     }
+
+    return;
   }
 
   render() {
