@@ -9,14 +9,15 @@ export default class Notification extends Component {
       PropTypes.string
     ]),
     onClick: PropTypes.func,
-    styles: PropTypes.oneOfType([
+    style: PropTypes.oneOfType([
       PropTypes.object,
       PropTypes.bool
     ]),
     dismissAfter: PropTypes.number,
     onDismiss: PropTypes.func,
     className: PropTypes.string,
-    activeClassName: PropTypes.string
+    activeClassName: PropTypes.string,
+    isActive: PropTypes.bool
   }
 
   static defaultProps = {
