@@ -32,6 +32,10 @@ export default class Notification extends Component {
     }
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.dismissTimeout);
+  }
+
   /*
    * @description Dynamically get the styles for the bar.
    * @returns {object} result The style.
