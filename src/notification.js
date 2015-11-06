@@ -27,9 +27,13 @@ export default class Notification extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.onDismiss && nextProps.isActive) {
-      setTimeout(nextProps.onDismiss, nextProps.dismissAfter);
+    if (nextProps.onDismiss && nextProps.isActive && !this.props.isActive) {
+      this.dismissTimeout = setTimeout(nextProps.onDismiss, nextProps.dismissAfter);
     }
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.dismissTimeout);
   }
 
   /*
