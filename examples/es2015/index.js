@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import Notification from 'notification';
+import NotificationList from 'notificationList';
 
 class Example extends Component {
   state = {
@@ -15,7 +16,26 @@ class Example extends Component {
       action: false,
       isActive: false,
       dismissAfter: 2000
-    }
+    },
+    notifications: [
+      {
+        message: 'React is awesome!',
+        dismissAfter: 10000,
+        key: 'uniqueKey1'
+      },
+      {
+        message: 'React is really awesome!',
+        dismissAfter: 10000,
+        key: 'uniqueKey2'
+      },
+      {
+        message: 'jQuery is great!',
+        action: 'undo',
+        dismissAfter: 10000,
+        onClick: () => { alert('React!'); },
+        key: 'uniqueKey3'
+      }
+    ]
   }
 
   /*
@@ -60,6 +80,21 @@ class Example extends Component {
     }
   }
 
+  handleListButtonClick = () => {
+    let nextNotifications = this.state.notifications.slice(); //clone the array
+    nextNotifications.push({
+      message: 'Another notification',
+      dismissAfter: 10000,
+      key: Math.random()
+    });
+    this.setState({notifications: nextNotifications});
+  }
+
+  handleDismissListItem = (key) => {
+    const nextNotifications = this.state.notifications.filter(n => n.key !== key);
+    this.setState({notifications: nextNotifications});
+  }
+
   render() {
     let { notificationReact, notificationJavaScript } = this.state;
 
@@ -70,6 +105,9 @@ class Example extends Component {
         </button>
         <button onClick={this.handleButtonClick.bind(null, 'javascript')}>
           Show 2
+        </button>
+        <button onClick={this.handleListButtonClick}>
+          Add to list
         </button>
         <Notification
           ref="notificationOne"
@@ -101,6 +139,9 @@ class Example extends Component {
           onClick={this.handleNotificationClick.bind(null, 'javascript')}
           onDismiss={this.handleNotificationClick.bind(null, 'javascript')}
         />
+        <NotificationList
+          notifications={this.state.notifications}
+          onDismiss={this.handleDismissListItem}/>
       </div>
     );
   }
