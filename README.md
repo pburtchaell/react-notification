@@ -92,7 +92,7 @@ render() {
         ref="notification"
         message={this.state.message}
         action={this.state.action}
-        styles={this.getNotificationStyles()}
+        style={this.getNotificationStyles()}
       />
     </div>
   );
