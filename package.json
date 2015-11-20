@@ -4,9 +4,9 @@
   "description": "Snackbar style notification component for React.",
   "main": "dist/notification.js",
   "scripts": {
-    "start": "NODE_ENV=development node webpack.local.server.js",
+    "start": "node webpack.local.server.js",
     "prepublish": "npm test && make js",
-    "test": "NODE_ENV=test `npm bin`/mocha --compilers js:babel/register --recursive"
+    "test": "`npm bin`/mocha --compilers js:babel/register --recursive"
   },
   "repository": {
     "type": "git",
