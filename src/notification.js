@@ -1,24 +1,9 @@
 import React, { Component, PropTypes } from 'react';
+import defaultPropTypes from './defaultPropTypes';
 import objectAssign from 'object-assign';
 
 export default class Notification extends Component {
-  static propTypes = {
-    message: PropTypes.string.isRequired,
-    action: PropTypes.oneOfType([
-      PropTypes.bool,
-      PropTypes.string
-    ]),
-    onClick: PropTypes.func,
-    style: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.bool
-    ]),
-    dismissAfter: PropTypes.number,
-    onDismiss: PropTypes.func,
-    className: PropTypes.string,
-    activeClassName: PropTypes.string,
-    isActive: PropTypes.bool
-  }
+  static propTypes = defaultPropTypes
 
   static defaultProps = {
     isActive: false,
@@ -142,7 +127,7 @@ export default class Notification extends Component {
 
   /*
    * @function handleClick
-   * @description Handle click events on the
+   * @description Handle click events on the action button.
    */
   handleClick = (event) => {
     event.preventDefault();
@@ -162,17 +147,18 @@ export default class Notification extends Component {
 
     return (
       <div className={className} style={this.getBarStyle()}>
-        <div className="notification-bar-wrapper" onClick={this.handleClick}>
+        <div className="notification-bar-wrapper">
           <span
             ref="message"
             className="notification-bar-message"
           >
             {this.props.message}
           </span>
-          {this.props.action !== false ? (
+          {this.props.action ? (
             <span
               ref="action"
               className="notification-bar-action"
+              onClick={this.handleClick}
               style={this.getActionStyle()}
             >
               {this.props.action}
