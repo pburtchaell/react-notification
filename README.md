@@ -1,4 +1,4 @@
-# react-notification 
+# react-notification
 
 [![npm version](https://badge.fury.io/js/react-notification.svg)](http://badge.fury.io/js/react-notification) [![Dependency Status](https://david-dm.org/pburtchaell/react-classes.svg)](https://david-dm.org/pburtchaell/react-notification) [![Build Status](https://travis-ci.org/pburtchaell/react-notification.svg)](https://travis-ci.org/pburtchaell/react-notification) [![npm downloads](https://img.shields.io/npm/dm/react-notification.svg?style=flat)](http://badge.fury.io/js/react-notification)
 
@@ -6,7 +6,7 @@
 
 ![](https://raw.githubusercontent.com/pburtchaell/react-notification/master/examples/example.gif)
 
-This is a component designed to provide "[snackbar](http://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-usage)" notification messages. I would suggest reading the usage guidelines for [snackbars](http://www.google.com/design/spec/components/snackbars-toasts.html#).
+This is a component designed to provide "[snackbar](http://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-usage)" notification messages and notification stacks (similar to how notifications stack on OS X). I would suggest reading the usage guidelines for [snackbars](http://www.google.com/design/spec/components/snackbars-toasts.html#).
 
 ## Getting Started
 
@@ -18,6 +18,8 @@ Please read the [contributing guide](/CONTRUBUTING.md) if you are interested in 
 
 ## Usage
 
+Single notification:
+
 ```
 <Notification
   isActive={boolean}
@@ -27,7 +29,34 @@ Please read the [contributing guide](/CONTRUBUTING.md) if you are interested in 
 />
 ```
 
+Notification stack:
+
+```
+state = {
+  notifications: OrderedSet().add({
+    message: 'Notification message'
+    key: 'some UID'
+  })
+}
+
+// Using immutable.js for the array of notifications
+render() {
+  return (
+    <NotificationStack
+      notifications={this.state.notifications.toArray()}
+      onDismiss={notification => this.setState({
+        notifications: this.state.notifications.delete(notification)
+      })}
+    />
+  );
+}
+```
+
+See the examples for more context on how to use a notification stack.
+
 ### Props
+
+For Notification component:
 
 | Name      | Type               | Description                                       | Required  | Default  |
 |-----------|--------------------|---------------------------------------------------|---------- |----------|
@@ -41,12 +70,28 @@ Please read the [contributing guide](/CONTRUBUTING.md) if you are interested in 
 
 *Setting this prop to `false` will disable all inline styles. This is useful if you aren't using React inline styles and would like to use CSS instead. See [styles](#styles) for more.
 
+For NotificationStack component:
+
+| Name           | Type  | Description                                  | Required  | Default  |
+|----------------|-------|----------------------------------------------|---------- |----------|
+| notifications  | array | Array of notifications to render             | true      |          |
+
+*Note that notifications used in a stack can not have actions and require a unique key property. All other properties included in the regular notification component are supported.*
+
 ## Events
+
+For Notification component:
 
 | Event     | Description                                                |
 |-----------|------------------------------------------------------------|
 | onClick   | Callback function to run when the action is clicked        |
 | onDismiss | Callback function to run when dismissAfter timer runs out |
+
+For NotificationStack component:
+
+| Event     | Description                                                                  | Arguments                                                 |
+|-----------|------------------------------------------------------------------------------|-----------------------------------------------------------|
+| onDismiss | Callback function to run when dismissAfter timer runs out for a notification | The object for the notification currently being dismissed |
 
 ## Styles
 
