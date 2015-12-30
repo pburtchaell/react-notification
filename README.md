@@ -15,7 +15,7 @@ Install the component via npm: `npm install react-notification`.
 
 If you are using the React 0.13.x or lower, you can install the previously compatible version of this component with `npm i react-notification@2.3.0 -S`. The current version only works with React 0.14.x.
 
-Please read the [contributing guide](/CONTRUBUTING.md) if you are interested in contributing. If you are coming from version 1.0.0, there is an [upgrade guide](/UPGRADING.md) to help you make the switch. If you have questions, please feel free to create an issue on GitHub or message me (@pburtchaell) on the [Reactiflux Slack community](http://www.reactiflux.com/).
+Please read the [contributing guide](/CONTRUBUTING.md) if you are interested in contributing. If you are coming from version 1.0.0, there is an [upgrade guide](/UPGRADING.md) to help you make the switch. If you have questions, please feel free to create an issue on GitHub.
 
 ## Usage
 
