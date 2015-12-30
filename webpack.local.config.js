@@ -18,7 +18,7 @@ module.exports = {
     app: [
       'webpack-dev-server/client?//',
       'webpack/hot/only-dev-server',
-      './examples/es2015/index',
+      './examples/notification-tree/index',
     ]
   },
   output: {
@@ -31,7 +31,11 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin(),
+      new HtmlWebpackPlugin({
+      title: 'Example',
+      template: './examples/index.html',
+      inject: 'body'
+    })
   ],
   resolve: {
     modulesDirectories: ['node_modules', 'src']
