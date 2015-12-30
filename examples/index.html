@@ -1,7 +1,9 @@
 <!doctype html>
 <html lang="en">
+<head>
+  <meta charset="utf-8" />
+</head>
 <body>
-<div id="mount"></div>
-{% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}<script async src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>{% } %}
+  <div id="mount"></div>
 </body>
 </html>

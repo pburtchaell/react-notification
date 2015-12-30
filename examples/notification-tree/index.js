@@ -5,14 +5,24 @@ import NotificationStack from 'notificationStack';
 
 class Example extends Component {
   state = {
-    notifications: OrderedSet()
+    notifications: OrderedSet(),
+
+    // This is just used for the sake of an example to make sure
+    // notifications have unique keys. In production, you should have
+    // a different system for UIDs.
+    count: 0
   }
 
   addNotification() {
+    const { notifications, count } = this.state;
+    const id = notifications.size + 1;
+    const newCount = count + 1;
+
     return this.setState({
-      notifications: this.state.notifications.add({
-        message: `Notification ${this.state.notifications.size + 1}`,
-        key: `${Math.random()}-${Date.now()}`
+      count: newCount,
+      notifications: notifications.add({
+        message: `Notification ${id}`,
+        key: newCount
       })
     });
   }
@@ -23,11 +33,9 @@ class Example extends Component {
         <button onClick={::this.addNotification}>Add notification</button>
         <NotificationStack
           notifications={this.state.notifications.toArray()}
-          onDismiss={(notification) => {
-            this.setState({
-              notifications: this.state.notifications.delete(notification)
-            });
-          }}
+          onDismiss={notification => this.setState({
+            notifications: this.state.notifications.delete(notification)
+          })}
         />
       </div>
     );

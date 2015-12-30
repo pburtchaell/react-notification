@@ -7,34 +7,34 @@ import StackedNotification from './stackedNotification';
  * pure function here. It just needs to return the stacked array
  * of notification components.
  */
-const NotificationStack = (props) => {
-  return (
-    <div className="notification-list">
-      {props.notifications.map((notification, index) => {
-        const dismissAfter = notification.dismissAfter || props.dismissAfter;
+const NotificationStack = props => (
+  <div className="notification-list">
+    {props.notifications.map((notification, index) => {
+      const dismissAfter = notification.dismissAfter || props.dismissAfter;
+      const lastNotificationDismissAfter = 300;
+      const isLast = index === 0 && props.notifications.length === 1;
 
-        return (
-          <StackedNotification
-            {...notification}
-            key={notification.key}
-            action={notification.action || props.action}
-            dismissAfter={notification.dismissAfter}
-            onClick={() => props.onDismiss(notification)}
-            onDismiss={() => setTimeout(
-              () => props.onDismiss(notification),
-              dismissAfter !== null ? dismissAfter : 2000
-            )}
-            style={{
-              bar: {
-                bottom: `${2 + index * 4}rem`,
-              }
-            }}
-          />
-        );
-      })}
-    </div>
-  )
-};
+      return (
+        <StackedNotification
+          {...notification}
+          key={notification.key}
+          isLast={isLast}
+          action={notification.action || props.action}
+          dismissAfter={isLast ? 2000 : 2000 + (index * 1000)}
+          onClick={() => props.onDismiss(notification)}
+          onDismiss={() => setTimeout(() => {
+            setTimeout(props.onDismiss.bind(this, notification), lastNotificationDismissAfter);
+          }, dismissAfter !== null ? dismissAfter : 2000)}
+          style={{
+            bar: {
+              bottom: `${2 + index * 4}rem`,
+            }
+          }}
+        />
+      );
+    })}
+  </div>
+);
 
 NotificationStack.propTypes = {
   notifications: PropTypes.array.isRequired,
