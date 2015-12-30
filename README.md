@@ -5,6 +5,7 @@
 ## Overview
 
 ![](https://raw.githubusercontent.com/pburtchaell/react-notification/master/examples/example.gif)
+![](https://raw.githubusercontent.com/pburtchaell/react-notification/master/examples/stack.gif)
 
 This is a component designed to provide "[snackbar](http://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-usage)" notification messages and notification stacks (similar to how notifications stack on OS X). I would suggest reading the usage guidelines for [snackbars](http://www.google.com/design/spec/components/snackbars-toasts.html#).
 
@@ -62,7 +63,7 @@ For Notification component:
 |-----------|--------------------|---------------------------------------------------|---------- |----------|
 | isActive  | boolean            | If true, the notification is visible              | true      | `false`  |
 | message   | string             | The message for the notification                  | true      |          |
-| action    | string             | The name of the action, e.g., "close" or "undo"   | true      |          |
+| action    | string             | The name of the action, e.g., "close" or "undo"   |           |          |
 | style     | object or boolean  | Custom styles to apply to the component*          |           |          |
 | className | string             | Custom class to apply to the top-level component  |           |          |
 | activeClassName | string             | Custom class to apply to the top-level component when active |           |          |
