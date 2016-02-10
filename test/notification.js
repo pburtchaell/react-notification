@@ -2,7 +2,7 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import jsdom from 'mocha-jsdom';
 import expect from 'expect';
-import Notification from '../src/notification';
+import { Notification, NotificationStack } from '../src/index';
 
 const MOCK = {
   message: 'Test',
@@ -69,5 +69,20 @@ describe('Notification', () => {
     TestUtils.Simulate.click(wrapper);
 
     done();
+  });
+});
+
+describe('NotificationStack', () => {
+  jsdom();
+
+  it('should be a valid element', done => {
+    const component = (
+      <NotificationStack
+        notifications={[]}
+        onDismiss={MOCK.onClick}
+      />
+    );
+
+    if (TestUtils.isElement(component)) done();
   });
 });
