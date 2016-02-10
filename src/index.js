@@ -1,4 +1,4 @@
 module.exports = {
-  Notification: reqiure('./notification'),
+  Notification: require('./notification'),
   NotificationStack: require('./notificationStack')
 }
