@@ -22,6 +22,8 @@ Please read the [contributing guide](/CONTRUBUTING.md) if you are interested in 
 Single notification:
 
 ```
+import { Notification } from 'react-notification';
+
 <Notification
   isActive={boolean}
   message={string}
@@ -33,6 +35,8 @@ Single notification:
 Notification stack:
 
 ```
+import { NotificationStack } from 'react-notification';
+
 state = {
   notifications: OrderedSet().add({
     message: 'Notification message'
