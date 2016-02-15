@@ -24,7 +24,7 @@ const NotificationStack = props => (
           onDismiss={() => setTimeout(() => {
             setTimeout(props.onDismiss.bind(this, notification), lastNotificationDismissAfter);
           }, dismissAfter)}
-          style={{
+          style={notification.style !== null ? notification.style : {
             bar: {
               bottom: `${2 + index * 4}rem`,
             }
