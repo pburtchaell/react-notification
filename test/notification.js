@@ -5,8 +5,10 @@ import expect from 'expect';
 import { Notification, NotificationStack } from '../src/index';
 
 const MOCK = {
+  key: 1111111,
   message: 'Test',
   action: 'Dismiss',
+  dismissAfter: 3000,
   onClick: function handleClick() {
     return;
   },
@@ -32,6 +34,7 @@ describe('Notification', () => {
         message={MOCK.message}
         action={MOCK.action}
         onClick={MOCK.onClick}
+        dismissAfter={MOCK.dismissAfter}
       />
     );
 
@@ -44,6 +47,7 @@ describe('Notification', () => {
         message={MOCK.message}
         action={MOCK.action}
         onClick={MOCK.onClick}
+        dismissAfter={MOCK.dismissAfter}
       />
     );
 
@@ -61,6 +65,7 @@ describe('Notification', () => {
         message={MOCK.message}
         action={MOCK.action}
         onClick={MOCK.onClick}
+        dismissAfter={MOCK.dismissAfter}
       />
     );
 
@@ -78,11 +83,12 @@ describe('NotificationStack', () => {
   it('should be a valid element', done => {
     const component = (
       <NotificationStack
-        notifications={[]}
+        notifications={[MOCK]}
         onDismiss={MOCK.onClick}
       />
     );
 
     if (TestUtils.isElement(component)) done();
   });
+
 });
