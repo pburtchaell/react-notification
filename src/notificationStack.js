@@ -10,21 +10,20 @@ import StackedNotification from './stackedNotification';
 const NotificationStack = props => (
   <div className="notification-list">
     {props.notifications.map((notification, index) => {
-      const dismissAfter = notification.dismissAfter || props.dismissAfter;
+      const dismissAfter = notification.dismissAfter || props.dismissAfter || 2000;
       const lastNotificationDismissAfter = 300;
       const isLast = index === 0 && props.notifications.length === 1;
-
       return (
         <StackedNotification
           {...notification}
           key={notification.key}
           isLast={isLast}
           action={notification.action || props.action}
-          dismissAfter={isLast ? 2000 : 2000 + (index * 1000)}
+          dismissAfter={isLast ? dismissAfter : dismissAfter + (index * 1000)}
           onClick={() => props.onDismiss(notification)}
           onDismiss={() => setTimeout(() => {
             setTimeout(props.onDismiss.bind(this, notification), lastNotificationDismissAfter);
-          }, dismissAfter !== null ? dismissAfter : 2000)}
+          }, dismissAfter)}
           style={{
             bar: {
               bottom: `${2 + index * 4}rem`,
