@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node webpack.local.server.js",
     "prepublish": "npm test && make js",
-    "test": "`npm bin`/mocha --compilers js:babel/register --recursive"
+    "test": "`npm bin`/mocha --compilers js:babel/register --recursive",
+    "test:watch": "`npm bin`/mocha --compilers js:babel/register --recursive --watch"
   },
   "repository": {
     "type": "git",
