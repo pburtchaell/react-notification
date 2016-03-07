@@ -21,7 +21,7 @@ Please read the [contributing guide](/CONTRUBUTING.md) if you are interested in 
 
 Single notification:
 
-```
+```js
 import { Notification } from 'react-notification';
 
 <Notification
@@ -34,8 +34,9 @@ import { Notification } from 'react-notification';
 
 Notification stack:
 
-```
+```js
 import { NotificationStack } from 'react-notification';
+import { OrderedSet } from 'immutable';
 
 state = {
   notifications: OrderedSet().add({
@@ -120,7 +121,7 @@ To use additional inline styles, return two objects. The `bar` object applies st
 
 I would highly suggest using this method since the styles included in the component by default handle the visibility of the notification. If you remove these styles, the component won't actually show or hide itself.
 
-```
+```js
 getNotificationStyles() {
   let bar = {
     background: '#263238'
