@@ -1,7 +1,10 @@
 import { PropTypes } from 'react';
 
 export default {
-  message: PropTypes.string.isRequired,
+  message: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element
+  ]).isRequired,
   action: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string
