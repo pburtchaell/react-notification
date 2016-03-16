@@ -7,14 +7,12 @@ import Notification from './notification';
  * of notification components.
  */
 class StackedNotification extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       isActive: false
     };
-
-    this.handleDismiss = this.handleDismiss.bind(this);
   }
 
   componentDidMount() {
@@ -25,12 +23,6 @@ class StackedNotification extends Component {
     setTimeout(this.setState.bind(this, {
       isActive: false
     }), this.props.dismissAfter);
-  }
-
-  handleDismiss() {
-    return this.setState({
-      isActive: false
-    });
   }
 
   render() {
