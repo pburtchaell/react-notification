@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import defaultPropTypes from './defaultPropTypes';
-import objectAssign from 'object-assign';
 
 export default class Notification extends Component {
   static propTypes = defaultPropTypes

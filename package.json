@@ -33,9 +33,6 @@
     "react": "0.14.x",
     "react-dom": "0.14.x"
   },
-  "dependencies": {
-    "object-assign": "^3.0.0"
-  },
   "devDependencies": {
     "babel": "^5.8.21",
     "babel-core": "^5.8.22",
