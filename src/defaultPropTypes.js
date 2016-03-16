@@ -10,13 +10,13 @@ export default {
     PropTypes.string
   ]),
   onClick: PropTypes.func,
-  style: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.bool
-  ]),
+  style: PropTypes.bool,
+  actionStyle: PropTypes.object,
+  barStyle: PropTypes.object,
+  activeBarStyle: PropTypes.object,
   dismissAfter: PropTypes.number,
   onDismiss: PropTypes.func,
   className: PropTypes.string,
-  activeClassName: PropTypes.string,
+  activeClassName: PropTypes.string.isRequired,
   isActive: PropTypes.bool
 };

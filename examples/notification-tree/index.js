@@ -22,7 +22,13 @@ class Example extends Component {
       count: newCount,
       notifications: notifications.add({
         message: `Notification ${id}`,
-        key: newCount
+        key: newCount,
+        actionStyle: {
+          color: 'red'
+        },
+        barStyle: {
+          background: 'red'
+        }
       })
     });
   }
