@@ -67,7 +67,7 @@ For Notification component:
 | Name      | Type               | Description                                       | Required  | Default  |
 |-----------|--------------------|---------------------------------------------------|---------- |----------|
 | isActive  | boolean            | If true, the notification is visible              | true      | `false`  |
-| message   | string             | The message for the notification                  | true      |          |
+| message   | string or React component             | The message or component for the notification                  | true      |          |
 | action    | string             | The name of the action, e.g., "close" or "undo"   |           |          |
 | style     | object or boolean  | Custom styles to apply to the component*          |           |          |
 | className | string             | Custom class to apply to the top-level component  |           |          |
