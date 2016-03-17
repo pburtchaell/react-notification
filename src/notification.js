@@ -7,6 +7,7 @@ class Notification extends Component {
 
     this.getBarStyle = this.getBarStyle.bind(this);
     this.getActionStyle = this.getActionStyle.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -82,7 +83,7 @@ class Notification extends Component {
    * @function handleClick
    * @description Handle click events on the action button.
    */
-  handleClick = () => {
+  handleClick() {
     if (this.props.onClick && typeof this.props.onClick === 'function') {
       return this.props.onClick();
     }
