@@ -44,6 +44,4 @@ class StackedNotification extends Component {
   }
 };
 
-StackedNotification.propTypes = {};
-
 export default StackedNotification;
