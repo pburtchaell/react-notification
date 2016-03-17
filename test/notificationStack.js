@@ -1,22 +1,32 @@
-import React from 'react';
-import TestUtils from 'react-addons-test-utils';
-import jsdom from 'mocha-jsdom';
-import expect from 'expect';
 import { Notification, NotificationStack } from '../src/index';
 import mockNotification from './mockNotification';
 
-describe('NotificationStack', () => {
-  jsdom();
+describe('<NotificationStack />', () => {
+  it('onDismiss fires once', () => {
+    const handleDismiss = spy();
 
-  it('should be a valid element', done => {
-    const component = (
+    const wrapper = shallow(
       <NotificationStack
         notifications={[mockNotification]}
-        onDismiss={mockNotification.onClick}
+        onDismiss={handleDismiss}
       />
     );
 
-    if (TestUtils.isElement(component)) done();
+    setTimeout(() => {
+      expect(handleDismiss.calledOnce).to.equal(true);
+    }, mockNotification.dismissAfter);
   });
 
+  it('onDismiss does not fire until `dismissAfter` value times out', () => {
+    const handleDismiss = spy();
+
+    const wrapper = shallow(
+      <NotificationStack
+        notifications={[mockNotification]}
+        onDismiss={handleDismiss}
+      />
+    );
+
+    expect(handleDismiss.calledOnce).to.equal(false);
+  });
 });

@@ -2,19 +2,17 @@ export default {
   key: 1111111,
   message: 'Test',
   action: 'Dismiss',
-  dismissAfter: 3000,
+  dismissAfter: 100,
   onClick: function handleClick() {
     return;
   },
-  style: {
-    bar: {
-      background: 'rgb(2, 2, 2)'
-    },
-    action: {
-      color: 'rgb(2, 2, 2)'
-    },
-    active: {
-      left: '2rem'
-    }
+  barStyle: {
+    background: 'rgb(2, 2, 2)'
+  },
+  actionStyle: {
+    color: 'rgb(2, 2, 2)'
+  },
+  activeBarStyle: {
+    left: '4rem'
   }
 };
