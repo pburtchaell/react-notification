@@ -1,12 +1,13 @@
 {
   "name": "react-notification",
-  "version": "4.3.0",
+  "version": "5.0.0",
   "description": "Snackbar style notification component for React.",
   "main": "dist/index.js",
   "scripts": {
-    "start": "node webpack.local.server.js",
-    "prepublish": "npm test && make js",
-    "test": "`npm bin`/mocha --compilers js:babel/register --recursive"
+    "prepublish": "npm test && npm run build",
+    "start": "node examples/server.js",
+    "build": "`npm bin`/babel src -d dist",
+    "test": "make test"
   },
   "repository": {
     "type": "git",
@@ -28,33 +29,31 @@
     "url": "https://github.com/pburtchaell/react-notification/issues"
   },
   "homepage": "https://github.com/pburtchaell/react-notification",
-  "peerDependencies": {
-    "react": "0.14.x",
-    "react-dom": "0.14.x"
-  },
-  "dependencies": {
-    "object-assign": "^3.0.0"
-  },
   "devDependencies": {
-    "babel": "^5.8.21",
-    "babel-core": "^5.8.22",
-    "babel-eslint": "^4.0.10",
-    "babel-loader": "^5.3.2",
-    "eslint": "^1.2.0",
-    "eslint-config-airbnb": "^0.0.7",
-    "eslint-plugin-react": "^3.2.3",
-    "expect": "^1.6.0",
-    "html-webpack-plugin": "^1.6.0",
-    "immutable": "^3.7.5",
-    "jsdom": "^5.6.0",
-    "mocha": "^2.2.5",
-    "mocha-jsdom": "^1.0.0",
-    "node-libs-browser": "^0.5.2",
-    "react": "^0.14.2",
-    "react-addons-test-utils": "^0.14.2",
-    "react-dom": "^0.14.2",
-    "react-hot-loader": "^1.2.8",
-    "webpack": "^1.11.0",
-    "webpack-dev-server": "^1.10.1"
+    "babel-cli": "^6.6.5",
+    "babel-core": "^6.7.2",
+    "babel-eslint": "^5.0.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "chai": "^3.5.0",
+    "chai-enzyme": "^0.4.1",
+    "enzyme": "^2.1.0",
+    "eslint": "^2.4.0",
+    "eslint-config-airbnb": "^6.1.0",
+    "eslint-plugin-react": "^4.2.3",
+    "express": "^4.13.4",
+    "express-urlrewrite": "^1.2.0",
+    "html-webpack-plugin": "^2.10.0",
+    "immutable": "^3.7.6",
+    "mocha": "^2.4.5",
+    "react": "^0.14.7",
+    "react-addons-test-utils": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "sinon": "^1.17.3",
+    "webpack": "^1.12.14",
+    "webpack-dev-middleware": "^1.5.1",
+    "webpack-dev-server": "^1.14.1"
   }
 }

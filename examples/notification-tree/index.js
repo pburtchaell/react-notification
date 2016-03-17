@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { OrderedSet } from 'immutable';
-import NotificationStack from 'notificationStack';
+import { NotificationStack } from 'react-notification';
 
 class Example extends Component {
-  state = {
-    notifications: OrderedSet(),
+  constructor(props) {
+    super(props);
 
-    // This is just used for the sake of an example to make sure
-    // notifications have unique keys. In production, you should have
-    // a different system for UIDs.
-    count: 0
+    this.state = {
+      notifications: OrderedSet(),
+
+      // This is just used for the sake of an example to make sure
+      // notifications have unique keys. In production, you should have
+      // a different system for UIDs.
+      count: 0
+    };
   }
 
   addNotification() {
@@ -22,7 +26,10 @@ class Example extends Component {
       count: newCount,
       notifications: notifications.add({
         message: `Notification ${id}`,
-        key: newCount
+        key: newCount,
+        barStyle: {
+          background: 'grey'
+        }
       })
     });
   }
@@ -30,7 +37,9 @@ class Example extends Component {
   render() {
     return (
       <div>
-        <button onClick={::this.addNotification}>Add notification</button>
+        <button onClick={this.addNotification.bind(this)}>
+          Add notification
+        </button>
         <NotificationStack
           notifications={this.state.notifications.toArray()}
           onDismiss={notification => this.setState({

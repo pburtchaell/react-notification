@@ -1,6 +1,6 @@
 # react-notification
 
-[![npm version](https://badge.fury.io/js/react-notification.svg)](http://badge.fury.io/js/react-notification) [![Dependency Status](https://david-dm.org/pburtchaell/react-classes.svg)](https://david-dm.org/pburtchaell/react-notification) [![Build Status](https://travis-ci.org/pburtchaell/react-notification.svg)](https://travis-ci.org/pburtchaell/react-notification) [![npm downloads](https://img.shields.io/npm/dm/react-notification.svg?style=flat)](http://badge.fury.io/js/react-notification)
+[![npm version](https://badge.fury.io/js/react-notification.svg)](http://badge.fury.io/js/react-notification) [![Dependency Status](https://david-dm.org/pburtchaell/react-notification.svg)](https://david-dm.org/pburtchaell/react-notification) [![Build Status](https://travis-ci.org/pburtchaell/react-notification.svg)](https://travis-ci.org/pburtchaell/react-notification) [![npm downloads](https://img.shields.io/npm/dm/react-notification.svg?style=flat)](http://badge.fury.io/js/react-notification)
 
 ## Overview
 
@@ -64,17 +64,20 @@ See the examples for more context on how to use a notification stack.
 
 For Notification component:
 
-| Name      | Type               | Description                                       | Required  | Default  |
-|-----------|--------------------|---------------------------------------------------|---------- |----------|
-| isActive  | boolean            | If true, the notification is visible              | true      | `false`  |
-| message   | string or React component             | The message or component for the notification                  | true      |          |
-| action    | string             | The name of the action, e.g., "close" or "undo"   |           |          |
-| style     | object or boolean  | Custom styles to apply to the component*          |           |          |
-| className | string             | Custom class to apply to the top-level component  |           |          |
-| activeClassName | string             | Custom class to apply to the top-level component when active |           |          |
-| dismissAfter | number          | Timeout for onDismiss event                       |           | `2000`   |
+| Name            | Type                    | Description                                                 | Required  | Default                    |
+|-----------------|-------------------------|-------------------------------------------------------------|-----------|----------------------------|
+| isActive        | boolean                 | If true, the notification is visible                        | true      | `false`                    |
+| message         | string or React element | The message or component for the notification               | true      |                            |
+| action          | string                  | The name of the action, e.g., "close" or "undo"             |           |                            |
+| style           | boolean                 | Setting this prop to `false` will disable all inline styles |           |                            |
+| barStyle        | object                  | Custom snackbar styles                                      |           |                            |
+| activeBarStyle  | object                  | Custom snackbar styles when the bar is active               |           |                            |
+| actionStyle     | object                  | Custom action styles                                        |           |                            |
+| className       | string                  | Custom class to apply to the top-level component            |           |                            |
+| activeClassName | string                  | Custom class to apply to the top-level component when active|           | `'notification-bar-active'`|
+| dismissAfter    | number                  | Timeout for onDismiss event                                 |           | `2000`                     |
 
-*Setting this prop to `false` will disable all inline styles. This is useful if you aren't using React inline styles and would like to use CSS instead. See [styles](#styles) for more.
+The `style` prop useful if you are not using React inline styles and would like to use CSS instead. See [styles](#styles) for more.
 
 For NotificationStack component:
 
@@ -82,7 +85,7 @@ For NotificationStack component:
 |----------------|-------|----------------------------------------------|---------- |----------|
 | notifications  | array | Array of notifications to render             | true      |          |
 
-*Note that notifications used in a stack can not have actions and require a unique key property. All other properties included in the regular notification component are supported.*
+**Note notifications used in a stack can not have actions and require a unique key property. All other properties included in the regular notification component are supported.**
 
 ## Events
 
@@ -91,7 +94,7 @@ For Notification component:
 | Event     | Description                                                |
 |-----------|------------------------------------------------------------|
 | onClick   | Callback function to run when the action is clicked        |
-| onDismiss | Callback function to run when dismissAfter timer runs out |
+| onDismiss | Callback function to run when dismissAfter timer runs out  |
 
 For NotificationStack component:
 

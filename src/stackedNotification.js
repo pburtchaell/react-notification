@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import Notification from './notification';
 
 /**
@@ -7,14 +7,12 @@ import Notification from './notification';
  * of notification components.
  */
 class StackedNotification extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       isActive: false
     };
-
-    this.handleDismiss = this.handleDismiss.bind(this);
   }
 
   componentDidMount() {
@@ -27,23 +25,23 @@ class StackedNotification extends Component {
     }), this.props.dismissAfter);
   }
 
-  handleDismiss() {
-    return this.setState({
-      isActive: false
-    });
-  }
-
   render() {
+    const bottomPosition = `${2 + this.props.index * 4}rem`;
+
     return (
       <Notification
         {...this.props}
         action={false}
         isActive={this.state.isActive}
+        barStyle={Object.assign({}, {
+          bottom: bottomPosition
+        }, this.props.barStyle)}
+        activeBarStyle={Object.assign({}, {
+          bottom: bottomPosition
+        }, this.props.activeBarStyle)}
       />
     );
   }
 };
-
-StackedNotification.propTypes = {};
 
 export default StackedNotification;

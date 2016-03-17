@@ -1,14 +1,13 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import defaultPropTypes from './defaultPropTypes';
-import objectAssign from 'object-assign';
 
-export default class Notification extends Component {
-  static propTypes = defaultPropTypes
+class Notification extends Component {
+  constructor(props) {
+    super(props);
 
-  static defaultProps = {
-    isActive: false,
-    dismissAfter: 2000,
-    activeClassName: 'notification-bar-active'
+    this.getBarStyle = this.getBarStyle.bind(this);
+    this.getActionStyle = this.getActionStyle.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -25,75 +24,40 @@ export default class Notification extends Component {
    * @description Dynamically get the styles for the bar.
    * @returns {object} result The style.
    */
-  getBarStyle = () => {
-    const { isActive } = this.props;
+  getBarStyle() {
+    if (this.props.style === false) return {};
 
-    let activeStateStyle;
-    let defaultStateStyle;
+    const { isActive, barStyle, activeBarStyle } = this.props;
 
     const baseStyle = {
-      defaultState: {
-        position: 'fixed',
-        bottom: '2rem',
-        left: '-100%',
-        width: 'auto',
-        padding: '1rem',
-        margin: 0,
-        color: '#fafafa',
-        font: '1rem normal Roboto, sans-serif',
-        borderRadius: '5px',
-        background: '#212121',
-        borderSizing: 'border-box',
-        boxShadow: '0 0 1px 1px rgba(10, 10, 11, .125)',
-        cursor: 'default',
-        WebKittransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
-        MozTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
-        msTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
-        OTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
-        transition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
-
-        // Trigger GPU acceleration
-        WebkitTransform: 'translatez(0)',
-        MozTransform: 'translatez(0)',
-        msTransform: 'translatez(0)',
-        OTransform: 'translatez(0)',
-        transform: 'translatez(0)'
-      },
-      activeState: {
-        left: '1rem'
-      }
+      position: 'fixed',
+      bottom: '2rem',
+      left: '-100%',
+      width: 'auto',
+      padding: '1rem',
+      margin: 0,
+      color: '#fafafa',
+      font: '1rem normal Roboto, sans-serif',
+      borderRadius: '5px',
+      background: '#212121',
+      borderSizing: 'border-box',
+      boxShadow: '0 0 1px 1px rgba(10, 10, 11, .125)',
+      cursor: 'default',
+      WebKittransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
+      MozTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
+      msTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
+      OTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
+      transition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
+      WebkitTransform: 'translatez(0)',
+      MozTransform: 'translatez(0)',
+      msTransform: 'translatez(0)',
+      OTransform: 'translatez(0)',
+      transform: 'translatez(0)'
     };
 
-    /**
-     * If styles is set to false, then return nothing.
-     */
-    if (this.props.style === false) {
-      return {};
-    }
-
-    /**
-     * If `this.props.styles.active` exists (which means
-     * custom active styles should be used, override the
-     * default active styles with those from the prop.
-     */
-    if (this.props.style && this.props.style.active) {
-      activeStateStyle = objectAssign(baseStyle.activeState, this.props.style.active);
-    } else {
-      activeStateStyle = baseStyle.activeState;
-    }
-
-    /**
-     * If `this.props.styles.bar` exists (which means custom
-     * styles should be applied to the bar) combine those
-     * styles with the existing base style.
-     */
-    if (this.props.style && this.props.style.bar) {
-      defaultStateStyle = objectAssign(baseStyle.defaultState, this.props.style.bar);
-    } else {
-      defaultStateStyle = baseStyle.defaultState;
-    }
-
-    return isActive ? objectAssign(defaultStateStyle, activeStateStyle) : defaultStateStyle;
+    return isActive ? Object.assign({}, baseStyle, {
+      left: '1rem'
+    }, barStyle, activeBarStyle) : Object.assign({}, baseStyle, barStyle);
   }
 
   /*
@@ -101,8 +65,8 @@ export default class Notification extends Component {
    * @description Dynamically get the styles for the action text.
    * @returns {object} result The style.
    */
-  getActionStyle = () => {
-    const baseStyle = {
+  getActionStyle() {
+    return this.props.style !== false ? Object.assign({}, {
       padding: '0.125rem',
       marginLeft: '1rem',
       color: '#f44336',
@@ -112,31 +76,17 @@ export default class Notification extends Component {
       textTransform: 'uppercase',
       borderRadius: '5px',
       cursor: 'pointer'
-    };
-
-    if (this.props.style === false) {
-      return {};
-    }
-
-    if (this.props.style && this.props.style.action) {
-      return objectAssign(baseStyle, this.props.style.action);
-    }
-
-    return baseStyle;
+    }, this.props.actionStyle) : {};
   }
 
   /*
    * @function handleClick
    * @description Handle click events on the action button.
    */
-  handleClick = (event) => {
-    event.preventDefault();
-
+  handleClick() {
     if (this.props.onClick && typeof this.props.onClick === 'function') {
-      return this.props.onClick(event);
+      return this.props.onClick();
     }
-
-    return event;
   }
 
   render() {
@@ -169,3 +119,13 @@ export default class Notification extends Component {
     );
   }
 }
+
+Notification.propTypes = defaultPropTypes;
+
+Notification.defaultProps = {
+  isActive: false,
+  dismissAfter: 2000,
+  activeClassName: 'notification-bar-active'
+}
+
+export default Notification;

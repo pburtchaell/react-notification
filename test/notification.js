@@ -1,94 +1,108 @@
-import React from 'react';
-import TestUtils from 'react-addons-test-utils';
-import jsdom from 'mocha-jsdom';
-import expect from 'expect';
 import { Notification, NotificationStack } from '../src/index';
+import mockNotification from './mockNotification';
 
-const MOCK = {
-  key: 1111111,
-  message: 'Test',
-  action: 'Dismiss',
-  dismissAfter: 3000,
-  onClick: function handleClick() {
-    return;
-  },
-  style: {
-    bar: {
-      background: '#bababa'
-    },
-    action: {
-      color: '#000'
-    },
-    active: {
-      left: '2rem'
-    }
-  }
-};
+describe('<Notification />', () => {
+  const wrapperClassName = '.notification-bar-wrapper';
+  const messageClassName = '.notification-bar-message';
+  const actionClassName = '.notification-bar-action';
 
-describe('Notification', () => {
-  jsdom();
+  let component = shallow(
+    <Notification
+      message={mockNotification.message}
+      action={mockNotification.action}
+      barStyle={mockNotification.barStyle}
+      actionStyle={mockNotification.actionStyle}
+      activeBarStyle={mockNotification.activeBarStyle}
+      onClick={mockNotification.onClick}
+      dismissAfter={mockNotification.dismissAfter}
+    />
+  );
 
-  it('should be a valid element', done => {
-    const component = (
+  const wrapper = component.find('.notification-bar-wrapper');
+  const message = wrapper.find(messageClassName);
+  const action = wrapper.find(actionClassName);
+
+  it('has the className `notification-bar`', () => {
+    expect(component).to.have.className('notification-bar');
+  });
+
+
+  it('should render message element', () => {
+    expect(wrapper).to.have.descendants(messageClassName);
+  });
+
+  it('should render action element by default', () => {
+    expect(wrapper).to.have.descendants(actionClassName);
+  });
+
+  it('should render message text', () => {
+    expect(message).to.have.text(mockNotification.message);
+  });
+
+  it('should render message element', () => {
+    let element = (<div></div>);
+
+    let message = shallow(
       <Notification
-        message={MOCK.message}
-        action={MOCK.action}
-        onClick={MOCK.onClick}
-        dismissAfter={MOCK.dismissAfter}
+        message={element}
+        action={mockNotification.action}
+        barStyle={mockNotification.barStyle}
+        actionStyle={mockNotification.actionStyle}
+        activeBarStyle={mockNotification.activeBarStyle}
+        onClick={mockNotification.onClick}
+        dismissAfter={mockNotification.dismissAfter}
       />
-    );
+    ).find(messageClassName);
 
-    if (TestUtils.isElement(component)) done();
+    expect(message.contains(element)).to.equal(true);
   });
 
-  it('should render correct message and action text', done => {
-    const tree = TestUtils.renderIntoDocument(
+  it('should render custom action text', () => {
+    expect(action).to.have.text(mockNotification.action);
+  });
+
+  it('should use custom bar styles', () => {
+    expect(component).to.have.style('background', 'rgb(2, 2, 2)');
+  });
+
+  it('should use custom action styles', () => {
+    expect(action).to.have.style('color', 'rgb(2, 2, 2)');
+  });
+
+  it('should use custom active styles', () => {
+    let component = shallow(
       <Notification
-        message={MOCK.message}
-        action={MOCK.action}
-        onClick={MOCK.onClick}
-        dismissAfter={MOCK.dismissAfter}
+        isActive={true}
+        message={mockNotification.message}
+        action={mockNotification.action}
+        barStyle={mockNotification.barStyle}
+        actionStyle={mockNotification.actionStyle}
+        activeBarStyle={mockNotification.activeBarStyle}
+        onClick={mockNotification.onClick}
+        dismissAfter={mockNotification.dismissAfter}
       />
     );
 
-    let { message, action } = tree.refs;
-
-    expect(message.innerHTML).toBe(MOCK.message);
-    expect(action.innerHTML).toBe(MOCK.action);
-
-    done();
+    expect(component).to.have.style('left', '4rem');
   });
 
-  it('should handle click events', done => {
-    const tree = TestUtils.renderIntoDocument(
+  it('onClick fires once when action is clicked', () => {
+    const handleClick = spy();
+
+    const action = shallow(
       <Notification
-        message={MOCK.message}
-        action={MOCK.action}
-        onClick={MOCK.onClick}
-        dismissAfter={MOCK.dismissAfter}
+        message={mockNotification.message}
+        action={mockNotification.action}
+        barStyle={mockNotification.barStyle}
+        actionStyle={mockNotification.actionStyle}
+        activeBarStyle={mockNotification.activeBarStyle}
+        onClick={handleClick}
+        dismissAfter={mockNotification.dismissAfter}
       />
-    );
+    ).find(actionClassName);
 
-    let wrapper = TestUtils.findRenderedDOMComponentWithClass(tree, 'notification-bar-wrapper');
+    action.simulate('click');
 
-    TestUtils.Simulate.click(wrapper);
-
-    done();
+    expect(handleClick.calledOnce).to.equal(true);
   });
-});
-
-describe('NotificationStack', () => {
-  jsdom();
-
-  it('should be a valid element', done => {
-    const component = (
-      <NotificationStack
-        notifications={[MOCK]}
-        onDismiss={MOCK.onClick}
-      />
-    );
-
-    if (TestUtils.isElement(component)) done();
-  });
-
 });

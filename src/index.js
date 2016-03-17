@@ -1,4 +1,2 @@
-module.exports = {
-  Notification: require('./notification'),
-  NotificationStack: require('./notificationStack')
-}
+export Notification from './notification';
+export NotificationStack from './notificationStack';
