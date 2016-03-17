@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import defaultPropTypes from './defaultPropTypes';
 
 class Notification extends Component {
