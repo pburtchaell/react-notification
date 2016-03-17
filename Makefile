@@ -1,12 +1,15 @@
-BIN = ./node_modules/.bin
+BIN = `npm bin`
+TESTS = test/setup.js test/**/*.js
+REPORTER = spec
 
-SRC_JS = $(shell find src -name "*.js")
-DIST_JS = $(patsubst src/%.js, dist/%.js, $(SRC_JS))
+# Task: test
+# Run mocha tests for components.
+test:
+	@NODE_ENV=test $(BIN)/mocha \
+	  --compilers js:babel-core/register \
+	  --reporter $(REPORTER) \
+		--recursive \
+		--timeout 5000 \
+		$(TESTS)
 
-$(DIST_JS): dist/%.js: src/%.js
-	mkdir -p $(dir $@)
-	$(BIN)/babel $< -o $@
-
-# Task: js
-# Builds distribution JS files for publishing to npm.
-js: $(DIST_JS)
+.PHONY: test
