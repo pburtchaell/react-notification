@@ -1,3 +1,4 @@
+var fs = require('fs');
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -14,44 +15,41 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
  */
 module.exports = {
   devtool: 'inline-source-map',
-  entry: {
-    app: [
-      'webpack-dev-server/client?//',
-      'webpack/hot/only-dev-server',
-      './examples/notification-tree/index',
-    ]
-  },
+
+  entry: fs.readdirSync(__dirname).reduce(function (entries, dir) {
+    if (fs.statSync(path.join(__dirname, dir)).isDirectory())
+      entries[dir] = path.join(__dirname, dir, 'index.js')
+
+    return entries
+  }, {}),
+
   output: {
-    publicPath: '/',
-    path: path.join(__dirname, '/'),
+    path: __dirname + '/__build__',
     filename: '[name].js',
+    chunkFilename: '[id].chunk.js',
+    publicPath: '/__build__/'
   },
+
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin('shared.js'),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-      new HtmlWebpackPlugin({
-      title: 'Example',
-      template: './examples/index.html',
-      inject: 'body'
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
     })
   ],
-  resolve: {
-    modulesDirectories: ['node_modules', 'src']
-  },
+
   module: {
     loaders: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['react-hot', 'babel?stage=0'],
+        loader: 'babel',
       }
     ]
   },
-  devServer: {
-    quiet: true,
-    hot: true,
-    inline: true,
+
+  resolve: {
+    alias: {
+      'react-notification': path.join(__dirname, '..', 'src')
+    }
   }
 };
