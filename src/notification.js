@@ -82,14 +82,10 @@ class Notification extends Component {
    * @function handleClick
    * @description Handle click events on the action button.
    */
-  handleClick = event => {
-    event.preventDefault();
-
+  handleClick = () => {
     if (this.props.onClick && typeof this.props.onClick === 'function') {
-      return this.props.onClick(event);
+      return this.props.onClick();
     }
-
-    return event;
   }
 
   render() {
