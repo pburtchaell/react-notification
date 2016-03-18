@@ -124,38 +124,7 @@ To use additional inline styles, return two objects. The `bar` object applies st
 
 I would highly suggest using this method since the styles included in the component by default handle the visibility of the notification. If you remove these styles, the component won't actually show or hide itself.
 
-```js
-getNotificationStyles() {
-  let bar = {
-    background: '#263238'
-  };
-
-  let active = {
-    left: '3rem'
-  };
-
-  let action = {
-    color: '#FFCCBC'
-  };
-
-  return { bar, active, action };
-},
-
-render() {
-  return (
-    <div>
-      <Notification
-        ref="notification"
-        message={this.state.message}
-        action={this.state.action}
-        style={this.getNotificationStyles()}
-      />
-    </div>
-  );
-}
-```
-
 ---
 Built with care in New Orleans by [Patrick Burtchaell](http://twitter.com/pburtchaell).
 
-Copyright 2015 Patrick Burtchaell. Licensed MIT.
+Copyright 2016 Patrick Burtchaell. Licensed MIT.
