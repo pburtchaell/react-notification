@@ -7,22 +7,18 @@ import Notification from './notification';
  * of notification components.
  */
 class StackedNotification extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isActive: false
-    };
-  }
+  state = {
+    isActive: true
+  };
 
   componentDidMount() {
-    setTimeout(this.setState.bind(this, {
-      isActive: true
-    }), 1);
+    this._showTimeout = setTimeout(() => this.setState({ isActive: true }), 1);
+    this._hideTimeout = setTimeout(() => this.setState({ isActive: false }), this.props.dismissAfter);
+  }
 
-    setTimeout(this.setState.bind(this, {
-      isActive: false
-    }), this.props.dismissAfter);
+  componentWillUnmount() {
+    clearTimeout(this._showTimeout);
+    clearTimeout(this._hideTimeout);
   }
 
   render() {
@@ -33,12 +29,8 @@ class StackedNotification extends Component {
         {...this.props}
         action={false}
         isActive={this.state.isActive}
-        barStyle={Object.assign({}, {
-          bottom: bottomPosition
-        }, this.props.barStyle)}
-        activeBarStyle={Object.assign({}, {
-          bottom: bottomPosition
-        }, this.props.activeBarStyle)}
+        barStyle={{ bottom: bottomPosition, ...this.props.barStyle }}
+        activeBarStyle={{ bottom: bottomPosition, ...this.props.activeBarStyle }}
       />
     );
   }
