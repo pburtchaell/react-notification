@@ -1,6 +1,32 @@
 import React, { Component } from 'react';
 import defaultPropTypes from './defaultPropTypes';
 
+const baseStyle = {
+  position: 'fixed',
+  bottom: '2rem',
+  left: '-100%',
+  width: 'auto',
+  padding: '1rem',
+  margin: 0,
+  color: '#fafafa',
+  font: '1rem normal Roboto, sans-serif',
+  borderRadius: '5px',
+  background: '#212121',
+  borderSizing: 'border-box',
+  boxShadow: '0 0 1px 1px rgba(10, 10, 11, .125)',
+  cursor: 'default',
+  WebKittransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
+  MozTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
+  msTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
+  OTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
+  transition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
+  WebkitTransform: 'translatez(0)',
+  MozTransform: 'translatez(0)',
+  msTransform: 'translatez(0)',
+  OTransform: 'translatez(0)',
+  transform: 'translatez(0)'
+};
+
 class Notification extends Component {
   constructor(props) {
     super(props);
@@ -28,32 +54,6 @@ class Notification extends Component {
     if (this.props.style === false) return {};
 
     const { isActive, barStyle, activeBarStyle } = this.props;
-
-    const baseStyle = {
-      position: 'fixed',
-      bottom: '2rem',
-      left: '-100%',
-      width: 'auto',
-      padding: '1rem',
-      margin: 0,
-      color: '#fafafa',
-      font: '1rem normal Roboto, sans-serif',
-      borderRadius: '5px',
-      background: '#212121',
-      borderSizing: 'border-box',
-      boxShadow: '0 0 1px 1px rgba(10, 10, 11, .125)',
-      cursor: 'default',
-      WebKittransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
-      MozTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
-      msTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
-      OTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
-      transition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
-      WebkitTransform: 'translatez(0)',
-      MozTransform: 'translatez(0)',
-      msTransform: 'translatez(0)',
-      OTransform: 'translatez(0)',
-      transform: 'translatez(0)'
-    };
 
     return isActive ? Object.assign({}, baseStyle, {
       left: '1rem'
