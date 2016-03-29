@@ -67,9 +67,12 @@ class Notification extends Component {
 
     const { isActive, barStyle, activeBarStyle } = this.props;
 
-    return isActive ? Object.assign({}, baseStyle, {
-      left: '1rem'
-    }, barStyle, activeBarStyle) : Object.assign({}, baseStyle, barStyle);
+    return {
+      ...baseStyle,
+      ...(isActive && { left: '1rem' }),
+      ...barStyle,
+      ...(isActive && activeBarStyle),
+    };
   }
 
   /*
@@ -78,7 +81,7 @@ class Notification extends Component {
    * @returns {object} result The style.
    */
   getActionStyle() {
-    return this.props.style !== false ? Object.assign({}, baseActiveStyle, this.props.actionStyle) : {};
+    return this.props.style !== false ? { ...baseActiveStyle, ...this.props.actionStyle } : {};
   }
 
   /*

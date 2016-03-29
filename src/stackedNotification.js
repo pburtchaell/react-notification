@@ -33,12 +33,8 @@ class StackedNotification extends Component {
         {...this.props}
         action={false}
         isActive={this.state.isActive}
-        barStyle={Object.assign({}, {
-          bottom: bottomPosition
-        }, this.props.barStyle)}
-        activeBarStyle={Object.assign({}, {
-          bottom: bottomPosition
-        }, this.props.activeBarStyle)}
+        barStyle={{ bottom: bottomPosition, ...this.props.barStyle }}
+        activeBarStyle={{ bottom: bottomPosition, ...this.props.activeBarStyle }}
       />
     );
   }
