@@ -7,13 +7,9 @@ import Notification from './notification';
  * of notification components.
  */
 class StackedNotification extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isActive: false
-    };
-  }
+  state = {
+    isActive: true
+  };
 
   componentDidMount() {
     this._showTimeout = setTimeout(() => this.setState({ isActive: true }), 1);
