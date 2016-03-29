@@ -27,6 +27,18 @@ const baseStyle = {
   transform: 'translatez(0)'
 };
 
+const baseActiveStyle = {
+  padding: '0.125rem',
+  marginLeft: '1rem',
+  color: '#f44336',
+  font: '.75rem normal Roboto, sans-serif',
+  lineHeight: '1rem',
+  letterSpacing: '.125ex',
+  textTransform: 'uppercase',
+  borderRadius: '5px',
+  cursor: 'pointer'
+};
+
 class Notification extends Component {
   constructor(props) {
     super(props);
@@ -66,17 +78,7 @@ class Notification extends Component {
    * @returns {object} result The style.
    */
   getActionStyle() {
-    return this.props.style !== false ? Object.assign({}, {
-      padding: '0.125rem',
-      marginLeft: '1rem',
-      color: '#f44336',
-      font: '.75rem normal Roboto, sans-serif',
-      lineHeight: '1rem',
-      letterSpacing: '.125ex',
-      textTransform: 'uppercase',
-      borderRadius: '5px',
-      cursor: 'pointer'
-    }, this.props.actionStyle) : {};
+    return this.props.style !== false ? Object.assign({}, baseActiveStyle, this.props.actionStyle) : {};
   }
 
   /*
