@@ -40,14 +40,6 @@ const baseActiveStyle = {
 };
 
 class Notification extends Component {
-  constructor(props) {
-    super(props);
-
-    this.getBarStyle = this.getBarStyle.bind(this);
-    this.getActionStyle = this.getActionStyle.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.onDismiss && nextProps.isActive && !this.props.isActive) {
       this.dismissTimeout = setTimeout(nextProps.onDismiss, nextProps.dismissAfter);
@@ -88,6 +80,7 @@ class Notification extends Component {
    * @function handleClick
    * @description Handle click events on the action button.
    */
+  handleClick = ::this.handleClick
   handleClick() {
     if (this.props.onClick && typeof this.props.onClick === 'function') {
       return this.props.onClick();
