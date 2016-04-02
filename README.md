@@ -68,6 +68,7 @@ For Notification component:
 |-----------------|-------------------------|-------------------------------------------------------------|-----------|----------------------------|
 | isActive        | boolean                 | If true, the notification is visible                        | true      | `false`                    |
 | message         | string or React element | The message or component for the notification               | true      |                            |
+| title           | string                  | The title for the notification                              |           |                            |
 | action          | string                  | The name of the action, e.g., "close" or "undo"             |           |                            |
 | style           | boolean                 | Setting this prop to `false` will disable all inline styles |           |                            |
 | barStyle        | object                  | Custom snackbar styles                                      |           |                            |

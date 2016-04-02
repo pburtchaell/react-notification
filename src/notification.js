@@ -8,6 +8,7 @@ class Notification extends Component {
     this.getBarStyle = this.getBarStyle.bind(this);
     this.getActionStyle = this.getActionStyle.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.getTitleStyle = this.getTitleStyle.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -80,6 +81,18 @@ class Notification extends Component {
   }
 
   /*
+   * @function getTitleStyle
+   * @description Dynamically get the styles for the title.
+   * @returns {object} result The style.
+   */
+  getTitleStyle() {
+    return this.props.style !== false ? Object.assign({}, {
+      fontWeight: '700',
+      marginRight: '.5rem'
+    }, this.props.titleStyle) : {};
+  }
+
+  /*
    * @function handleClick
    * @description Handle click events on the action button.
    */
@@ -98,6 +111,15 @@ class Notification extends Component {
     return (
       <div className={className} style={this.getBarStyle()}>
         <div className="notification-bar-wrapper">
+          {this.props.title ? (
+            <span
+              ref="title"
+              className="notification-bar-title"
+              style={this.getTitleStyle()}
+            >
+              {this.props.title}
+            </span>
+          ) : null}
           <span
             ref="message"
             className="notification-bar-message"
