@@ -2,6 +2,7 @@ export default {
   key: 1111111,
   message: 'Test',
   action: 'Dismiss',
+  dismissAfter: 100,
   title: 'Title',
   onClick: function handleClick() {
     return;

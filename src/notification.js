@@ -7,8 +7,8 @@ class Notification extends Component {
 
     this.getBarStyle = this.getBarStyle.bind(this);
     this.getActionStyle = this.getActionStyle.bind(this);
-    this.handleClick = this.handleClick.bind(this);
     this.getTitleStyle = this.getTitleStyle.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
