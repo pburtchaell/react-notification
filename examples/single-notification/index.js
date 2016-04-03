@@ -30,6 +30,7 @@ class Example extends Component {
           isActive={this.state.isActive}
           message="Notification"
           action="Dismiss"
+          title="Title!"
           onDismiss={this.toggleNotification.bind(this)}
         />
       </div>

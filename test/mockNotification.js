@@ -3,6 +3,7 @@ export default {
   message: 'Test',
   action: 'Dismiss',
   dismissAfter: 100,
+  title: 'Title',
   onClick: function handleClick() {
     return;
   },

@@ -5,6 +5,7 @@ describe('<Notification />', () => {
   const wrapperClassName = '.notification-bar-wrapper';
   const messageClassName = '.notification-bar-message';
   const actionClassName = '.notification-bar-action';
+  const titleClassName = '.notification-bar-title';
 
   let component = shallow(
     <Notification
@@ -15,17 +16,18 @@ describe('<Notification />', () => {
       activeBarStyle={mockNotification.activeBarStyle}
       onClick={mockNotification.onClick}
       dismissAfter={mockNotification.dismissAfter}
+      title={mockNotification.title}
     />
   );
 
   const wrapper = component.find('.notification-bar-wrapper');
   const message = wrapper.find(messageClassName);
   const action = wrapper.find(actionClassName);
+  const title = wrapper.find(titleClassName);
 
   it('has the className `notification-bar`', () => {
     expect(component).to.have.className('notification-bar');
   });
-
 
   it('should render message element', () => {
     expect(wrapper).to.have.descendants(messageClassName);
@@ -59,6 +61,14 @@ describe('<Notification />', () => {
 
   it('should render custom action text', () => {
     expect(action).to.have.text(mockNotification.action);
+  });
+
+  it('should render title element', () => {
+    expect(wrapper).to.have.descendants(titleClassName);
+  });
+
+  it('should render custom title text', () => {
+    expect(title).to.have.text(mockNotification.title);
   });
 
   it('should use custom bar styles', () => {
