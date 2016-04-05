@@ -32,6 +32,7 @@ class Example extends Component {
           action="Dismiss"
           title="Title!"
           onDismiss={this.toggleNotification.bind(this)}
+          onClick={() =>  this.setState({ isActive: false })}
         />
       </div>
     );
