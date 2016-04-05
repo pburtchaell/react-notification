@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import Notification from './notification';
 
-/**
- * The notification list does not have any state, so use a
- * pure function here. It just needs to return the stacked array
- * of notification components.
- */
 class StackedNotification extends Component {
   constructor(props) {
     super(props);
