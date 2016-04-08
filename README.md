@@ -128,4 +128,4 @@ I would highly suggest using this method since the styles included in the compon
 ---
 Built with care in New Orleans by [Patrick Burtchaell](http://twitter.com/pburtchaell).
 
-Copyright 2016 Patrick Burtchaell. Licensed MIT.
+Copyright 2016 Patrick Burtchaell. Licensed MIT. [Gratipay](https://gratipay.com/~pburtchaell/).
