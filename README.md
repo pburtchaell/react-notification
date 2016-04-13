@@ -36,23 +36,35 @@ Notification stack:
 
 ```js
 import { NotificationStack } from 'react-notification';
-import { OrderedSet } from 'immutable';
 
-state = {
-  notifications: OrderedSet().add({
-    message: 'Notification message'
-    key: 'some UID'
-  })
+
+// (...) Inside your Component
+
+constructor () {
+  suoper();
+
+  const id = Date.now(); // example to make unique keys
+
+  this.state = {
+    notifications: Object.assign({}, this.state.notifications, {
+      [id]: {
+        action: 'Dismiss',
+        dismissAfter: 3400,
+        onClick: () => this.removeNotification(id),
+        message: `Notification ${id}`,
+        key: id
+      }
+    })
+  }; 
 }
 
-// Using immutable.js for the array of notifications
-render() {
+// renderNotifications(), removeNotification(), addNotification() ...
+
+render () {
   return (
     <NotificationStack
-      notifications={this.state.notifications.toArray()}
-      onDismiss={notification => this.setState({
-        notifications: this.state.notifications.delete(notification)
-      })}
+      notifications={this.renderNotifications()}
+      onDismiss={notif => this.removeNotification(notif.key)}
     />
   );
 }
@@ -86,7 +98,7 @@ For NotificationStack component:
 |----------------|-------|----------------------------------------------|---------- |----------|
 | notifications  | array | Array of notifications to render             | true      |          |
 
-**Note notifications used in a stack can not have actions and require a unique key property. All other properties included in the regular notification component are supported.**
+**Update** `v5.0.3`: Now notifications used in a stack _can_ have all properties included in the regular notification component.
 
 ## Events
 
