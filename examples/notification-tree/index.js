@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { OrderedSet } from 'immutable';
 import { NotificationStack } from 'react-notification';
 
 class Example extends Component {
