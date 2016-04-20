@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { OrderedSet } from 'immutable';
 import { NotificationStack } from 'react-notification';
 
 class Example extends Component {
@@ -7,55 +8,51 @@ class Example extends Component {
     super(props);
 
     this.state = {
-      notifications: {},
+      notifications: OrderedSet(),
+      // This is just used for the sake of an example to make sure
+      // notifications have unique keys. In production, you should have
+      // a different system for UIDs.
+      count: 0
     };
 
     this.removeNotification = this.removeNotification.bind(this);
-    this.renderNotifications = this.renderNotifications.bind(this);
   }
 
 
   addNotification() {
-    // This is just used for the sake of an example to make sure
-    // notifications have unique keys. In production, you should have
-    // a different system for UIDs.
-    const id = Date.now();
-
-    const notifications = Object.assign({}, this.state.notifications, {
-      [id]: {
+    const { notifications, count } = this.state;
+    const id = notifications.size + 1;
+    const newCount = count + 1;
+    return this.setState({
+      count: newCount,
+      notifications: notifications.add({
+        message: `Notification ${id}`,
+        key: newCount,
         action: 'Dismiss',
         dismissAfter: 3400,
-        onClick: () => this.removeNotification(id),
-        message: `Notification ${id}`,
-        key: id
-      }
-    });
-
-    return this.setState({
-      notifications: notifications
+        onClick: () => this.removeNotification(newCount),
+      })
     });
   }
 
-  removeNotification (notif) {
-    const notifications = Object.assign({}, this.state.notifications);
-    delete notifications[notif];
-
-    this.setState({ notifications })
-  }
-  
-  renderNotifications () {
-    return Object.keys(this.state.notifications).map(notif => this.state.notifications[notif])
+  removeNotification (count) {
+    const { notifications } = this.state;
+    this.setState({
+      notifications: notifications.filter(n => n.key !== count)
+    })
   }
 
-  render() {
+  render () {
     return (
       <div>
         <button onClick={this.addNotification.bind(this)}>
           Add notification
         </button>
         <NotificationStack
-          notifications={this.renderNotifications()}
-          onDismiss={notif => this.removeNotification(notif.key)}
+          notifications={this.state.notifications.toArray()}
+          onDismiss={notification => this.setState({
+            notifications: this.state.notifications.delete(notification)
+          })}
         />
       </div>
     );
