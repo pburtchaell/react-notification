@@ -41,7 +41,7 @@ import { NotificationStack } from 'react-notification';
 // (...) Inside your Component
 
 constructor () {
-  suoper();
+  super();
 
   const id = Date.now(); // example to make unique keys
 
