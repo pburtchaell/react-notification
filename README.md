@@ -36,41 +36,46 @@ Notification stack:
 
 ```js
 import { NotificationStack } from 'react-notification';
-
-
-// (...) Inside your Component
+import { OrderedSet } from 'immutable';
 
 constructor () {
   super();
-
-  const id = Date.now(); // example to make unique keys
-
   this.state = {
-    notifications: Object.assign({}, this.state.notifications, {
-      [id]: {
-        action: 'Dismiss',
-        dismissAfter: 3400,
-        onClick: () => this.removeNotification(id),
-        message: `Notification ${id}`,
-        key: id
-      }
-    })
-  }; 
+    notifications: OrderedSet()
+  };
 }
 
-// renderNotifications(), removeNotification(), addNotification() ...
+addNotification () {
+  const newCount = count + 1;
+  return this.setState({
+    notifications: this.state.notifications.add({
+      message: `Notification ipsum...`,
+      key: 'some UID',
+      action: 'Dismiss',
+      onClick: () => this.removeNotification('some UID'),
+    })
+  });
+}
+
+removeNotification (count) {
+  this.setState({
+    notifications: this.state.notifications.filter(n => n.key !== count)
+  })
+}
 
 render () {
   return (
     <NotificationStack
-      notifications={this.renderNotifications()}
-      onDismiss={notif => this.removeNotification(notif.key)}
+      notifications={this.state.notifications.toArray()}
+      onDismiss={notification => this.setState({
+        notifications: this.state.notifications.delete(notification)
+      })}
     />
   );
 }
 ```
 
-See the examples for more context on how to use a notification stack.
+See the [examples](/examples/notification-tree) for more context on how to use a notification stack.
 
 ### Props
 
