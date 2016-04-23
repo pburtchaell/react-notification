@@ -17,6 +17,8 @@ If you are using the React 0.13.x or lower, you can install the previously compa
 
 Please read the [contributing guide](/CONTRUBUTING.md) if you are interested in contributing. If you are coming from version 1.0.0, there is an [upgrade guide](/UPGRADING.md) to help you make the switch. If you have questions, please feel free to create an issue on GitHub.
 
+Note the component uses `Object.assign`. If you are compiling with Babel, you should include the Babel Polyfill in your build to ensure the method works.
+
 ## Usage
 
 Single notification:
