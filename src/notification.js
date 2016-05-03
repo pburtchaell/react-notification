@@ -12,6 +12,7 @@ class Notification extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (this.props.dismissAfter === false) return;
     if (!nextProps.hasOwnProperty('isLast'))
       clearTimeout(this.dismissTimeout);
     if (nextProps.onDismiss && nextProps.isActive && !this.props.isActive) {
@@ -20,7 +21,7 @@ class Notification extends Component {
   }
 
   componentWillUnmount() {
-    clearTimeout(this.dismissTimeout);
+    if (this.props.dismissAfter) clearTimeout(this.dismissTimeout);
   }
 
   /*
