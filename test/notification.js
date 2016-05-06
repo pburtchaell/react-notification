@@ -115,4 +115,49 @@ describe('<Notification />', () => {
 
     expect(handleClick.calledOnce).to.equal(true);
   });
+
+  it('onDismiss does not fire before `dismissAfter` value times out', done => {
+    const handleDismiss = spy();
+
+    const wrapper = mount(
+      <Notification
+        message={mockNotification.message}
+        dismissAfter={mockNotification.dismissAfter}
+        onDismiss={handleDismiss}
+      />
+    );
+    
+    expect(handleDismiss.calledOnce).to.equal(false);
+    wrapper.setProps({ isActive: true });
+    setTimeout(() => {
+      try {
+        expect(handleDismiss.calledOnce).to.equal(false);
+        done();
+      } catch (e) {
+        done(e);
+      }
+    }, mockNotification.dismissAfter / 2);
+  });
+
+  it('onDismiss fires after `dismissAfter` value times out', done => {
+    const handleDismiss = spy();
+
+    const wrapper = mount(
+      <Notification
+        message={mockNotification.message}
+        dismissAfter={mockNotification.dismissAfter}
+        onDismiss={handleDismiss}
+      />
+    );
+    
+    wrapper.setProps({ isActive: true });
+    setTimeout(() => {
+      try {
+        expect(handleDismiss.calledOnce).to.equal(true);
+        done();
+      } catch (e) {
+        done(e);
+      }
+    }, mockNotification.dismissAfter);
+  });
 });

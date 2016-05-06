@@ -22,6 +22,7 @@ class StackedNotification extends Component {
 
   componentWillUnmount() {
     clearTimeout(this.dismissTimeout);
+    clearTimeout(this.dismissTimeout);
   }
 
   render() {
@@ -30,6 +31,7 @@ class StackedNotification extends Component {
     return (
       <Notification
         {...this.props}
+        onDismiss={() => setTimeout(this.props.onDismiss, 300)}
         isActive={this.state.isActive}
         barStyle={Object.assign({}, {
           bottom: bottomPosition

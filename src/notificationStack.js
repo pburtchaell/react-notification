@@ -21,11 +21,7 @@ const NotificationStack = props => {
             isLast={isLast}
             action={notification.action || props.action}
             dismissAfter={isLast ? dismissAfter : dismissAfter + (index * 1000)}
-            onDismiss={() => {
-              setTimeout(() => {
-                setTimeout(props.onDismiss.bind(this, notification), 300);
-              }, 300);
-            }}
+            onDismiss={props.onDismiss.bind(this, notification)}
             index={index}
           />
         );
