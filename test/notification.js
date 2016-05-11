@@ -160,4 +160,34 @@ describe('<Notification />', () => {
       }
     }, mockNotification.dismissAfter);
   });
+  it('onDismiss fires once when dismissAfter is passed', () => {
+    const handleDismiss = spy();
+
+    const wrapper = shallow(
+      <Notification
+        message={mockNotification.message}
+        dismissAfter={mockNotification.dismissAdter}
+        onDismiss={handleDismiss}
+      />
+    );
+
+    setTimeout(() => {
+      expect(handleDismiss.calledOnce).to.equal(true);
+    }, mockNotification.dismissAfter);
+  });
+
+  it('onDismiss does not get fired when dismissAfter is false', () => {
+    const handleDismiss = spy();
+
+    const wrapper = shallow(
+      <Notification
+        message={mockNotification.message}
+        dismissAfter={false}
+        onDismiss={handleDismiss}
+      />
+    );
+
+    expect(handleDismiss.calledOnce).to.equal(false);
+  });
+
 });

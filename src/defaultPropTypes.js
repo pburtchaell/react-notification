@@ -14,7 +14,10 @@ export default {
   actionStyle: PropTypes.object,
   barStyle: PropTypes.object,
   activeBarStyle: PropTypes.object,
-  dismissAfter: PropTypes.number,
+  dismissAfter: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.number
+  ]),
   onDismiss: PropTypes.func,
   className: PropTypes.string,
   activeClassName: PropTypes.string.isRequired,
