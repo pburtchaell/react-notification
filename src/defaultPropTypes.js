@@ -5,7 +5,11 @@ export default {
     PropTypes.string,
     PropTypes.element
   ]).isRequired,
-  action: PropTypes.node,
+  action: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+    PropTypes.node
+  ]),
   onClick: PropTypes.func,
   style: PropTypes.bool,
   actionStyle: PropTypes.object,
