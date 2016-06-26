@@ -32,7 +32,7 @@ const NotificationStack = props => {
 
 NotificationStack.propTypes = {
   notifications: PropTypes.array.isRequired,
-  onDismiss: PropTypes.func
+  onDismiss: PropTypes.func.isRequired
 };
 
 NotificationStack.defaultProps = {
