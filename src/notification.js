@@ -15,7 +15,10 @@ class Notification extends Component {
     if (!nextProps.hasOwnProperty('isLast'))
       clearTimeout(this.dismissTimeout);
     if (nextProps.onDismiss && nextProps.isActive && !this.props.isActive) {
-      this.dismissTimeout = setTimeout(nextProps.onDismiss, nextProps.dismissAfter);
+      this.dismissTimeout = setTimeout(
+        nextProps.onDismiss,
+        nextProps.dismissAfter
+      );
     }
   }
 
