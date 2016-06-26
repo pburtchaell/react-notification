@@ -126,7 +126,7 @@ describe('<Notification />', () => {
         onDismiss={handleDismiss}
       />
     );
-    
+
     expect(handleDismiss.calledOnce).to.equal(false);
     wrapper.setProps({ isActive: true });
     setTimeout(() => {
@@ -149,7 +149,7 @@ describe('<Notification />', () => {
         onDismiss={handleDismiss}
       />
     );
-    
+
     wrapper.setProps({ isActive: true });
     setTimeout(() => {
       try {
