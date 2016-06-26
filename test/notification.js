@@ -206,4 +206,26 @@ describe('<Notification />', () => {
       }
     }, mockNotification.dismissAfter);
   });
+
+  it('onDismiss fires correctly without prop change', done => {
+    const handleDismiss = spy();
+
+    const wrapper = mount(
+      <Notification
+        message={mockNotification.message}
+        dismissAfter={mockNotification.dismissAfter}
+        onDismiss={handleDismiss}
+        isActive
+      />
+    );
+
+    setTimeout(() => {
+      try {
+        expect(handleDismiss.calledOnce).to.equal(true);
+        done();
+      } catch (e) {
+        done(e);
+      }
+    }, mockNotification.dismissAfter);
+  })
 });
