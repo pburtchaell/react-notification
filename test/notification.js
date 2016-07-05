@@ -44,7 +44,6 @@ describe('<Notification />', () => {
         dismissAfter={mockNotification.dismissAfter}
         title={mockNotification.title}
         className={customClassName}
-        activeClassName={customActiveClassName}
       />
     );
 
