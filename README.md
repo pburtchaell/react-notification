@@ -77,7 +77,7 @@ render () {
 }
 ```
 
-See the [examples](/examples/notification-tree) for more context on how to use a notification stack.
+See the [examples](examples/notification-tree) for more context on how to use a notification stack.
 
 ### Props
 
