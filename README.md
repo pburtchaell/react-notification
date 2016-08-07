@@ -77,7 +77,7 @@ render () {
 }
 ```
 
-See the [examples](/examples/notification-tree) for more context on how to use a notification stack.
+See the [examples](examples/notification-tree) for more context on how to use a notification stack.
 
 ### Props
 
@@ -101,9 +101,11 @@ The `style` prop useful if you are not using React inline styles and would like 
 
 For NotificationStack component:
 
-| Name           | Type  | Description                                  | Required  | Default  |
-|----------------|-------|----------------------------------------------|---------- |----------|
-| notifications  | array | Array of notifications to render             | true      |          |
+| Name                  | Type  | Description                                  | Required  | Default  |
+|-----------------------|-------|----------------------------------------------|---------- |----------|
+| notifications         | array | Array of notifications to render             | true      |          |
+| barStyleFactory       | func  | create the style of the notification         | false     | fn       |
+| activeBarStyleFactory | func  | create the style of the active notification  | false     | fn       |
 
 **Update** `v5.0.3`: Now notifications used in a stack _can_ have all properties included in the regular notification component.
 
@@ -143,6 +145,31 @@ The DOM tree of the component for reference:
 To use additional inline styles, return two objects. The `bar` object applies styles to the entire notification "snackbar" and the `action` object applies styles to the action message. Under the hood, this uses `Object.assign` to handle properly combining styles.
 
 I would highly suggest using this method since the styles included in the component by default handle the visibility of the notification. If you remove these styles, the component won't actually show or hide itself.
+
+### barStyleFactory and activeBarStyleFactory NotificationStack props
+
+These two function have the following signature:
+
+```js
+(index: Number, style: Object|Void) => Object
+```
+
+Where `index` is the index of the notification in the notifications array and
+`style` is the style property of the individual notification.
+
+This function is used to dynamically set the style of each notification in the
+stack. The default function adds the `bottom` style property to correctly
+position of the notification in a stack.
+
+```js
+function defaultStyleFactory(index, style) {
+  return Object.assign(
+    {},
+    style,
+    { bottom: `${2 + index * 4}rem` }
+  );
+}
+```
 
 ---
 Built with care in New Orleans by [Patrick Burtchaell](http://twitter.com/pburtchaell).
