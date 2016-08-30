@@ -3,11 +3,10 @@ import defaultPropTypes from './defaultPropTypes';
 import StackedNotification from './stackedNotification';
 
 function defaultStyleFactory(index, style) {
-  return Object.assign(
-    {},
-    style,
-    { bottom: `${2 + index * 4}rem` }
-  );
+  return {
+    ...style,
+    bottom: `${2 + index * 4}rem`
+  };
 }
 
 /**
