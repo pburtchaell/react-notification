@@ -68,9 +68,6 @@ class Notification extends Component {
       transform: 'translatez(0)'
     };
 
-    // return isActive ? Object.assign({}, baseStyle, {
-    //   left: '1rem'
-    // }, barStyle, activeBarStyle) : Object.assign({}, baseStyle, barStyle);
     return isActive ? {
       ...baseStyle,
       left: '1rem',
@@ -96,7 +93,7 @@ class Notification extends Component {
       letterSpacing: '.125ex',
       textTransform: 'uppercase',
       borderRadius: '5px',
-      cursor: 'pointer', 
+      cursor: 'pointer',
       ...this.props.actionStyle} : {};
   }
 
@@ -108,7 +105,7 @@ class Notification extends Component {
   getTitleStyle() {
     return this.props.style !== false ? {
       fontWeight: '700',
-      marginRight: '.5rem', 
+      marginRight: '.5rem',
       ...this.props.titleStyle} : {};
   }
 

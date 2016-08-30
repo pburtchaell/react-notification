@@ -5,14 +5,8 @@ import StackedNotification from './stackedNotification';
 function defaultStyleFactory(index, style) {
   return {
     ...style,
-    bottom: `${2 + index * 4}rem` 
+    bottom: `${2 + index * 4}rem`
   };
-
-  // Object.assign(
-  //   {},
-  //   style,
-  //   { bottom: `${2 + index * 4}rem` }
-  // );
 }
 
 /**
