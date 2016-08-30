@@ -68,18 +68,26 @@ class Notification extends Component {
       transform: 'translatez(0)'
     };
 
-    return isActive ? Object.assign({}, baseStyle, {
-      left: '1rem'
-    }, barStyle, activeBarStyle) : Object.assign({}, baseStyle, barStyle);
+    // return isActive ? Object.assign({}, baseStyle, {
+    //   left: '1rem'
+    // }, barStyle, activeBarStyle) : Object.assign({}, baseStyle, barStyle);
+    return isActive ? {
+      ...baseStyle,
+      left: '1rem',
+      ...barStyle,
+      ...activeBarStyle
+    }:{
+      ...baseStyle,
+      ...barStyle
+    };
   }
-
   /*
    * @function getActionStyle
    * @description Dynamically get the styles for the action text.
    * @returns {object} result The style.
    */
   getActionStyle() {
-    return this.props.style !== false ? Object.assign({}, {
+    return this.props.style !== false ? {
       padding: '0.125rem',
       marginLeft: '1rem',
       color: '#f44336',
@@ -88,8 +96,8 @@ class Notification extends Component {
       letterSpacing: '.125ex',
       textTransform: 'uppercase',
       borderRadius: '5px',
-      cursor: 'pointer'
-    }, this.props.actionStyle) : {};
+      cursor: 'pointer', 
+      ...this.props.actionStyle} : {};
   }
 
   /*
@@ -98,10 +106,10 @@ class Notification extends Component {
    * @returns {object} result The style.
    */
   getTitleStyle() {
-    return this.props.style !== false ? Object.assign({}, {
+    return this.props.style !== false ? {
       fontWeight: '700',
-      marginRight: '.5rem'
-    }, this.props.titleStyle) : {};
+      marginRight: '.5rem', 
+      ...this.props.titleStyle} : {};
   }
 
   /*
