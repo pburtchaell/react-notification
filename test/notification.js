@@ -7,9 +7,6 @@ describe('<Notification />', () => {
   const actionClassName = '.notification-bar-action';
   const titleClassName = '.notification-bar-title';
 
-  const customClassName = 'foo';
-  const customActiveClassName = 'bar';
-
   let component = shallow(
     <Notification
       message={mockNotification.message}
@@ -31,48 +28,6 @@ describe('<Notification />', () => {
   it('has the className `notification-bar`', () => {
     expect(component).to.have.className('notification-bar');
   });
-
-  it('has custom class name', () => {
-    let classNameComponent = shallow(
-      <Notification
-        message={mockNotification.message}
-        action={mockNotification.action}
-        barStyle={mockNotification.barStyle}
-        actionStyle={mockNotification.actionStyle}
-        activeBarStyle={mockNotification.activeBarStyle}
-        onClick={mockNotification.onClick}
-        dismissAfter={mockNotification.dismissAfter}
-        title={mockNotification.title}
-        className={customClassName}
-      />
-    );
-
-    expect(classNameComponent).to.have.className(customClassName);
-  });
-
-  it('has custom active class name', () => {
-    let classNameComponent = shallow(
-      <Notification
-        message={mockNotification.message}
-        action={mockNotification.action}
-        barStyle={mockNotification.barStyle}
-        actionStyle={mockNotification.actionStyle}
-        activeBarStyle={mockNotification.activeBarStyle}
-        onClick={mockNotification.onClick}
-        dismissAfter={mockNotification.dismissAfter}
-        title={mockNotification.title}
-        className={customClassName}
-        activeClassName={customActiveClassName}
-      />
-    );
-
-    expect(classNameComponent).to.have.className(customClassName);
-
-    classNameComponent.setProps({ isActive: true });
-
-    expect(classNameComponent).to.have.className(customActiveClassName);
-  });
-
 
   it('should render message element', () => {
     expect(wrapper).to.have.descendants(messageClassName);
@@ -205,26 +160,33 @@ describe('<Notification />', () => {
       }
     }, mockNotification.dismissAfter);
   });
-
-  it('onDismiss fires correctly without prop change', done => {
+  it('onDismiss fires once when dismissAfter is passed', () => {
     const handleDismiss = spy();
 
-    const wrapper = mount(
+    const wrapper = shallow(
       <Notification
         message={mockNotification.message}
-        dismissAfter={mockNotification.dismissAfter}
+        dismissAfter={mockNotification.dismissAdter}
         onDismiss={handleDismiss}
-        isActive
       />
     );
 
     setTimeout(() => {
-      try {
-        expect(handleDismiss.calledOnce).to.equal(true);
-        done();
-      } catch (e) {
-        done(e);
-      }
+      expect(handleDismiss.calledOnce).to.equal(true);
     }, mockNotification.dismissAfter);
-  })
+  });
+
+  it('onDismiss does not get fired when dismissAfter is false', () => {
+    const handleDismiss = spy();
+
+    const wrapper = shallow(
+      <Notification
+        message={mockNotification.message}
+        dismissAfter={false}
+        onDismiss={handleDismiss}
+      />
+    );
+
+    expect(handleDismiss.calledOnce).to.equal(false);
+  });
 });

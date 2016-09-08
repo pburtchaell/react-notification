@@ -30,7 +30,7 @@ class Notification extends Component {
   }
 
   componentWillUnmount() {
-    clearTimeout(this.dismissTimeout);
+		if (this.props.dismissAfter) clearTimeout(this.dismissTimeout);
   }
 
   /*
