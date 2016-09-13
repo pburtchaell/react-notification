@@ -20,8 +20,9 @@ describe('<NotificationStack />', () => {
         onDismiss={handleDismiss}
       />
     );
-    
+
     wrapper.update();
+
     setTimeout(() => {
       try {
         expect(handleDismiss.calledOnce).to.equal(true);
@@ -42,7 +43,7 @@ describe('<NotificationStack />', () => {
         onDismiss={handleDismiss}
       />
     );
-    
+
     wrapper.update();
     setTimeout(() => {
       try {
@@ -51,7 +52,7 @@ describe('<NotificationStack />', () => {
       } catch (e) {
         done(e);
       }
-      // Add transition time + 1000ms per each Notification 
+      // Add transition time + 1000ms per each Notification
     }, mockNotification.dismissAfter + 1340);
   });
 
