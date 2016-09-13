@@ -7,6 +7,9 @@ describe('<Notification />', () => {
   const actionClassName = '.notification-bar-action';
   const titleClassName = '.notification-bar-title';
 
+  const customClassName = 'foo';
+  const customActiveClassName = 'bar';
+
   let component = shallow(
     <Notification
       message={mockNotification.message}
@@ -27,6 +30,47 @@ describe('<Notification />', () => {
 
   it('has the className `notification-bar`', () => {
     expect(component).to.have.className('notification-bar');
+  });
+
+ it('has custom class name', () => {
+    let classNameComponent = shallow(
+      <Notification
+        message={mockNotification.message}
+        action={mockNotification.action}
+        barStyle={mockNotification.barStyle}
+        actionStyle={mockNotification.actionStyle}
+        activeBarStyle={mockNotification.activeBarStyle}
+        onClick={mockNotification.onClick}
+        dismissAfter={mockNotification.dismissAfter}
+        title={mockNotification.title}
+        className={customClassName}
+      />
+    );
+
+    expect(classNameComponent).to.have.className(customClassName);
+  });
+
+  it('has custom active class name', () => {
+    let classNameComponent = shallow(
+      <Notification
+        message={mockNotification.message}
+        action={mockNotification.action}
+        barStyle={mockNotification.barStyle}
+        actionStyle={mockNotification.actionStyle}
+        activeBarStyle={mockNotification.activeBarStyle}
+        onClick={mockNotification.onClick}
+        dismissAfter={mockNotification.dismissAfter}
+        title={mockNotification.title}
+        className={customClassName}
+        activeClassName={customActiveClassName}
+      />
+    );
+
+    expect(classNameComponent).to.have.className(customClassName);
+
+    classNameComponent.setProps({ isActive: true });
+
+    expect(classNameComponent).to.have.className(customActiveClassName);
   });
 
   it('should render message element', () => {
