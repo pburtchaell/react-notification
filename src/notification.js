@@ -9,6 +9,13 @@ class Notification extends Component {
     this.getActionStyle = this.getActionStyle.bind(this);
     this.getTitleStyle = this.getTitleStyle.bind(this);
     this.handleClick = this.handleClick.bind(this);
+
+    if (props.onDismiss && props.isActive) {
+      this.dismissTimeout = setTimeout(
+        props.onDismiss,
+        props.dismissAfter
+      );
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -16,7 +23,10 @@ class Notification extends Component {
     if (!nextProps.hasOwnProperty('isLast'))
       clearTimeout(this.dismissTimeout);
     if (nextProps.onDismiss && nextProps.isActive && !this.props.isActive) {
-      this.dismissTimeout = setTimeout(nextProps.onDismiss, nextProps.dismissAfter);
+      this.dismissTimeout = setTimeout(
+        nextProps.onDismiss,
+        nextProps.dismissAfter
+      );
     }
   }
 

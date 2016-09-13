@@ -7,7 +7,8 @@ export default {
   ]).isRequired,
   action: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.string
+    PropTypes.string,
+    PropTypes.node
   ]),
   onClick: PropTypes.func,
   style: PropTypes.bool,

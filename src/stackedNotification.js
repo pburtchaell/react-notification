@@ -28,19 +28,11 @@ class StackedNotification extends Component {
   }
 
   render() {
-    const bottomPosition = `${2 + this.props.index * 4}rem`;
-
     return (
       <Notification
         {...this.props}
         onDismiss={() => setTimeout(this.props.onDismiss, 300)}
         isActive={this.state.isActive}
-        barStyle={Object.assign({}, {
-          bottom: bottomPosition
-        }, this.props.barStyle)}
-        activeBarStyle={Object.assign({}, {
-          bottom: bottomPosition
-        }, this.props.activeBarStyle)}
       />
     );
   }

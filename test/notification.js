@@ -233,5 +233,4 @@ describe('<Notification />', () => {
 
     expect(handleDismiss.calledOnce).to.equal(false);
   });
-
 });
