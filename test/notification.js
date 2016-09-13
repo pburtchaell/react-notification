@@ -166,7 +166,7 @@ describe('<Notification />', () => {
     const wrapper = shallow(
       <Notification
         message={mockNotification.message}
-        dismissAfter={mockNotification.dismissAdter}
+        dismissAfter={mockNotification.dismissAfter}
         onDismiss={handleDismiss}
       />
     );
