@@ -204,10 +204,10 @@ describe('<Notification />', () => {
       }
     }, mockNotification.dismissAfter);
   });
-  it('onDismiss fires once when dismissAfter is passed', () => {
-    const handleDismiss = spy();
 
-    const wrapper = shallow(
+  it('onDismiss fires once when dismissAfter is passed', done => {
+    const handleDismiss = spy();
+    const wrapper = mount(
       <Notification
         message={mockNotification.message}
         dismissAfter={mockNotification.dismissAfter}
@@ -215,8 +215,15 @@ describe('<Notification />', () => {
       />
     );
 
+    wrapper.setProps({ isActive: true });
+
     setTimeout(() => {
-      expect(handleDismiss.calledOnce).to.equal(true);
+      try {
+        expect(handleDismiss.calledOnce).to.equal(true);
+        done();
+      } catch (e) {
+        done(e);
+      }
     }, mockNotification.dismissAfter);
   });
 
