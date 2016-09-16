@@ -1,6 +1,9 @@
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 
+// Include stack on error
+chai.config.includeStack = true;
+
 /**
  * Add commonly used functions in tests to global
  * so they do not need to be imported each time.

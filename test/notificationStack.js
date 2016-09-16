@@ -22,6 +22,7 @@ describe('<NotificationStack />', () => {
     );
 
     wrapper.update();
+
     setTimeout(() => {
       try {
         expect(handleDismiss.calledOnce).to.equal(true);

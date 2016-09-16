@@ -1,4 +1,5 @@
 node_modules/
 bin/tests/.tmp/
 dist/
+.DS_Store
 *.log*
