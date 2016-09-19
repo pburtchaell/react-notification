@@ -10,7 +10,7 @@ class Notification extends Component {
     this.getTitleStyle = this.getTitleStyle.bind(this);
     this.handleClick = this.handleClick.bind(this);
 
-    if (props.onDismiss && props.isActive) {
+    if (props.onDismiss && props.isActive && props.dismissAfter !== false) {
       this.dismissTimeout = setTimeout(
         props.onDismiss,
         props.dismissAfter
