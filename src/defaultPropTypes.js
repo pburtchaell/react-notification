@@ -3,12 +3,12 @@ import { PropTypes } from 'react';
 export default {
   message: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.element
+    PropTypes.element,
   ]).isRequired,
   action: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
-    PropTypes.node
+    PropTypes.node,
   ]),
   onClick: PropTypes.func,
   style: PropTypes.bool,
@@ -17,11 +17,11 @@ export default {
   activeBarStyle: PropTypes.object,
   dismissAfter: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.number
+    PropTypes.number,
   ]),
   onDismiss: PropTypes.func,
   className: PropTypes.string,
   activeClassName: PropTypes.string.isRequired,
   isActive: PropTypes.bool,
-  title: PropTypes.string
+  title: PropTypes.string,
 };

@@ -1,5 +1,5 @@
+/* eslint-disable react/jsx-no-bind */
 import React, { PropTypes } from 'react';
-import defaultPropTypes from './defaultPropTypes';
 import StackedNotification from './stackedNotification';
 
 function defaultStyleFactory(index, style) {
@@ -15,8 +15,7 @@ function defaultStyleFactory(index, style) {
  * pure function here. It just needs to return the stacked array
  * of notification components.
  */
-const NotificationStack = props => {
-  return (
+const NotificationStack = props => (
     <div className="notification-list">
       {props.notifications.map((notification, index) => {
         const dismissAfter = notification.dismissAfter || props.dismissAfter;
@@ -41,20 +40,19 @@ const NotificationStack = props => {
         );
       })}
     </div>
-  )
-};
+);
 
 NotificationStack.propTypes = {
   activeBarStyleFactory: PropTypes.func,
   barStyleFactory: PropTypes.func,
   notifications: PropTypes.array.isRequired,
-  onDismiss: PropTypes.func.isRequired
+  onDismiss: PropTypes.func.isRequired,
 };
 
 NotificationStack.defaultProps = {
   dismissAfter: 1000,
   activeBarStyleFactory: defaultStyleFactory,
-  barStyleFactory: defaultStyleFactory
-}
+  barStyleFactory: defaultStyleFactory,
+};
 
 export default NotificationStack;
