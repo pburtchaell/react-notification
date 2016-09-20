@@ -33,7 +33,7 @@ const NotificationStack = props => {
             key={notification.key}
             isLast={isLast}
             action={notification.action || props.action}
-            dismissAfter={isLast ? dismissAfter : dismissAfter + (index * 1000)}
+            dismissAfter={isLast || dismissAfter === false ? dismissAfter : dismissAfter + (index * 1000)}
             onDismiss={props.onDismiss.bind(this, notification)}
             activeBarStyle={activeBarStyle}
             barStyle={barStyle}
