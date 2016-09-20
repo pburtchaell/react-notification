@@ -19,7 +19,7 @@ const NotificationStack = props => {
   return (
     <div className="notification-list">
       {props.notifications.map((notification, index) => {
-        const dismissAfter = notification.dismissAfter || props.dismissAfter;
+        const dismissAfter = typeof notification.dismissAfter !== 'undefined' ? notification.dismissAfter : props.dismissAfter;
         const isLast = index === 0 && props.notifications.length === 1;
         const barStyle = props.barStyleFactory(index, notification.barStyle);
         const activeBarStyle = props.activeBarStyleFactory(
