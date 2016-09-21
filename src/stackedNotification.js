@@ -3,40 +3,40 @@ import defaultPropTypes from './defaultPropTypes';
 import Notification from './notification';
 
 class StackedNotification extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            isActive: false,
-        };
+    this.state = {
+      isActive: false,
+    };
+  }
+
+  componentDidMount() {
+    this.activeTimeout = setTimeout(this.setState.bind(this, {
+      isActive: true,
+    }), 1);
+
+    if (this.props.dismissAfter) {
+      this.dismissTimeout = setTimeout(this.setState.bind(this, {
+        isActive: false,
+      }), this.props.dismissAfter);
     }
+  }
 
-    componentDidMount() {
-        this.activeTimeout = setTimeout(this.setState.bind(this, {
-            isActive: true,
-        }), 1);
+  componentWillUnmount() {
+    clearTimeout(this.dismissTimeout);
+    clearTimeout(this.dismissTimeout);
+  }
 
-        if (this.props.dismissAfter) {
-            this.dismissTimeout = setTimeout(this.setState.bind(this, {
-                isActive: false,
-            }), this.props.dismissAfter);
-        }
-    }
-
-    componentWillUnmount() {
-        clearTimeout(this.dismissTimeout);
-        clearTimeout(this.dismissTimeout);
-    }
-
-    render() {
-        return (
-            <Notification
-                {...this.props}
-                onDismiss={() => setTimeout(this.props.onDismiss, 300)}
-                isActive={this.state.isActive}
-            />
-        );
-    }
+  render() {
+    return (
+      <Notification
+        {...this.props}
+        onDismiss={() => setTimeout(this.props.onDismiss, 300)}
+        isActive={this.state.isActive}
+      />
+    );
+  }
 }
 
 StackedNotification.propTypes = defaultPropTypes;

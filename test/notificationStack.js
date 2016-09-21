@@ -1,3 +1,4 @@
+import React from 'react';
 import { Notification, NotificationStack } from '../src/index';
 import mockNotification from './mockNotification';
 
@@ -7,7 +8,7 @@ describe('<NotificationStack />', () => {
   beforeEach(() => {
     notifications = [
       mockNotification,
-      Object.assign({}, mockNotification, { key: 2222 })
+      Object.assign({}, mockNotification, { key: 2222 }),
     ];
   });
 
@@ -59,6 +60,7 @@ describe('<NotificationStack />', () => {
   it('onDismiss does not fire until `dismissAfter` value times out', () => {
     const handleDismiss = spy();
 
+    // eslint-disable-next-line
     const wrapper = shallow(
       <NotificationStack
         notifications={[mockNotification]}
@@ -135,5 +137,5 @@ describe('<NotificationStack />', () => {
     );
     const notification = stack.find(Notification);
     expect(notification.prop('activeBarStyle').left).to.equal('4rem');
-  })
+  });
 });

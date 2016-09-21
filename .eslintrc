@@ -21,5 +21,12 @@
   },
   "plugins": [
     "react"
-  ]
+  ],
+  "globals": {
+    "expect": true,
+    "spy": true,
+    "shallow": true,
+    "mount": true,
+    "jsdom": true
+  }
 }

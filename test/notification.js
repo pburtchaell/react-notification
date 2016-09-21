@@ -1,8 +1,8 @@
-import { Notification, NotificationStack } from '../src/index';
+import React from 'react';
+import { Notification } from '../src/index';
 import mockNotification from './mockNotification';
 
 describe('<Notification />', () => {
-  const wrapperClassName = '.notification-bar-wrapper';
   const messageClassName = '.notification-bar-message';
   const actionClassName = '.notification-bar-action';
   const titleClassName = '.notification-bar-title';
@@ -10,7 +10,7 @@ describe('<Notification />', () => {
   const customClassName = 'foo';
   const customActiveClassName = 'bar';
 
-  let component = shallow(
+  const component = shallow(
     <Notification
       message={mockNotification.message}
       action={mockNotification.action}
@@ -32,7 +32,8 @@ describe('<Notification />', () => {
     expect(component).to.have.className('notification-bar');
   });
 
- it('has custom class name', () => {
+  it('has custom class name', () => {
+    // eslint-disable-next-line
     let classNameComponent = shallow(
       <Notification
         message={mockNotification.message}
@@ -51,6 +52,7 @@ describe('<Notification />', () => {
   });
 
   it('has custom active class name', () => {
+    // eslint-disable-next-line
     let classNameComponent = shallow(
       <Notification
         message={mockNotification.message}
@@ -88,6 +90,7 @@ describe('<Notification />', () => {
   it('should render message element', () => {
     let element = (<div></div>);
 
+    // eslint-disable-next-line
     let message = shallow(
       <Notification
         message={element}
@@ -124,9 +127,10 @@ describe('<Notification />', () => {
   });
 
   it('should use custom active styles', () => {
+    // eslint-disable-next-line
     let component = shallow(
       <Notification
-        isActive={true}
+        isActive
         message={mockNotification.message}
         action={mockNotification.action}
         barStyle={mockNotification.barStyle}
@@ -143,7 +147,8 @@ describe('<Notification />', () => {
   it('onClick fires once when action is clicked', () => {
     const handleClick = spy();
 
-    const action = shallow(
+    // eslint-disable-next-line
+    let action = shallow(
       <Notification
         message={mockNotification.message}
         action={mockNotification.action}
@@ -163,7 +168,8 @@ describe('<Notification />', () => {
   it('onDismiss does not fire before `dismissAfter` value times out', done => {
     const handleDismiss = spy();
 
-    const wrapper = mount(
+    // eslint-disable-next-line
+    let wrapper = mount(
       <Notification
         message={mockNotification.message}
         dismissAfter={mockNotification.dismissAfter}
@@ -186,7 +192,8 @@ describe('<Notification />', () => {
   it('onDismiss fires after `dismissAfter` value times out', done => {
     const handleDismiss = spy();
 
-    const wrapper = mount(
+    // eslint-disable-next-line
+    let wrapper = mount(
       <Notification
         message={mockNotification.message}
         dismissAfter={mockNotification.dismissAfter}
@@ -207,7 +214,9 @@ describe('<Notification />', () => {
 
   it('onDismiss fires once when dismissAfter is passed', done => {
     const handleDismiss = spy();
-    const wrapper = mount(
+
+    // eslint-disable-next-line
+    let wrapper = mount(
       <Notification
         message={mockNotification.message}
         dismissAfter={mockNotification.dismissAfter}
@@ -230,7 +239,8 @@ describe('<Notification />', () => {
   it('onDismiss does not get fired when dismissAfter is false', () => {
     const handleDismiss = spy();
 
-    const wrapper = shallow(
+    // eslint-disable-next-line
+    let wrapper = shallow(
       <Notification
         message={mockNotification.message}
         dismissAfter={false}

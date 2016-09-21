@@ -1,6 +1,8 @@
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 
+const exposedProperties = ['window', 'navigator', 'document'];
+
 // Include stack on error
 chai.config.includeStack = true;
 
@@ -15,8 +17,6 @@ global.shallow = require('enzyme').shallow;
 global.mount = require('enzyme').mount;
 global.jsdom = require('jsdom').jsdom;
 
-var exposedProperties = ['window', 'navigator', 'document'];
-
 global.document = jsdom('');
 global.window = document.defaultView;
 Object.keys(document.defaultView).forEach((property) => {
@@ -27,7 +27,7 @@ Object.keys(document.defaultView).forEach((property) => {
 });
 
 global.navigator = {
-  userAgent: 'node.js'
+  userAgent: 'node.js',
 };
 
 chai.use(chaiEnzyme());
