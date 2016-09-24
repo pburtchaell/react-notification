@@ -23,7 +23,7 @@ class StackedNotification extends Component {
   }
 
   componentWillUnmount() {
-    clearTimeout(this.dismissTimeout);
+    clearTimeout(this.activeTimeout);
     clearTimeout(this.dismissTimeout);
   }
 
