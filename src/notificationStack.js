@@ -43,13 +43,13 @@ NotificationStack.propTypes = {
   activeBarStyleFactory: PropTypes.func,
   barStyleFactory: PropTypes.func,
   notifications: PropTypes.array.isRequired,
-  onDismiss: PropTypes.func.isRequired,
+  onDismiss: PropTypes.func.isRequired
 };
 
 NotificationStack.defaultProps = {
   dismissAfter: 1000,
   activeBarStyleFactory: defaultStyleFactory,
-  barStyleFactory: defaultStyleFactory,
+  barStyleFactory: defaultStyleFactory
 };
 
 export default NotificationStack;

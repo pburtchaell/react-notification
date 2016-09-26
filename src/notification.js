@@ -67,7 +67,7 @@ class Notification extends Component {
       MozTransform: 'translatez(0)',
       msTransform: 'translatez(0)',
       OTransform: 'translatez(0)',
-      transform: 'translatez(0)',
+      transform: 'translatez(0)'
     };
 
     return isActive ?
@@ -90,7 +90,7 @@ class Notification extends Component {
       letterSpacing: '.125ex',
       textTransform: 'uppercase',
       borderRadius: '5px',
-      cursor: 'pointer',
+      cursor: 'pointer'
     }, this.props.actionStyle) : {};
   }
 
@@ -102,7 +102,7 @@ class Notification extends Component {
   getTitleStyle() {
     return this.props.style !== false ? Object.assign({}, {
       fontWeight: '700',
-      marginRight: '.5rem',
+      marginRight: '.5rem'
     }, this.props.titleStyle) : {};
   }
 
@@ -163,7 +163,7 @@ Notification.propTypes = defaultPropTypes;
 Notification.defaultProps = {
   isActive: false,
   dismissAfter: 2000,
-  activeClassName: 'notification-bar-active',
+  activeClassName: 'notification-bar-active'
 };
 
 export default Notification;

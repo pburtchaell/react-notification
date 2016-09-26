@@ -7,18 +7,18 @@ class StackedNotification extends Component {
     super(props);
 
     this.state = {
-      isActive: false,
+      isActive: false
     };
   }
 
   componentDidMount() {
     this.activeTimeout = setTimeout(this.setState.bind(this, {
-      isActive: true,
+      isActive: true
     }), 1);
 
     if (this.props.dismissAfter) {
       this.dismissTimeout = setTimeout(this.setState.bind(this, {
-        isActive: false,
+        isActive: false
       }), this.props.dismissAfter);
     }
   }
