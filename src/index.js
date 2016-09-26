@@ -1,2 +1,2 @@
-export { Notification } from './notification';
-export { NotificationStack } from './notificationStack';
+export * from './notification';
+export * from './notificationStack';
