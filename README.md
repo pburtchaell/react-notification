@@ -172,6 +172,4 @@ function defaultStyleFactory(index, style) {
 ```
 
 ---
-Built with care in New Orleans by [Patrick Burtchaell](http://twitter.com/pburtchaell).
-
-Copyright 2016 Patrick Burtchaell. Licensed MIT. [Gratipay](https://gratipay.com/~pburtchaell/).
+Copyright (c) 2015 Patrick Burtchaell. [Licensed with The MIT License (MIT)](https://raw.githubusercontent.com/pburtchaell/react-notification/master/LICENSE). [Gratipay](https://gratipay.com/~pburtchaell/).
