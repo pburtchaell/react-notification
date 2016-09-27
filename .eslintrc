@@ -11,7 +11,7 @@
     "modules": true
   },
   "rules": {
-    "comma-dangle": ["error", "never"],
+    "comma-dangle": [2, "never"],
     "indent": ["error", 2],
     "react/jsx-indent-props": [2, 2],
     "react/jsx-uses-react": 2,
