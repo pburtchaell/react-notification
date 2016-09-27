@@ -130,7 +130,7 @@ describe('<Notification />', () => {
     // eslint-disable-next-line
     let component = shallow(
       <Notification
-        isActive
+        isActive={true}
         message={mockNotification.message}
         action={mockNotification.action}
         barStyle={mockNotification.barStyle}

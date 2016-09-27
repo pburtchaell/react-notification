@@ -8,7 +8,7 @@ describe('<NotificationStack />', () => {
   beforeEach(() => {
     notifications = [
       mockNotification,
-      Object.assign({}, mockNotification, { key: 2222 }),
+      Object.assign({}, mockNotification, { key: 2222 })
     ];
   });
 

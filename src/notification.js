@@ -114,8 +114,6 @@ class Notification extends Component {
     if (this.props.onClick && typeof this.props.onClick === 'function') {
       return this.props.onClick();
     }
-
-    return () => {};
   }
 
   render() {
