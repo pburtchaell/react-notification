@@ -11,7 +11,7 @@
 
 ## Need Help?
 
-It's okay to ask for help via a GitHub issue, but first consider the following:
+It's okay to ask for help via a GitHub issue, but first read the ["Filing an Issue"](#filing-an-issue) guide and consider:
 
 * Is my issue specific to this project?
 * Is [StackOverflow](http://stackoverflow.com/questions/ask) a better place to ask for help? If yes, use the **#react** and **#react-notification** tags.
@@ -22,7 +22,7 @@ It's okay to ask for help via a GitHub issue, but first consider the following:
 
 ## Found a Bug?
 
-The best bug report is a failing test in the repository as a pull request. Please refer to the ["Filing an Issue"](#filing-an-issue) guide and include the following information:
+**The best bug report is a failing test in the repository as a pull request.** Please refer to the ["Filing an Issue"](#filing-an-issue) guide and include:
 
 * Version number
 * Steps to reproduce
@@ -31,12 +31,14 @@ The best bug report is a failing test in the repository as a pull request. Pleas
 
 ## Have a Feature Request?
 
-If you have a feature request, provide commentary and code samples on what this feature means for you. Consider the following:
+If you have a feature request, provide commentary and code samples on what this feature means for you.
 
 * What do you perceive it will enable you to do?
 * What potential bugs will be avoided?
 * What edge cases will it support?
 * Is it a [micro-optimization](http://stackoverflow.com/questions/tagged/micro-optimization). If yes, is it a valuable?
+
+Please refer to the ["Filing an Issue"](#filing-an-issue) guide.
 
 ## Filing an Issue
 
@@ -44,7 +46,7 @@ If you have a feature request, provide commentary and code samples on what this 
 2. If a related issue does *not* exist, open an issue.
 3. If a related issue does exist, contribute to the conversation there.
 
-Before you create the issue, check to make sure you have the following.
+Before you create an issue, consider:
 
 * Did you describe the problem you are encountering?
 * Did you describe the expected behavior?
