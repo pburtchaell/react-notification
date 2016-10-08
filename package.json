@@ -4,7 +4,7 @@
   "description": "Snackbar style notification component for React.",
   "main": "dist/index.js",
   "scripts": {
-    "precommit": "npm test",
+    "precommit": "echo 'Running pre-commit hooks...' && npm test",
     "prepublish": "npm run build",
     "prebuild": "npm test",
     "build": "`npm bin`/babel src -d dist",
