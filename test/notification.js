@@ -236,7 +236,7 @@ describe('<Notification />', () => {
     }, mockNotification.dismissAfter);
   });
 
-  it('onDismiss does not get fired when dismissAfter is false', () => {
+  it('onDismiss does not fire when dismissAfter is false', () => {
     const handleDismiss = spy();
 
     // eslint-disable-next-line
