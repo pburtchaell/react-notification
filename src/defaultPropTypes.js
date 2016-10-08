@@ -21,7 +21,7 @@ export default {
   ]),
   onDismiss: PropTypes.func,
   className: PropTypes.string,
-  activeClassName: PropTypes.string.isRequired,
+  activeClassName: PropTypes.string,
   isActive: PropTypes.bool,
   title: PropTypes.string
 };
