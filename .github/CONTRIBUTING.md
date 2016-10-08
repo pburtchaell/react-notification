@@ -1,0 +1,75 @@
+# Contributing
+
+**Imperative: pull requests must include tests and documentation and issues must follow guidelines.**
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Run tests: `npm test`
+4. Run example: `npm start`
+
+## Need Help?
+
+It's okay to ask for help via a GitHub issue, but first consider the following:
+
+* Is my issue specific to this project?
+* Is [StackOverflow](http://stackoverflow.com/questions/ask) a better place to ask for help? If yes, use the **#react** and **#react-notification** tags.
+* Can I reduce the code example to the bare minimum required to explain what I need help with?
+* Can I create a [JSBin](https://jsbin.com/?html,output) for the code example?
+* Can I explain what the expected behavior is?
+* Can I explain what the actual beavior is?
+
+## Found a Bug?
+
+The best bug report is a failing test in the repository as a pull request. Please refer to the ["Filing an Issue"](#filing-an-issue) guide and include the following information:
+
+* Version number
+* Steps to reproduce
+* Expected behavior
+* Actual behavior
+
+## Have a Feature Request?
+
+If you have a feature request, provide commentary and code samples on what this feature means for you. Consider the following:
+
+* What do you perceive it will enable you to do?
+* What potential bugs will be avoided?
+* What edge cases will it support?
+* Is it a [micro-optimization](http://stackoverflow.com/questions/tagged/micro-optimization). If yes, is it a valuable?
+
+## Filing an Issue
+
+1. Check if a related open issue exists by using search. See the GitHub guide to [searching issues](https://help.github.com/articles/searching-issues/).
+2. If a related issue does *not* exist, open an issue.
+3. If a related issue does exist, contribute to the conversation there.
+
+Before you create the issue, check to make sure you have the following.
+
+* Did you describe the problem you are encountering?
+* Did you describe the expected behavior?
+* Did you provide a formatted code example? See the GitHub guide on [how to format code with Markdown](help.github.com/categories/writing-on-github/).
+* Did you include a relevant label?
+
+If you include all of the above, it is easier to understand you. We respond quicker to formatted, comprehensive issues.
+
+Please keep in mind that issues should *contribute* to the community. The primary function of issues should be for bugs and feature requests. If you open an issue asking for help, that's fine. However, if you do not provide context or code examples, the issue will be closed and you will be redirected to this document.
+
+## Making a Contribution
+
+1. Check [the issues](https://github.com/pburtchaell/react-notification/issues) for "help wanted" labels.
+2. Check if there is a pull request already open for this issue. If there is, please do not duplicate efforts.
+3. Commit the changes required to resolve the issue. Git commit messages [should be written in the imperative](http://chris.beams.io/posts/git-commit/). A pre-commit hook will run tests and lint code. If needed, you can force a commit with `--no-verify`.
+4. If needed, add one or more unit test(s). **For new features and bug fixes, a unit test is required.** Follow the [red/green/refactor process](https://en.wikipedia.org/wiki/Test-driven_development#Development_style).
+5. Run tests and linter: `npm test`. Code is linted using ES Lint. Rules are located in `.eslintrc`. You must maintain the existing code style. **Tests must pass before the PR is merged.**
+6. Document new features and/or API changes.
+
+## File organization
+
+All code, including tests, is written in next-generation JavaScript and transpiled using Babel. Source files are located in `src` and transpiled to `dist`, which is gitignored. Tests should be placed in a `test` directory.
+
+## Contributors
+
+- [Patrick Burtchaell](http://github.com/pburtchaell)
+- [Berkeley Martinez](https://github.com/BerkeleyTrue)
+- [Joey Figaro](https://github.com/joeyfigaro)
