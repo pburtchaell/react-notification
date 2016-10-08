@@ -11,13 +11,25 @@
     "modules": true
   },
   "rules": {
+    "comma-dangle": [2, "never"],
+    "indent": [2, 2],
+    "consistent-return": 0,
+    "react/jsx-indent-props": [2, 2],
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
+    "react/jsx-boolean-value": 0,
     "react/react-in-jsx-scope": 2,
     "padded-blocks": 0,
     "block-scoped-var": 0
   },
   "plugins": [
     "react"
-  ]
+  ],
+  "globals": {
+    "expect": true,
+    "spy": true,
+    "shallow": true,
+    "mount": true,
+    "jsdom": true
+  }
 }

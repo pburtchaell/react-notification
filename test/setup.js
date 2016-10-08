@@ -1,6 +1,8 @@
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 
+const exposedProperties = ['window', 'navigator', 'document'];
+
 // Include stack on error
 chai.config.includeStack = true;
 
@@ -14,8 +16,6 @@ global.spy = require('sinon').spy;
 global.shallow = require('enzyme').shallow;
 global.mount = require('enzyme').mount;
 global.jsdom = require('jsdom').jsdom;
-
-var exposedProperties = ['window', 'navigator', 'document'];
 
 global.document = jsdom('');
 global.window = document.defaultView;

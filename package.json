@@ -6,6 +6,7 @@
   "scripts": {
     "prepublish": "npm test && npm run build",
     "start": "node examples/server.js",
+    "lint": "eslint src/*",
     "build": "`npm bin`/babel src -d dist",
     "test": "make test"
   },

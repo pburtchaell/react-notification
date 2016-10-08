@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import defaultPropTypes from './defaultPropTypes';
 import Notification from './notification';
 
 class StackedNotification extends Component {
@@ -36,6 +37,8 @@ class StackedNotification extends Component {
       />
     );
   }
-};
+}
+
+StackedNotification.propTypes = defaultPropTypes;
 
 export default StackedNotification;

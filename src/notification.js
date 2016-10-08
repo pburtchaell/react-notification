@@ -20,8 +20,9 @@ class Notification extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.dismissAfter === false) return;
-    if (!nextProps.hasOwnProperty('isLast'))
+    if (!nextProps.hasOwnProperty('isLast')) {
       clearTimeout(this.dismissTimeout);
+    }
     if (nextProps.onDismiss && nextProps.isActive && !this.props.isActive) {
       this.dismissTimeout = setTimeout(
         nextProps.onDismiss,
@@ -35,9 +36,9 @@ class Notification extends Component {
   }
 
   /*
-   * @description Dynamically get the styles for the bar.
-   * @returns {object} result The style.
-   */
+  * @description Dynamically get the styles for the bar.
+  * @returns {object} result The style.
+  */
   getBarStyle() {
     if (this.props.style === false) return {};
 
@@ -69,16 +70,16 @@ class Notification extends Component {
       transform: 'translatez(0)'
     };
 
-    return isActive ? Object.assign({}, baseStyle, {
-      left: '1rem'
-    }, barStyle, activeBarStyle) : Object.assign({}, baseStyle, barStyle);
+    return isActive ?
+    Object.assign({}, baseStyle, { left: '1rem' }, barStyle, activeBarStyle) :
+    Object.assign({}, baseStyle, barStyle);
   }
 
   /*
-   * @function getActionStyle
-   * @description Dynamically get the styles for the action text.
-   * @returns {object} result The style.
-   */
+  * @function getActionStyle
+  * @description Dynamically get the styles for the action text.
+  * @returns {object} result The style.
+  */
   getActionStyle() {
     return this.props.style !== false ? Object.assign({}, {
       padding: '0.125rem',
@@ -94,10 +95,10 @@ class Notification extends Component {
   }
 
   /*
-   * @function getTitleStyle
-   * @description Dynamically get the styles for the title.
-   * @returns {object} result The style.
-   */
+  * @function getTitleStyle
+  * @description Dynamically get the styles for the title.
+  * @returns {object} result The style.
+  */
   getTitleStyle() {
     return this.props.style !== false ? Object.assign({}, {
       fontWeight: '700',
@@ -106,9 +107,9 @@ class Notification extends Component {
   }
 
   /*
-   * @function handleClick
-   * @description Handle click events on the action button.
-   */
+  * @function handleClick
+  * @description Handle click events on the action button.
+  */
   handleClick() {
     if (this.props.onClick && typeof this.props.onClick === 'function') {
       return this.props.onClick();
@@ -118,8 +119,8 @@ class Notification extends Component {
   render() {
     let className = 'notification-bar';
 
-    if (this.props.isActive) className += ' ' + this.props.activeClassName;
-    if (this.props.className) className += ' ' + this.props.className;
+    if (this.props.isActive) className += ` ${this.props.activeClassName}`;
+    if (this.props.className) className += ` ${this.props.className}`;
 
     return (
       <div className={className} style={this.getBarStyle()}>
@@ -161,6 +162,6 @@ Notification.defaultProps = {
   isActive: false,
   dismissAfter: 2000,
   activeClassName: 'notification-bar-active'
-}
+};
 
 export default Notification;
