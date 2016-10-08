@@ -7,7 +7,8 @@ class Example extends Component {
     super(props);
 
     this.state = {
-      isActive: false
+      isActive: false,
+      permanentNotification: false
     }
   }
 
@@ -26,6 +27,13 @@ class Example extends Component {
           onClick={this.toggleNotification.bind(this)}
           children={!isActive ? "Show notification" : "Hide notification"}
         />
+        <br />
+        <button
+          onClick={() => this.setState({
+            permanentNotification: true
+          })}
+          children="Show permanent notification"
+        />
         <Notification
           isActive={this.state.isActive}
           message="Notification"
@@ -33,6 +41,12 @@ class Example extends Component {
           title="Title!"
           onDismiss={this.toggleNotification.bind(this)}
           onClick={() =>  this.setState({ isActive: false })}
+        />
+        <Notification
+          isActive={this.state.permanentNotification}
+          dismissAfter={false}
+          message="Permanent Notification"
+          title="Title!"
         />
       </div>
     );
