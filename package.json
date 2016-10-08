@@ -13,7 +13,9 @@
     "lint": "eslint src/* test/*",
     "start": "node examples/server.js"
   },
-  "pre-commit": ["precommit"],
+  "pre-commit": [
+    "precommit"
+  ],
   "repository": {
     "type": "git",
     "url": "https+git://github.com/pburtchaell/react-notification"
