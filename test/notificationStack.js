@@ -12,6 +12,27 @@ describe('<NotificationStack />', () => {
     ];
   });
 
+  it('notification prop isActive set to false after deactivate called in onClick', () => {
+
+    const myNotification = Object.assign(
+      {},
+      mockNotification,
+      { onClick: (deactivate) => deactivate() }
+    );
+
+    const wrapper = mount(
+      <NotificationStack
+        notifications={[myNotification]}
+        onDismiss={() => null}
+      />
+    );
+
+    const notification = wrapper.find(Notification);
+    setTimeout(() => expect(notification.prop('isActive')).to.equal(true), 10);
+    notification.simulate('click');
+    expect(notification.prop('isActive')).to.equal(false);
+  });
+
   it('onDismiss fires after `dismissAfter` value + transition time', done => {
     const handleDismiss = spy();
 
