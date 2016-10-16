@@ -54,7 +54,10 @@ addNotification () {
       message: `Notification ipsum...`,
       key: 'some UID',
       action: 'Dismiss',
-      onClick: () => this.removeNotification('some UID'),
+      onClick: (deactivate) => {
+        deactivate();
+        setTimeout(() => this.removeNotification('some UID'), 400);
+      },
     })
   });
 }
@@ -117,6 +120,8 @@ For Notification component:
 |-----------|------------------------------------------------------------|
 | onClick   | Callback function to run when the action is clicked        |
 | onDismiss | Callback function to run when dismissAfter timer runs out  |
+
+onClick is called with parameter *deactivate*, which is a function and can be called to set the notification to inactive. Used to activate notification exit animation on click.
 
 For NotificationStack component:
 
