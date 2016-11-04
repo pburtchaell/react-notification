@@ -104,11 +104,12 @@ The `style` prop useful if you are not using React inline styles and would like 
 
 For NotificationStack component:
 
-| Name                  | Type  | Description                                  | Required  | Default  |
-|-----------------------|-------|----------------------------------------------|---------- |----------|
-| notifications         | array | Array of notifications to render             | true      |          |
-| barStyleFactory       | func  | create the style of the notification         | false     | fn       |
-| activeBarStyleFactory | func  | create the style of the active notification  | false     | fn       |
+| Name                  | Type  | Description                                              | Required  | Default  |
+|-----------------------|-------|----------------------------------------------------------|---------- |----------|
+| notifications         | array | Array of notifications to render                         | true      |          |
+| dismissInOrder        | bool  | If false, notification dismiss timers start immediately  | false     | true     |
+| barStyleFactory       | func  | create the style of the notification                     | false     | fn       |
+| activeBarStyleFactory | func  | create the style of the active notification              | false     | fn       |
 
 **Update** `v5.0.3`: Now notifications used in a stack _can_ have all properties included in the regular notification component.
 
