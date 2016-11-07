@@ -10,6 +10,8 @@ function defaultStyleFactory(index, style) {
   );
 }
 
+const defaultClick = () => {};
+
 /**
 * The notification list does not have any state, so use a
 * pure function here. It just needs to return the stacked array
@@ -22,6 +24,7 @@ const NotificationStack = props => (
       const isLast = index === 0 && props.notifications.length === 1;
       const barStyle = props.barStyleFactory(index, notification.barStyle);
       const activeBarStyle = props.activeBarStyleFactory(index, notification.activeBarStyle);
+      const onClick = (notification.onClick || props.onClick) || defaultClick;
 
       return (
         <StackedNotification
@@ -31,6 +34,7 @@ const NotificationStack = props => (
           action={notification.action || props.action}
           dismissAfter={isLast ? dismissAfter : dismissAfter + (index * 1000)}
           onDismiss={props.onDismiss.bind(this, notification)}
+          onClick={onClick.bind(this, notification)}
           activeBarStyle={activeBarStyle}
           barStyle={barStyle}
         />
