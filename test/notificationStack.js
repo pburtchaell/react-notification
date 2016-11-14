@@ -33,6 +33,30 @@ describe('<NotificationStack />', () => {
     expect(notification.prop('isActive')).to.equal(false);
   });
 
+  it('notifications dismissed independently if `dismissInOrder` set to false', done => {
+    const handleDismiss = spy();
+
+    const wrapper = mount(
+      <NotificationStack
+        dismissInOrder={false}
+        notifications={notifications}
+        onDismiss={handleDismiss}
+      />
+    );
+
+    wrapper.update();
+
+    setTimeout(() => {
+      try {
+        expect(handleDismiss.calledTwice).to.equal(true);
+        done();
+      } catch (e) {
+        done(e);
+      }
+      // Add time due to each StackedNotification transition time ( > 300 )
+    }, mockNotification.dismissAfter + 340);
+  });
+
   it('onDismiss fires after `dismissAfter` value + transition time', done => {
     const handleDismiss = spy();
 
