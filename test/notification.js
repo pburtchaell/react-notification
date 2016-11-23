@@ -88,7 +88,7 @@ describe('<Notification />', () => {
   });
 
   it('should render message element', () => {
-    let element = (<div></div>);
+    const element = (<div />);
 
     // eslint-disable-next-line
     let message = shallow(
@@ -165,7 +165,7 @@ describe('<Notification />', () => {
     expect(handleClick.calledOnce).to.equal(true);
   });
 
-  it('onDismiss does not fire before `dismissAfter` value times out', done => {
+  it('onDismiss does not fire before `dismissAfter` value times out', (done) => {
     const handleDismiss = spy();
 
     // eslint-disable-next-line
@@ -189,7 +189,7 @@ describe('<Notification />', () => {
     }, mockNotification.dismissAfter / 2);
   });
 
-  it('onDismiss fires after `dismissAfter` value times out', done => {
+  it('onDismiss fires after `dismissAfter` value times out', (done) => {
     const handleDismiss = spy();
 
     // eslint-disable-next-line
@@ -212,7 +212,7 @@ describe('<Notification />', () => {
     }, mockNotification.dismissAfter);
   });
 
-  it('onDismiss fires once when dismissAfter is passed', done => {
+  it('onDismiss fires once when dismissAfter is passed', (done) => {
     const handleDismiss = spy();
 
     // eslint-disable-next-line

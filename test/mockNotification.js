@@ -4,9 +4,7 @@ export default {
   action: 'Dismiss',
   dismissAfter: 100,
   title: 'Title',
-  onClick: function handleClick() {
-    return;
-  },
+  onClick: function handleClick() {},
   barStyle: {
     background: 'rgb(2, 2, 2)'
   },

@@ -17,7 +17,7 @@ describe('<NotificationStack />', () => {
     const myNotification = Object.assign(
       {},
       mockNotification,
-      { onClick: (deactivate) => deactivate() }
+      { onClick: deactivate => deactivate() }
     );
 
     const wrapper = mount(
@@ -33,7 +33,7 @@ describe('<NotificationStack />', () => {
     expect(notification.prop('isActive')).to.equal(false);
   });
 
-  it('notifications dismissed independently if `dismissInOrder` set to false', done => {
+  it('notifications dismissed independently if `dismissInOrder` set to false', (done) => {
     const handleDismiss = spy();
 
     const wrapper = mount(
@@ -57,7 +57,7 @@ describe('<NotificationStack />', () => {
     }, mockNotification.dismissAfter + 340);
   });
 
-  it('onDismiss fires after `dismissAfter` value + transition time', done => {
+  it('onDismiss fires after `dismissAfter` value + transition time', (done) => {
     const handleDismiss = spy();
 
     const wrapper = mount(
@@ -80,7 +80,7 @@ describe('<NotificationStack />', () => {
     }, mockNotification.dismissAfter + 340);
   });
 
-  it('onDismiss fires on each Notification in the stack', done => {
+  it('onDismiss fires on each Notification in the stack', (done) => {
     const handleDismiss = spy();
 
     const wrapper = mount(
