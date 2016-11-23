@@ -6,7 +6,7 @@ function defaultStyleFactory(index, style) {
   return Object.assign(
     {},
     style,
-    { bottom: `${2 + index * 4}rem` }
+    { bottom: `${2 + (index * 4)}rem` }
   );
 }
 
