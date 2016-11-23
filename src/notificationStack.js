@@ -40,6 +40,8 @@ const NotificationStack = props => (
   </div>
 );
 
+/* eslint-disable react/no-unused-prop-types, react/forbid-prop-types */
+
 NotificationStack.propTypes = {
   dismissInOrder: PropTypes.bool,
   activeBarStyleFactory: PropTypes.func,
@@ -54,5 +56,7 @@ NotificationStack.defaultProps = {
   activeBarStyleFactory: defaultStyleFactory,
   barStyleFactory: defaultStyleFactory
 };
+
+/* eslint-enable no-alert, no-console */
 
 export default NotificationStack;

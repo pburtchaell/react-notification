@@ -19,11 +19,15 @@
     "react/jsx-uses-vars": 2,
     "react/jsx-boolean-value": 0,
     "react/react-in-jsx-scope": 2,
+    "react/jsx-filename-extension": 0,
     "padded-blocks": 0,
-    "block-scoped-var": 0
+    "block-scoped-var": 0,
+    "jsx-a11y/anchor-has-content": 0,
+    "jsx-a11y/no-static-element-interactions": 0
   },
   "plugins": [
-    "react"
+    "react",
+    "jsx-a11y"
   ],
   "globals": {
     "expect": true,
