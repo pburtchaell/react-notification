@@ -130,22 +130,17 @@ class Notification extends Component {
         <div className="notification-bar-wrapper">
           {this.props.title ? (
             <span
-              ref="title"
               className="notification-bar-title"
               style={this.getTitleStyle()}
             >
               {this.props.title}
             </span>
           ) : null}
-          <span
-            ref="message"
-            className="notification-bar-message"
-          >
+          <span className="notification-bar-message">
             {this.props.message}
           </span>
           {this.props.action ? (
             <span
-              ref="action"
               className="notification-bar-action"
               onClick={this.handleClick}
               style={this.getActionStyle()}
