@@ -43,18 +43,19 @@ const NotificationStack = props => (
 /* eslint-disable react/no-unused-prop-types, react/forbid-prop-types */
 
 NotificationStack.propTypes = {
-  dismissInOrder: PropTypes.bool,
   activeBarStyleFactory: PropTypes.func,
   barStyleFactory: PropTypes.func,
+  dismissInOrder: PropTypes.bool.isRequired,
   notifications: PropTypes.array.isRequired,
   onDismiss: PropTypes.func.isRequired
 };
 
+
 NotificationStack.defaultProps = {
-  dismissInOrder: true,
-  dismissAfter: 1000,
   activeBarStyleFactory: defaultStyleFactory,
-  barStyleFactory: defaultStyleFactory
+  barStyleFactory: defaultStyleFactory,
+  dismissInOrder: true,
+  dismissAfter: 1000
 };
 
 /* eslint-enable no-alert, no-console */
