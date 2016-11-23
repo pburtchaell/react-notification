@@ -20,7 +20,9 @@ class Notification extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.dismissAfter === false) return;
-    if (!nextProps.hasOwnProperty('isLast')) {
+
+    // See http://eslint.org/docs/rules/no-prototype-builtins
+    if (!{}.hasOwnProperty.call(nextProps, 'isLast')) {
       clearTimeout(this.dismissTimeout);
     }
     if (nextProps.onDismiss && nextProps.isActive && !this.props.isActive) {
