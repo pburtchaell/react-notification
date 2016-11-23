@@ -1,5 +1,7 @@
 # Contributing
 
+[![Dependency Status](https://david-dm.org/pburtchaell/react-notification.svg)](https://david-dm.org/pburtchaell/react-notification) [![Build Status](https://travis-ci.org/pburtchaell/react-notification.svg)](https://travis-ci.org/pburtchaell/react-notification)
+
 **It is imperative that pull requests include tests and documentation and issues follow guidelines.** Please be familar with the [GitHub Community Guidelines](https://help.github.com/articles/github-community-guidelines/) before contributing to this project. If you are new to open source, check out this 38 minute course on [how to contribute to open source on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github). It's free! :smile:
 
 ## Getting Started
