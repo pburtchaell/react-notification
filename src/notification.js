@@ -61,7 +61,7 @@ class Notification extends Component {
       borderSizing: 'border-box',
       boxShadow: '0 0 1px 1px rgba(10, 10, 11, .125)',
       cursor: 'default',
-      WebKittransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
+      WebKitTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
       MozTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
       msTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
       OTransition: '.5s cubic-bezier(0.89, 0.01, 0.5, 1.1)',
