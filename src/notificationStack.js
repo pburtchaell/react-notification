@@ -18,9 +18,13 @@ function defaultStyleFactory(index, style) {
 const NotificationStack = props => (
   <div className="notification-list">
     {props.notifications.map((notification, index) => {
-      const dismissAfter = notification.dismissAfter || props.dismissAfter;
       const isLast = index === 0 && props.notifications.length === 1;
       const dismissNow = isLast || !props.dismissInOrder;
+      let { dismissAfter } = notification;
+      if (dismissAfter !== false) {
+        if (dismissAfter == null) dismissAfter = props.dismissAfter;
+        if (!dismissNow) dismissAfter += index * 1000;
+      }
       const barStyle = props.barStyleFactory(index, notification.barStyle);
       const activeBarStyle = props.activeBarStyleFactory(index, notification.activeBarStyle);
 
@@ -30,7 +34,7 @@ const NotificationStack = props => (
           key={notification.key}
           isLast={isLast}
           action={notification.action || props.action}
-          dismissAfter={dismissNow ? dismissAfter : dismissAfter + (index * 1000)}
+          dismissAfter={dismissAfter}
           onDismiss={props.onDismiss.bind(this, notification)}
           activeBarStyle={activeBarStyle}
           barStyle={barStyle}
