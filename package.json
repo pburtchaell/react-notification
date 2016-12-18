@@ -1,15 +1,15 @@
 {
   "name": "react-notification",
   "version": "6.5.2",
-  "description": "Snackbar style notification component for React.",
+  "description": "Snackbar style notification component for React",
   "main": "dist/index.js",
   "scripts": {
-    "precommit": "echo 'Running pre-commit hooks...' && npm test",
     "prepublish": "npm run build",
+    "precommit": "echo 'Running pre-commit hooks...' && npm test",
     "prebuild": "npm test",
     "build": "`npm bin`/babel src -d dist",
     "pretest": "npm run lint",
-    "test": "NODE_ENV=test `npm bin`/mocha --compilers js:babel-core/register --reporter spec --recursive --timeout 5000 test/setup.js test/**/*.js",
+    "test": "./bin/test.sh",
     "lint": "`npm bin`/eslint src/**/*.js test/**/*.js",
     "start": "node examples/server.js"
   },
@@ -28,6 +28,7 @@
     "ui",
     "notify",
     "notification",
+    "notification stack",
     "snackbar"
   ],
   "author": "Patrick Burtchaell <patrick@pburtchaell.com> (pburtchaell.com)",

@@ -18,5 +18,3 @@ var props = {
 
 <Notfication  {...props} />
 ```
-
-If you have questions, please feel free to create an issue on GitHub or message me (@pburtchaell) on the [Reactiflux Slack community](http://www.reactiflux.com/).
