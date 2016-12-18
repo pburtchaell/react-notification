@@ -1,181 +1,22 @@
-# react-notification
+# React Notification
 
-[![npm version](https://badge.fury.io/js/react-notification.svg)](http://badge.fury.io/js/react-notification) [![Build Status](https://travis-ci.org/pburtchaell/react-notification.svg)](https://travis-ci.org/pburtchaell/react-notification) [![npm downloads](https://img.shields.io/npm/dm/react-notification.svg?style=flat)](http://badge.fury.io/js/react-notification) 
+[![npm version](https://badge.fury.io/js/react-notification.svg)](http://badge.fury.io/js/react-notification) [![Build Status](https://travis-ci.org/pburtchaell/react-notification.svg)](https://travis-ci.org/pburtchaell/react-notification) [![npm downloads](https://img.shields.io/npm/dm/react-notification.svg?style=flat)](http://badge.fury.io/js/react-notification)
 
-## Overview
+![](https://raw.githubusercontent.com/pburtchaell/react-notification/master/docs/example-b.gif)
 
-![](https://raw.githubusercontent.com/pburtchaell/react-notification/master/examples/example.gif)
-![](https://raw.githubusercontent.com/pburtchaell/react-notification/master/examples/stack.gif)
+React Notification is a component designed to provide snackbar notification messages and notification stacks. The default visual style and interaction follows [Material Design guidelines for snackbards](http://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-usage), but it can be fully customized.
 
-This is a component designed to provide "[snackbar](http://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-usage)" notification messages and notification stacks (similar to how notifications stack on OS X). I would suggest reading the usage guidelines for [snackbars](http://www.google.com/design/spec/components/snackbars-toasts.html#).
+## Docs and Help
 
-## Getting Started
+- [Guides](/docs/guides/)
+- [Introduction](/docs/introduction.md)
+- [Examples](/examples)
+- [Releases](https://github.com/pburtchaell/react-notification/releases)
+- [Upgrading versions](/UPGRADING.md)
 
-Install the component via npm: `npm install react-notification`.
+## Sponsor
 
-If you are using the React 0.13.x or lower, you can install the previously compatible version of this component with `npm i react-notification@2.3.0 -S`. The current version only works with React 0.14.x.
-
-Please read the [contributing guide](/CONTRUBUTING.md) if you are interested in contributing. If you are coming from version 1.0.0, there is an [upgrade guide](/UPGRADING.md) to help you make the switch. If you have questions, please feel free to create an issue on GitHub.
-
-Note the component uses `Object.assign`. If you are compiling with Babel, you should include the Babel Polyfill in your build to ensure the method works.
-
-## Usage
-
-Single notification:
-
-```js
-import { Notification } from 'react-notification';
-
-<Notification
-  isActive={boolean}
-  message={string}
-  action={string}
-  onClick={myClickHander}
-/>
-```
-
-Notification stack:
-
-```js
-import { NotificationStack } from 'react-notification';
-import { OrderedSet } from 'immutable';
-
-constructor () {
-  super();
-  this.state = {
-    notifications: OrderedSet()
-  };
-}
-
-addNotification () {
-  const newCount = count + 1;
-  return this.setState({
-    notifications: this.state.notifications.add({
-      message: `Notification ipsum...`,
-      key: 'some UID',
-      action: 'Dismiss',
-      onClick: (deactivate) => {
-        deactivate();
-        setTimeout(() => this.removeNotification('some UID'), 400);
-      },
-    })
-  });
-}
-
-removeNotification (count) {
-  this.setState({
-    notifications: this.state.notifications.filter(n => n.key !== count)
-  })
-}
-
-render () {
-  return (
-    <NotificationStack
-      notifications={this.state.notifications.toArray()}
-      onDismiss={notification => this.setState({
-        notifications: this.state.notifications.delete(notification)
-      })}
-    />
-  );
-}
-```
-
-See the [examples](examples/notification-tree) for more context on how to use a notification stack.
-
-### Props
-
-For Notification component:
-
-| Name            | Type                    | Description                                                 | Required  | Default                    |
-|-----------------|-------------------------|-------------------------------------------------------------|-----------|----------------------------|
-| isActive        | boolean                 | If true, the notification is visible                        | true      | `false`                    |
-| message         | string or React element | The message or component for the notification               | true      |                            |
-| title           | string                  | The title for the notification                              |           |                            |
-| action          | string                  | The name of the action, e.g., "close" or "undo"             |           |                            |
-| style           | boolean                 | Setting this prop to `false` will disable all inline styles |           |                            |
-| barStyle        | object                  | Custom snackbar styles                                      |           |                            |
-| activeBarStyle  | object                  | Custom snackbar styles when the bar is active               |           |                            |
-| actionStyle     | object                  | Custom action styles                                        |           |                            |
-| className       | string                  | Custom class to apply to the top-level component            |           |                            |
-| activeClassName | string                  | Custom class to apply to the top-level component when active|           | `'notification-bar-active'`|
-| dismissAfter    | number or false         | Timeout for onDismiss event                                 |           | `2000`                     |
-
-The `style` prop useful if you are not using React inline styles and would like to use CSS instead. See [styles](#styles) for more.
-
-For NotificationStack component:
-
-| Name                  | Type  | Description                                              | Required  | Default  |
-|-----------------------|-------|----------------------------------------------------------|---------- |----------|
-| notifications         | array | Array of notifications to render                         | true      |          |
-| dismissInOrder        | bool  | If false, notification dismiss timers start immediately  | false     | true     |
-| barStyleFactory       | func  | create the style of the notification                     | false     | fn       |
-| activeBarStyleFactory | func  | create the style of the active notification              | false     | fn       |
-
-**Update** `v5.0.3`: Now notifications used in a stack _can_ have all properties included in the regular notification component.
-
-## Events
-
-For Notification component:
-
-| Event     | Description                                                |
-|-----------|------------------------------------------------------------|
-| onClick   | Callback function to run when the action is clicked        |
-| onDismiss | Callback function to run when dismissAfter timer runs out  |
-
-onClick is called with parameter *deactivate*, which is a function and can be called to set the notification to inactive. Used to activate notification exit animation on click.
-
-For NotificationStack component:
-
-| Event     | Description                                                                  | Arguments                                                 |
-|-----------|------------------------------------------------------------------------------|-----------------------------------------------------------|
-| onDismiss | Callback function to run when dismissAfter timer runs out for a notification | The object for the notification currently being dismissed |
-
-## Styles
-
-This component does use basic inline CSS to style the position and visibility of the notification. You have two options for adding additional styles:
-
-1. Remove all inline styles and use only CSS.
-2. Add additional inline styles via the style prop.
-
-The DOM tree of the component for reference:
-
-```html
-<div class="notification-bar">
-  <div class="notification-bar-wrapper" onClick={this.props.onClick}>
-    <span class="notification-bar-message">{this.props.message}</span>
-    <span class="notification-bar-action">{this.props.action}</span>
-  </div>
-</div>
-```
-
-To use additional inline styles, return two objects. The `bar` object applies styles to the entire notification "snackbar" and the `action` object applies styles to the action message. Under the hood, this uses `Object.assign` to handle properly combining styles.
-
-I would highly suggest using this method since the styles included in the component by default handle the visibility of the notification. If you remove these styles, the component won't actually show or hide itself.
-
-### barStyleFactory and activeBarStyleFactory NotificationStack props
-
-These two function have the following signature:
-
-```js
-(index: Number, style: Object|Void) => Object
-```
-
-Where `index` is the index of the notification in the notifications array and
-`style` is the style property of the individual notification.
-
-This function is used to dynamically set the style of each notification in the
-stack. The default function adds the `bottom` style property to correctly
-position of the notification in a stack.
-
-```js
-function defaultStyleFactory(index, style) {
-  return Object.assign(
-    {},
-    style,
-    { bottom: `${2 + index * 4}rem` }
-  );
-}
-```
+To help cover the cost of my time spent maintaining open source software (OSS) projects, **I'm looking for a small sponsor.** If your company is interested, [send me an email](mailto:patrick@pburtchaell.com) and we can chat! If you like my code and you're interested in buying me a drink, I have a [Gratipay](https://gratipay.com/~pburtchaell/). Thanks! I greatly appreciate your support and I'm grateful to be a part of the OSS and GitHub community.
 
 ---
 Copyright (c) 2015 Patrick Burtchaell. [Licensed with The MIT License (MIT)](https://raw.githubusercontent.com/pburtchaell/react-notification/master/LICENSE). [Gratipay](https://gratipay.com/~pburtchaell/).
