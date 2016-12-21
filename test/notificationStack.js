@@ -243,4 +243,81 @@ describe('<NotificationStack />', () => {
     const notification = stack.find(Notification);
     expect(notification.prop('activeBarStyle').left).to.equal('4rem');
   });
+
+  /**
+   * Test: Global handling of onClick:
+   *
+   * If a child notification in the stack does not have an onClick property,
+   * then fire onClick at the parent (<NotificationStack />) level.
+   *
+   * Because the mockNotification we used for other tests includes an
+   * onClick property, we need use a different mock notification.
+   */
+  it('onClick fires globally when notification action is clicked', () => {
+    const handleClickGlobal = spy();
+
+    // Render a notification stack with one notification child
+    const wrapper = mount(
+      <NotificationStack
+        notifications={[{
+          key: '0',
+          message: 'Foo',
+          action: 'Dismiss',
+          dismissAfter: 100,
+          title: 'Title',
+
+          // No onClick property on the notification child
+          // onClick: () => {}
+        }]}
+
+        // Instead, it is handled globally
+        onClick={handleClickGlobal}
+        onDismiss={() => {}}
+      />
+    );
+
+    // Simulate a click on the notification in the stack
+    const notification = wrapper.find('.notification-bar-action');
+    notification.simulate('click');
+
+    // Expect handleClick to be caled once
+    expect(handleClickGlobal).to.have.property('callCount', 1);
+  });
+
+  /**
+   * Test: Local handling of onClick:
+   *
+   * If a child notification in the stack has an onClick property,
+   * then fire onClick on the child.
+   */
+  it('onClick fires locally when notification action is clicked', () => {
+    const handleClickLocal = spy();
+    const handleClickGlobal = spy();
+
+    // Render a notification stack with one notification child
+    const wrapper = mount(
+      <NotificationStack
+        notifications={[{
+          key: mockNotification.key,
+          message: mockNotification.message,
+          action: mockNotification.action,
+          dismissAfter: mockNotification.dismissAfter,
+          title: mockNotification.title,
+          onClick: handleClickLocal
+        }]}
+
+        // Instead, it is handled globally
+        onClick={handleClickGlobal}
+        onDismiss={() => {}}
+      />
+    );
+
+    // Simulate a click on the notification in the stack
+    const notification = wrapper.find('.notification-bar-action');
+    notification.simulate('click');
+
+    // Expect local to be called once and global to be called 0
+    expect(handleClickLocal).to.have.property('callCount', 1);
+    expect(handleClickGlobal).to.have.property('callCount', 0);
+  });
 });

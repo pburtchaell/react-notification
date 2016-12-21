@@ -20,6 +20,11 @@ const NotificationStack = props => (
     {props.notifications.map((notification, index) => {
       const isLast = index === 0 && props.notifications.length === 1;
       const dismissNow = isLast || !props.dismissInOrder;
+
+      // Allow onClick from notification stack or individual notifications
+      const onClick = notification.onClick || props.onClick;
+      const onDismiss = props.onDismiss;
+
       let { dismissAfter } = notification;
       if (dismissAfter !== false) {
         if (dismissAfter == null) dismissAfter = props.dismissAfter;
@@ -35,7 +40,8 @@ const NotificationStack = props => (
           isLast={isLast}
           action={notification.action || props.action}
           dismissAfter={dismissAfter}
-          onDismiss={props.onDismiss.bind(this, notification)}
+          onDismiss={onDismiss.bind(this, notification)}
+          onClick={onClick.bind(this, notification)}
           activeBarStyle={activeBarStyle}
           barStyle={barStyle}
         />
@@ -51,7 +57,8 @@ NotificationStack.propTypes = {
   barStyleFactory: PropTypes.func,
   dismissInOrder: PropTypes.bool.isRequired,
   notifications: PropTypes.array.isRequired,
-  onDismiss: PropTypes.func.isRequired
+  onDismiss: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 
@@ -59,7 +66,8 @@ NotificationStack.defaultProps = {
   activeBarStyleFactory: defaultStyleFactory,
   barStyleFactory: defaultStyleFactory,
   dismissInOrder: true,
-  dismissAfter: 1000
+  dismissAfter: 1000,
+  onClick: () => {}
 };
 
 /* eslint-enable no-alert, no-console */
