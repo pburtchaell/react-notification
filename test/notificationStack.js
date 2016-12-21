@@ -103,6 +103,43 @@ describe('<NotificationStack />', () => {
     }, mockNotification.dismissAfter + 340);
   });
 
+  it('should dismiss when `dismissAfter` is updated to a number after it was `false`', (done) => {
+    const handleDismiss = spy();
+
+    let dismissAfter = 0;
+
+    const wrapper = mount(
+      <NotificationStack
+        dismissInOrder={false}
+        notifications={[{ ...mockNotification, dismissAfter: false }]}
+        onDismiss={handleDismiss}
+      />
+    );
+    wrapper.update();
+
+    const isDismissed = (called, callback) => {
+      setTimeout(() => {
+        try {
+          expect(handleDismiss.called).to.equal(called);
+          callback();
+        } catch (err) {
+          callback(err);
+        }
+        // Add time due to each StackedNotification transition time ( > 300 )
+      }, dismissAfter + 440);
+    };
+
+    isDismissed(false, (err) => {
+      if (err) return done(err);
+      dismissAfter = 110;
+      wrapper.setProps({
+        notifications: [{ ...mockNotification, dismissAfter }]
+      }, () => {
+        isDismissed(true, done);
+      });
+    });
+  });
+
   it('onDismiss fires on each Notification in the stack', (done) => {
     const handleDismiss = spy();
 
