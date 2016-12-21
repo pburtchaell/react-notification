@@ -21,17 +21,20 @@ const NotificationStack = props => (
       const isLast = index === 0 && props.notifications.length === 1;
       const dismissNow = isLast || !props.dismissInOrder;
 
+      // Handle styles
+      const barStyle = props.barStyleFactory(index, notification.barStyle);
+      const activeBarStyle = props.activeBarStyleFactory(index, notification.activeBarStyle);
+
       // Allow onClick from notification stack or individual notifications
       const onClick = notification.onClick || props.onClick;
       const onDismiss = props.onDismiss;
 
       let { dismissAfter } = notification;
+
       if (dismissAfter !== false) {
         if (dismissAfter == null) dismissAfter = props.dismissAfter;
         if (!dismissNow) dismissAfter += index * 1000;
       }
-      const barStyle = props.barStyleFactory(index, notification.barStyle);
-      const activeBarStyle = props.activeBarStyleFactory(index, notification.activeBarStyle);
 
       return (
         <StackedNotification
@@ -55,10 +58,11 @@ const NotificationStack = props => (
 NotificationStack.propTypes = {
   activeBarStyleFactory: PropTypes.func,
   barStyleFactory: PropTypes.func,
-  dismissInOrder: PropTypes.bool.isRequired,
+  dismissInOrder: PropTypes.bool,
   notifications: PropTypes.array.isRequired,
   onDismiss: PropTypes.func.isRequired,
   onClick: PropTypes.func,
+  action: PropTypes.string
 };
 
 
