@@ -34,6 +34,7 @@ class StackedNotification extends Component {
 
   dismiss(dismissAfter) {
     if (dismissAfter === false) return;
+
     this.dismissTimeout = setTimeout(this.setState.bind(this, {
       isActive: false
     }), dismissAfter);
