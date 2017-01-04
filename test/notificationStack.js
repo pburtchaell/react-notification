@@ -80,6 +80,24 @@ describe('<NotificationStack />', () => {
     }, mockNotification.dismissAfter + 340);
   });
 
+  it('should fire onClick with argument `deactivate`', (done) => {
+    const wrapper = mount(
+      <NotificationStack
+        notifications={[{
+          ...mockNotification,
+          onClick: (notification, deactivate) => {
+            expect(deactivate).to.be.a('function');
+            done();
+          }
+        }]}
+        onDismiss={() => null}
+      />
+    );
+
+    const notification = wrapper.find('.notification-bar-action');
+    notification.simulate('click');
+  });
+
   it('should dismiss when `dismissAfter` is updated to a number after it was `false`', (done) => {
     const handleDismiss = spy();
 
