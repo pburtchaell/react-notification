@@ -2,7 +2,7 @@
 
 :point_right: **Found a bug?** [Read this](https://github.com/pburtchaell/react-notification/blob/master/.github/CONTRIBUTING.md#found-a-bug).
 :point_right: **Have a feature request?** [Read this](https://github.com/pburtchaell/react-notification/blob/master/.github/CONTRIBUTING.md#have-a-feature-request).
-:point_right: **Need help?** [Read this](https://github.com/pburtchaell/react-notification/blob/master/.github/CONTRIBUTING.md#need-help).
+:point_right: **Need help?** [Read this](https://github.com/pburtchaell/react-notification/blob/master/.github/CONTRIBUTING.md#need-help-raising_hand).
 
 If you delete this template and do not provide the information we need to resolve your issue, *your issue will be closed* and you will be redirected to the contributing guide. :skull:
 
