@@ -4,7 +4,7 @@
 
 ![](https://raw.githubusercontent.com/pburtchaell/react-notification/master/docs/example-b.gif)
 
-React Notification is a component designed to provide snackbar notification messages and notification stacks. The default visual style and interaction follows [Material Design guidelines for snackbards](http://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-usage), but it can be fully customized.
+React Notification is a component designed to provide snackbar notification messages and notification stacks. The default visual style and interaction follows [Material Design guidelines for snackbars](http://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-usage), but it can be fully customized.
 
 ## Docs and Help
 
