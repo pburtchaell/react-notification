@@ -13,6 +13,7 @@ export default {
   onClick: PropTypes.func,
   style: PropTypes.bool,
   actionStyle: PropTypes.object,
+  titleStyle: PropTypes.object,
   barStyle: PropTypes.object,
   activeBarStyle: PropTypes.object,
   dismissAfter: PropTypes.oneOfType([

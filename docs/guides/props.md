@@ -12,6 +12,7 @@
 | barStyle        | object                  | Custom snackbar styles                                      |           |                            |
 | activeBarStyle  | object                  | Custom snackbar styles when the bar is active               |           |                            |
 | actionStyle     | object                  | Custom action styles                                        |           |                            |
+| titleStyle      | object                  | Custom title styles                                         |           |                            |
 | className       | string                  | Custom class to apply to the top-level component            |           |                            |
 | activeClassName | string                  | Custom class to apply to the top-level component when active|           | `'notification-bar-active'`|
 | dismissAfter    | number or false         | Timeout for onDismiss event                                 |           | `2000`                     |
