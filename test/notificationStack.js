@@ -12,7 +12,7 @@ describe('<NotificationStack />', () => {
     ];
   });
 
-  it('notification prop isActive set to false after deactivate called in onClick', () => {
+  it('notification prop isActive set to false after deactivate called in onClick', (done) => {
 
     const myNotification = Object.assign(
       {},
@@ -28,9 +28,13 @@ describe('<NotificationStack />', () => {
     );
 
     const notification = wrapper.find(Notification);
-    setTimeout(() => expect(notification.prop('isActive')).to.equal(true), 10);
-    notification.simulate('click');
-    expect(notification.prop('isActive')).to.equal(false);
+    const action = notification.find('.notification-bar-action');
+    setTimeout(() => {
+      expect(notification.prop('isActive')).to.equal(true);
+      action.simulate('click');
+      expect(notification.prop('isActive')).to.equal(false);
+      done();
+    }, 10);
   });
 
   it('notifications dismissed independently if `dismissInOrder` set to false', (done) => {
