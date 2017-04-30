@@ -17,7 +17,7 @@ describe('<NotificationStack />', () => {
     const myNotification = Object.assign(
       {},
       mockNotification,
-      { onClick: deactivate => deactivate() }
+      { onClick: (notification, deactivate) => deactivate() }
     );
 
     const wrapper = mount(
