@@ -27,18 +27,18 @@ I would highly suggest using this method since the styles included in the compon
 These two function have the following signature:
 
 ```js
-(index: Number, style: Object|Void) => Object
+(index: Number, style: Object|Void, notification: Object) => Object
 ```
 
-Where `index` is the index of the notification in the notifications array and
-`style` is the style property of the individual notification.
+Where `index` is the index of the notification in the notifications array,
+`style` is the style property of the individual notification and `notification` is the notification itself.
 
 This function is used to dynamically set the style of each notification in the
 stack. The default function adds the `bottom` style property to correctly
 position of the notification in a stack.
 
 ```js
-function defaultStyleFactory(index, style) {
+function defaultStyleFactory(index, style, notification) {
   return Object.assign(
     {},
     style,
