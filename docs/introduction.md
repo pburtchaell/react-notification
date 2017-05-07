@@ -37,7 +37,7 @@ addNotification () {
       message: `Notification ipsum...`,
       key: 'some UID',
       action: 'Dismiss',
-      onClick: (deactivate) => {
+      onClick: (notification, deactivate) => {
         deactivate();
         this.removeNotification('some UID');
       },
