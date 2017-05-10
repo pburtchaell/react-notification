@@ -23,8 +23,12 @@ const NotificationStack = props => (
       const dismissNow = isLast || !props.dismissInOrder;
 
       // Handle styles
-      const barStyle = props.barStyleFactory(index, notification.barStyle);
-      const activeBarStyle = props.activeBarStyleFactory(index, notification.activeBarStyle);
+      const barStyle = props.barStyleFactory(index, notification.barStyle, notification);
+      const activeBarStyle = props.activeBarStyleFactory(
+        index,
+        notification.activeBarStyle,
+        notification
+      );
 
       // Allow onClick from notification stack or individual notifications
       const onClick = notification.onClick || props.onClick;

@@ -179,6 +179,26 @@ describe('<NotificationStack />', () => {
     expect(notification.prop('barStyle').background).to.equal('rgb(2, 2, 2)');
   });
 
+  it('batStyleFactory should have access to notification', () => {
+    const styleFactory = (index, style, notification) => Object.assign(
+      {},
+      style,
+      { bottom: `${index}px`, color: notification.key === 1111111 ? 'green' : 'red' }
+    );
+
+    const stack = mount(
+      <NotificationStack
+        notifications={[mockNotification]}
+        barStyleFactory={styleFactory}
+        onDismiss={() => {}}
+      />
+    );
+
+    const notification = stack.find(Notification);
+
+    expect(notification.prop('barStyle').color).to.equal('green');
+  });
+
   it('activeBarStyleFactory should set correct style on notification', () => {
     const styleFactory = (index, style) => Object.assign(
       {},
@@ -217,6 +237,26 @@ describe('<NotificationStack />', () => {
     const notification = stack.find(Notification);
 
     expect(notification.prop('activeBarStyle').left).to.equal('4rem');
+  });
+
+  it('activeBarStyleFactory should have access to notification', () => {
+    const styleFactory = (index, style, notification) => Object.assign(
+      {},
+      style,
+      { bottom: `${index}px`, color: notification.key === 1111111 ? 'green' : 'red' }
+    );
+
+    const stack = mount(
+      <NotificationStack
+        notifications={[mockNotification]}
+        activeBarStyleFactory={styleFactory}
+        onDismiss={() => {}}
+      />
+    );
+
+    const notification = stack.find(Notification);
+
+    expect(notification.prop('activeBarStyle').color).to.equal('green');
   });
 
   /**
