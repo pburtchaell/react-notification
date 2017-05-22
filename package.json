@@ -75,6 +75,6 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
-    "prop-types": "^15.5.8"
+    "prop-types": "^15.5.10"
   }
 }
