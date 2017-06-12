@@ -68,7 +68,7 @@ interface NotificationStackProps {
    * */
   dismissInOrder?: boolean;
   /** Array of notifications to render. */
-  notifications: NotificationProps[];
+  notifications: NotificationObject[];
   /**
    * Callback function to run when dismissAfter timer runs out
    * @param notification  Notification currently being dismissed.
@@ -76,6 +76,10 @@ interface NotificationStackProps {
   onDismiss?(
     notification: NotificationProps
   ): void;
+}
+
+export interface NotificationObject extends NotificationProps {
+  key: number | string;
 }
 
 export class Notification extends Component<NotificationProps, {}> {}
