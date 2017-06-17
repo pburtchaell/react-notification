@@ -7,10 +7,10 @@
     "prepublish": "npm run build",
     "precommit": "echo 'Running pre-commit hooks...' && npm test",
     "prebuild": "npm test",
-    "build": "`npm bin`/babel src -d dist",
+    "build": "node_modules/.bin/babel src -d dist",
     "pretest": "npm run lint",
     "test": "./bin/test.sh",
-    "lint": "`npm bin`/eslint src/**/*.js test/**/*.js",
+    "lint": "node_modules/.bin/eslint src/**/*.js test/**/*.js",
     "start": "node examples/server.js"
   },
   "pre-commit": [

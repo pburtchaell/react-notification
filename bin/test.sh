@@ -4,7 +4,7 @@
 # Param 1: the reporter to use, defaults to spec
 runTests()
 {
-  `npm bin`/mocha \
+  node_modules/.bin/mocha \
   --compilers js:babel-core/register \
   --reporter ${1-spec} \
   --recursive --timeout 5000 \
@@ -15,7 +15,7 @@ runTests()
 runIstanbul()
 {
   NODE_ENV=test `npm bin`/istanbul cover \
-  `npm bin`/_mocha \
+  node_modules/.bin/_mocha \
   -- -u exports --compilers js:babel-core/register \
   --report lcovonly \
   test/polyfills.js test/*.js
