@@ -1,4 +1,5 @@
 import React from 'react';
+import sinon from 'sinon';
 import { Notification } from '../src/index';
 import mockNotification from './mockNotification';
 
@@ -27,6 +28,39 @@ describe('<Notification />', () => {
   const message = wrapper.find(messageClassName);
   const action = wrapper.find(actionClassName);
   const title = wrapper.find(titleClassName);
+
+  describe('title as React.PropTypes.node', () => {
+    before(() => {
+      // Since react will console.error propType warnings,
+      // we stub console.error to raise an error
+      // so the test runner will pick it up.
+      sinon.stub(console, 'error').callsFake((warning) => {
+        throw new Error(warning);
+      });
+    });
+
+    after(() => {
+      /* eslint-disable no-console */
+      console.error.restore();
+      /* eslint-enable no-console */
+    });
+
+    it('renders without error', () => {
+      const icon = <i aria-hidden="true" className="warning" />;
+      shallow(
+        <Notification
+          message={mockNotification.message}
+          action={mockNotification.action}
+          barStyle={mockNotification.barStyle}
+          actionStyle={mockNotification.actionStyle}
+          activeBarStyle={mockNotification.activeBarStyle}
+          onClick={mockNotification.onClick}
+          dismissAfter={mockNotification.dismissAfter}
+          title={icon}
+        />
+      );
+    });
+  });
 
   it('has the className `notification-bar`', () => {
     expect(component).to.have.className('notification-bar');
