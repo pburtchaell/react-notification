@@ -24,5 +24,8 @@ export default {
   className: PropTypes.string,
   activeClassName: PropTypes.string,
   isActive: PropTypes.bool,
-  title: PropTypes.string
+  title: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node
+  ])
 };
