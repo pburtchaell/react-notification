@@ -27,3 +27,4 @@ The `style` prop useful if you are not using React inline styles and would like 
 | dismissInOrder        | bool  | If false, notification dismiss timers start immediately  | false     | true     |
 | barStyleFactory       | func  | create the style of the notification                     | false     | fn       |
 | activeBarStyleFactory | func  | create the style of the active notification              | false     | fn       |
+| actionStyleFactory    | func  | create the style of the actions                          | false     | fn       |
