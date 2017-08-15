@@ -179,7 +179,7 @@ describe('<NotificationStack />', () => {
     expect(notification.prop('barStyle').background).to.equal('rgb(2, 2, 2)');
   });
 
-  it('batStyleFactory should have access to notification', () => {
+  it('barStyleFactory should have access to notification', () => {
     const styleFactory = (index, style, notification) => Object.assign(
       {},
       style,
@@ -257,6 +257,66 @@ describe('<NotificationStack />', () => {
     const notification = stack.find(Notification);
 
     expect(notification.prop('activeBarStyle').color).to.equal('green');
+  });
+
+  it('actionStyleFactory should set correct style on notification', () => {
+    const styleFactory = (index, style) => Object.assign(
+      {},
+      style,
+      { color: 'blue' }
+    );
+
+    const stack = mount(
+      <NotificationStack
+        notifications={[mockNotification]}
+        actionStyleFactory={styleFactory}
+        onDismiss={() => {}}
+      />
+    );
+
+    const notification = stack.find(Notification);
+
+    expect(notification.prop('actionStyle').color).to.equal('blue');
+  });
+
+  it('actionStyleFactory should respect notification actionBarStyle', () => {
+    const styleFactory = (index, style) => Object.assign(
+      {},
+      style,
+      { color: 'blue' }
+    );
+
+    const stack = mount(
+      <NotificationStack
+        notifications={[mockNotification]}
+        actionStyleFactory={styleFactory}
+        onDismiss={() => {}}
+      />
+    );
+
+    const notification = stack.find(Notification);
+
+    expect(notification.prop('actionStyle').letterSpacing).to.equal('.125ex');
+  });
+
+  it('actionStyleFactory should have access to notification', () => {
+    const styleFactory = (index, style, notification) => Object.assign(
+      {},
+      style,
+      { color: notification.key === 1111111 ? 'green' : 'red' }
+    );
+
+    const stack = mount(
+      <NotificationStack
+        notifications={[mockNotification]}
+        actionStyleFactory={styleFactory}
+        onDismiss={() => {}}
+      />
+    );
+
+    const notification = stack.find(Notification);
+
+    expect(notification.prop('actionStyle').color).to.equal('green');
   });
 
   /**

@@ -3,11 +3,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StackedNotification from './stackedNotification';
 
-function defaultStyleFactory(index, style) {
+function defaultBarStyleFactory(index, style) {
   return Object.assign(
     {},
     style,
     { bottom: `${2 + (index * 4)}rem` }
+  );
+}
+
+function defaultActionStyleFactory(index, style) {
+  return Object.assign(
+    {},
+    style,
+    {}
   );
 }
 
@@ -24,6 +32,7 @@ const NotificationStack = props => (
 
       // Handle styles
       const barStyle = props.barStyleFactory(index, notification.barStyle, notification);
+      const actionStyle = props.actionStyleFactory(index, notification.actionStyle, notification);
       const activeBarStyle = props.activeBarStyleFactory(
         index,
         notification.activeBarStyle,
@@ -52,6 +61,7 @@ const NotificationStack = props => (
           onClick={onClick.bind(this, notification)}
           activeBarStyle={activeBarStyle}
           barStyle={barStyle}
+          actionStyle={actionStyle}
         />
       );
     })}
@@ -62,6 +72,7 @@ const NotificationStack = props => (
 NotificationStack.propTypes = {
   activeBarStyleFactory: PropTypes.func,
   barStyleFactory: PropTypes.func,
+  actionStyleFactory: PropTypes.func,
   dismissInOrder: PropTypes.bool,
   notifications: PropTypes.array.isRequired,
   onDismiss: PropTypes.func.isRequired,
@@ -70,8 +81,9 @@ NotificationStack.propTypes = {
 };
 
 NotificationStack.defaultProps = {
-  activeBarStyleFactory: defaultStyleFactory,
-  barStyleFactory: defaultStyleFactory,
+  activeBarStyleFactory: defaultBarStyleFactory,
+  barStyleFactory: defaultBarStyleFactory,
+  actionStyleFactory: defaultActionStyleFactory,
   dismissInOrder: true,
   dismissAfter: 1000,
   onClick: () => {}

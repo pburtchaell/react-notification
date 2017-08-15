@@ -9,7 +9,8 @@ export default {
     background: 'rgb(2, 2, 2)'
   },
   actionStyle: {
-    color: 'rgb(2, 2, 2)'
+    color: 'rgb(2, 2, 2)',
+    letterSpacing: '.125ex'
   },
   activeBarStyle: {
     left: '4rem'
