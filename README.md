@@ -1,5 +1,7 @@
 # React Notification
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/pburtchaell/react-notification.svg)](https://greenkeeper.io/)
+
 [![npm version](https://badge.fury.io/js/react-notification.svg)](http://badge.fury.io/js/react-notification) [![Build Status](https://travis-ci.org/pburtchaell/react-notification.svg)](https://travis-ci.org/pburtchaell/react-notification) [![npm downloads](https://img.shields.io/npm/dm/react-notification.svg?style=flat)](http://badge.fury.io/js/react-notification)
 
 ![](https://raw.githubusercontent.com/pburtchaell/react-notification/master/docs/example-b.gif)
