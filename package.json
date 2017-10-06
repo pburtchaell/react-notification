@@ -9,13 +9,11 @@
     "prebuild": "npm test",
     "build": "node_modules/.bin/babel src -d dist",
     "pretest": "npm run lint",
-    "test": "./bin/test.sh",
+    "test": "cross-env ./bin/test.sh",
     "lint": "node_modules/.bin/eslint src/**/*.js test/**/*.js",
     "start": "node examples/server.js"
   },
-  "pre-commit": [
-    "precommit"
-  ],
+  "pre-commit": ["precommit"],
   "repository": {
     "type": "git",
     "url": "https+git://github.com/pburtchaell/react-notification"
@@ -52,6 +50,7 @@
     "chai": "^3.5.0",
     "chai-enzyme": "^0.6.0",
     "cheerio": "^0.22.0",
+    "cross-env": "^5.0.5",
     "enzyme": "^2.8.2",
     "eslint": "^3.10.2",
     "eslint-config-airbnb": "^13.0.0",
