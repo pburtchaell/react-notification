@@ -1,7 +1,8 @@
-example/
+.github/
+bin/
+examples/
 src/
-.eslintrc
 .babelrc
-Makefile
-webpack.local.config.js
-webpack.local.server.js
+.eslintrc
+.editorcongfig
+.travis.yml
