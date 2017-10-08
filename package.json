@@ -1,6 +1,6 @@
 {
   "name": "react-notification",
-  "version": "6.8.0",
+  "version": "6.8.1",
   "description": "Snackbar style notification component for React",
   "main": "dist/index.js",
   "scripts": {
