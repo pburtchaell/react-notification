@@ -1,6 +1,6 @@
 ## Styles
 
-This component uses basic inline CSS to style the position and visibility of the notification.I would suggest reading the usage guidelines for [snackbars](http://www.google.com/design/spec/components/snackbars-toasts.html) before making any changes.
+This component uses basic inline CSS to style the position and visibility of the notification. I would suggest reading the usage guidelines for [snackbars](http://www.google.com/design/spec/components/snackbars-toasts.html) before making any changes.
 
 You have two options for adding additional styles:
 
@@ -35,7 +35,7 @@ Where `index` is the index of the notification in the notifications array,
 
 This function is used to dynamically set the style of each notification in the
 stack. The default function adds the `bottom` style property to correctly
-position of the notification in a stack.
+position the notification in a stack.
 
 ```js
 function defaultStyleFactory(index, style, notification) {
