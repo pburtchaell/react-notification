@@ -6,7 +6,7 @@
 
 React Notification is a component designed to provide snackbar notification messages and notification stacks. The default visual style and interaction follows [Material Design guidelines for snackbars](http://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-usage), but it can be fully customized.
 
-## Docs and Help
+## Documentation and Help
 
 - [Guides](/docs/guides/)
 - [Introduction](/docs/introduction.md)
@@ -15,4 +15,4 @@ React Notification is a component designed to provide snackbar notification mess
 - [Upgrading versions](/UPGRADING.md)
 
 ---
-Copyright (c) 2015 Patrick Burtchaell. [Licensed with The MIT License (MIT)](https://raw.githubusercontent.com/pburtchaell/react-notification/master/LICENSE). [Gratipay](https://gratipay.com/~pburtchaell/).
+Copyright (c) 2015-2018 Patrick Burtchaell. [Licensed with The MIT License (MIT)](https://raw.githubusercontent.com/pburtchaell/react-notification/master/LICENSE).

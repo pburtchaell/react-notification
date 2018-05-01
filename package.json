@@ -11,6 +11,8 @@
     "pretest": "npm run lint",
     "test": "./bin/test.sh",
     "lint": "node_modules/.bin/eslint src/**/*.js test/**/*.js",
+    "postinstall": "npm run generate-lockfile",
+    "generate-lockfile": "rm -rf package-lock.json && `npm bin`/synp --source-file ./yarn.lock",
     "start": "node examples/server.js"
   },
   "pre-commit": [
@@ -79,6 +81,7 @@
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.5.10",
+    "synp": "^1.2.1"
   }
 }
