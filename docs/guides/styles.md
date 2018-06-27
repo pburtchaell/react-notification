@@ -1,6 +1,6 @@
 ## Styles
 
-This component uses basic inline CSS to style the position and visibility of the notification. I would suggest reading the usage guidelines for [snackbars](http://www.google.com/design/spec/components/snackbars-toasts.html) before making any changes.
+This component uses basic inline styles to style the position and visibility of the notification. I would suggest reading the usage guidelines for [snackbars](http://www.google.com/design/spec/components/snackbars-toasts.html) before making any changes.
 
 You have two options for adding additional styles:
 
