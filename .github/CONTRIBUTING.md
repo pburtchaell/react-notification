@@ -74,8 +74,3 @@ If you add a new dependency (for the package or development), you will need to u
 
 All code, including tests, is written in next-generation JavaScript and transpiled using Babel. Source files are located in `src` and transpiled to `dist`, which is gitignored. Tests should be placed in a `test` directory.
 
-## Contributors
-
-- [Patrick Burtchaell](http://github.com/pburtchaell)
-- [Berkeley Martinez](https://github.com/BerkeleyTrue)
-- [Joey Figaro](https://github.com/joeyfigaro)

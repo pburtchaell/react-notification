@@ -1,9 +1,5 @@
 ## Introduction
 
-First, install the component via npm: `npm install react-notification`.
-
-Note the component uses `Object.assign`. If you are compiling with Babel, you should include the Babel Polyfill in your build to ensure the method works.
-
 ### For single notification component
 
 ```js
@@ -62,10 +58,3 @@ render () {
   );
 }
 ```
-
-## Sponsor
-
-**Individual**: If you like this code and you're interested in buying me a drink, I have a [Gratipay](https://gratipay.com/~pburtchaell/) (recurring) or [Venmo](https://venmo.com/pburtchaell) (one time). I greatly appreciate your support and I'm grateful to be a part of the open source and GitHub communities.
-
-**Company**: To help cover the cost of my time spent maintaining open source software projects, I'm looking for a small sponsor. If your company is interested, [email me](mailto:patrick@pburtchaell.com) and we can chat! 
-
