@@ -8,7 +8,7 @@
     "prebuild": "npm test",
     "build": "node_modules/.bin/babel src -d dist",
     "pretest": "npm run lint",
-    "test": "./bin/test.sh",
+    "test": "node_modules/.bin/mocha --compilers js:babel-core/register --reporter spec --recursive --timeout 5000 test/setup.js test/**/*.js",
     "lint": "node_modules/.bin/eslint src/**/*.js test/**/*.js"
   },
   "repository": {
