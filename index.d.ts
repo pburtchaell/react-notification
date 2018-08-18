@@ -4,7 +4,17 @@ interface StyleFactoryFn {
   (index: number, style: object | void, notification: NotificationProps): object;
 }
 
-interface NotificationProps {
+interface OnClickNotificationProps {
+  /**
+   * Callback function to run when the action is clicked.
+   * @param notification  Notification currently being clicked
+   * @param deactivate    Function that can be called to set the notification to inactive.
+   *                      Used to activate notification exit animation on click.
+   */
+  onClick?(notification: NotificationProps, deactivate: () => void): void;
+}
+
+interface NotificationProps extends OnClickNotificationProps {
   /** The name of the action, e.g., "close" or "undo". */
   action?: string;
   /** Custom action styles. */
@@ -38,13 +48,7 @@ interface NotificationProps {
   title?: string | ReactElement<any>;
   /** Custom title styles. */
   titleStyle?: object;
-  /**
-   * Callback function to run when the action is clicked.
-   * @param notification  Notification currently being clicked
-   * @param deactivate    Function that can be called to set the notification to inactive.
-   *                      Used to activate notification exit animation on click.
-   */
-  onClick?(notification: NotificationProps, deactivate: () => void): void;
+  
   /**
    * Callback function to run when dismissAfter timer runs out
    * @param notification  Notification currently being dismissed.
@@ -52,7 +56,7 @@ interface NotificationProps {
   onDismiss?(notification: NotificationProps): void;
 }
 
-interface NotificationStackProps {
+interface NotificationStackProps extends OnClickNotificationProps {
   /** Create the style of the actions. */
   actionStyleFactory?: StyleFactoryFn;
   /** Create the style of the active notification. */
