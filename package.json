@@ -1,7 +1,7 @@
 {
   "name": "react-notification",
   "version": "6.8.3",
-  "description": "Snackbar style notification component for React",
+  "description": "Snackbar notifications for React",
   "main": "dist/index.js",
   "scripts": {
     "prepare": "npm run build",
