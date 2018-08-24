@@ -1,62 +1,58 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { render } from 'react-dom';
-import { OrderedSet } from 'immutable';
-import { NotificationStack } from 'react-notification';
+import { NotificationStack } from '../../src/index.js';
 
-class Example extends Component {
+class NotificationTreeExample extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      notifications: OrderedSet(),
-      // This is just used for the sake of an example to make sure
-      // notifications have unique keys. In production, you should have
-      // a different system for UIDs.
+      notifications: [],
       count: 0
     };
 
+    this.addNotification = this.addNotification.bind(this);
     this.removeNotification = this.removeNotification.bind(this);
   }
 
-
   addNotification() {
     const { notifications, count } = this.state;
+
     const id = notifications.size + 1;
     const newCount = count + 1;
-    return this.setState({
+
+    this.setState({
       count: newCount,
-      notifications: notifications.add({
+      notifications: [{
         message: `Notification ${id}`,
         key: newCount,
         action: 'Dismiss',
-        dismissAfter: 3400,
-        onClick: () => this.removeNotification(newCount),
-      })
+        dismissAfter: 3400
+      }, ...notifications]
     });
   }
 
-  removeNotification (count) {
+  removeNotification(notification) {
     const { notifications } = this.state;
+
     this.setState({
-      notifications: notifications.filter(n => n.key !== count)
-    })
+      notifications: notifications.filter(n => n.key !== notification.key)
+    });
   }
 
-  render () {
+  render() {
     return (
-      <div>
-        <button onClick={this.addNotification.bind(this)}>
+      <Fragment>
+        <button onClick={this.addNotification}>
           Add notification
         </button>
         <NotificationStack
-          notifications={this.state.notifications.toArray()}
-          onDismiss={notification => this.setState({
-            notifications: this.state.notifications.delete(notification)
-          })}
+          notifications={this.state.notifications}
+          onDismiss={this.removeNotification}
         />
-      </div>
+      </Fragment>
     );
   }
 }
 
-render(<Example />, document.querySelector('#mount'));
+render(<NotificationTreeExample />, document.querySelector('#mount'));

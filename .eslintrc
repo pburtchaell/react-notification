@@ -6,15 +6,20 @@
     "es6": true,
     "mocha": true
   },
-  "ecmaFeatures": {
-    "jsx": true,
-    "modules": true
-  },
   "rules": {
-    "comma-dangle": [2, "never"],
-    "indent": [2, 2],
+    "comma-dangle": [
+      2,
+      "never"
+    ],
+    "indent": [
+      2,
+      2
+    ],
     "consistent-return": 0,
-    "react/jsx-indent-props": [2, 2],
+    "react/jsx-indent-props": [
+      2,
+      2
+    ],
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
     "react/jsx-boolean-value": 0,

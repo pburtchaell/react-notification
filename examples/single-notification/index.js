@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { render } from 'react-dom';
-import { Notification } from 'react-notification';
+import { Notification } from '../../src/index.js';
 
-class Example extends Component {
+class SingleNotificationExample extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       isActive: false,
-      permanentNotification: false
-    }
+      permanentNotification: false,
+    };
   }
 
   toggleNotification() {
     this.setState({
       isActive: !this.state.isActive
-    })
+    });
   }
 
   render() {
     const { isActive } = this.state;
 
     return (
-      <div>
+      <Fragment>
         <button
           onClick={this.toggleNotification.bind(this)}
           children={!isActive ? "Show notification" : "Hide notification"}
@@ -48,9 +48,9 @@ class Example extends Component {
           message="Permanent Notification"
           title="Title!"
         />
-      </div>
+      </Fragment>
     );
   }
 }
 
-render(<Example />, document.querySelector('#mount'));
+render(<SingleNotificationExample />, document.querySelector('#mount'));

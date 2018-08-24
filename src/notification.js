@@ -1,3 +1,5 @@
+/* linting temp disabled while working on updates */
+/* eslint-disable */
 import React, { Component } from 'react';
 import defaultPropTypes from './defaultPropTypes';
 
@@ -79,8 +81,8 @@ class Notification extends Component {
     };
 
     return isActive ?
-    Object.assign({}, baseStyle, { left: '1rem' }, barStyle, activeBarStyle) :
-    Object.assign({}, baseStyle, barStyle);
+      Object.assign({}, baseStyle, { left: '1rem' }, barStyle, activeBarStyle) :
+      Object.assign({}, baseStyle, barStyle);
   }
 
   /*
@@ -141,9 +143,12 @@ class Notification extends Component {
               {this.props.title}
             </span>
           ) : null}
+
+          {/* eslint-disable */}
           <span className="notification-bar-message">
             {this.props.message}
           </span>
+
           {this.props.action ? (
             <span
               className="notification-bar-action"
