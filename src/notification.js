@@ -1,3 +1,5 @@
+/* linting temp disabled while working on updates */
+/* eslint-disable */
 import React, { Component } from 'react';
 import defaultPropTypes from './defaultPropTypes';
 

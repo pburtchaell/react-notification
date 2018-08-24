@@ -1,4 +1,5 @@
-/* eslint-disable react/jsx-no-bind */
+/* linting temp disabled while working on updates */
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import StackedNotification from './stackedNotification';

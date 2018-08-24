@@ -47,9 +47,11 @@
     "chai-enzyme": "^0.6.0",
     "cheerio": "^0.22.0",
     "enzyme": "^2.9.1",
-    "eslint": "^5.0.1",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.10.0",
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
     "jsdom": "^11.11.0",
     "mocha": "^5.2.0",
     "react": "^15.6.2",
@@ -61,7 +63,6 @@
     "typescript-definition-tester": "0.0.6"
   },
   "dependencies": {
-    "prop-types": "^15.6.2",
-    "synp": "^1.2.1"
+    "prop-types": "^15.6.2"
   }
 }

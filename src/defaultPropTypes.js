@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 export default {
   message: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.element
+    PropTypes.element,
   ]).isRequired,
   action: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
-    PropTypes.node
+    PropTypes.node,
   ]),
   onClick: PropTypes.func,
   style: PropTypes.bool,
@@ -18,7 +18,7 @@ export default {
   activeBarStyle: PropTypes.object,
   dismissAfter: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.number
+    PropTypes.number,
   ]),
   onDismiss: PropTypes.func,
   className: PropTypes.string,
@@ -26,6 +26,6 @@ export default {
   isActive: PropTypes.bool,
   title: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.node
-  ])
+    PropTypes.node,
+  ]),
 };
