@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import StackedNotification from './stackedNotification';
+import defaultPropTypes from './defaultPropTypes';
 
 function defaultBarStyleFactory(index, style) {
   return Object.assign(
@@ -78,7 +79,7 @@ NotificationStack.propTypes = {
   notifications: PropTypes.array.isRequired,
   onDismiss: PropTypes.func.isRequired,
   onClick: PropTypes.func,
-  action: PropTypes.string
+  action: defaultPropTypes.action
 };
 
 NotificationStack.defaultProps = {
