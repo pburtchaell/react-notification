@@ -23,7 +23,7 @@ class StackedNotification extends Component {
     this.dismiss(this.props.dismissAfter);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.dismissAfter !== this.props.dismissAfter) {
       this.dismiss(nextProps.dismissAfter);
     }

@@ -20,7 +20,7 @@ class Notification extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.dismissAfter === false) return;
 
     // See http://eslint.org/docs/rules/no-prototype-builtins
