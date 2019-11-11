@@ -1,56 +1,20 @@
-import React, { Component, Fragment } from 'react';
-import { render } from 'react-dom';
-import { Notification } from '../../src/index.js';
+import React, { useState } from 'react'
+import { render } from 'react-dom'
+import { Notification } from '../../src/index.js'
 
-class SingleNotificationExample extends Component {
-  constructor(props) {
-    super(props);
+function Example() {
+  const [visible, setVisible] = useState(false)
 
-    this.state = {
-      isActive: false,
-      permanentNotification: false,
-    };
-  }
-
-  toggleNotification() {
-    this.setState({
-      isActive: !this.state.isActive
-    });
-  }
-
-  render() {
-    const { isActive } = this.state;
-
-    return (
-      <Fragment>
-        <button
-          onClick={this.toggleNotification.bind(this)}
-          children={!isActive ? "Show notification" : "Hide notification"}
-        />
-        <br />
-        <button
-          onClick={() => this.setState({
-            permanentNotification: true
-          })}
-          children="Show permanent notification"
-        />
-        <Notification
-          isActive={this.state.isActive}
-          message="Notification"
-          action="Dismiss"
-          title="Title!"
-          onDismiss={this.toggleNotification.bind(this)}
-          onClick={() =>  this.setState({ isActive: false })}
-        />
-        <Notification
-          isActive={this.state.permanentNotification}
-          dismissAfter={false}
-          message="Permanent Notification"
-          title="Title!"
-        />
-      </Fragment>
-    );
-  }
+  return (
+    <div>
+      <button onClick={() => setVisible(true)}>Show</button>
+      <Notification
+        visible={visible}
+        text="This is a test of the emergency broadcast system"
+        onDismiss={() => setVisible(false)}
+      />
+    </div>
+  )
 }
 
-render(<SingleNotificationExample />, document.querySelector('#mount'));
+render(<Example />, document.querySelector('#mount'))
