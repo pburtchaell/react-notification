@@ -1,7 +1,7 @@
 # React Notification
 [![Build Status](https://travis-ci.org/pburtchaell/react-notification.svg)](https://travis-ci.org/pburtchaell/react-notification) [![npm downloads](https://img.shields.io/npm/dm/react-notification.svg?style=flat)](http://badge.fury.io/js/react-notification)
 
-React Notification provides [Material Design snackbar notifications](http://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-usage). The default UI and interaction design patterns follows the Material Design specifications.
+React Notification provides [Material Design snackbar notificati0ons](https://material.io/components/snackbars) with zero dependencies. 
 
 ```js
 <Notification
@@ -10,6 +10,8 @@ React Notification provides [Material Design snackbar notifications](http://www.
     action="Undo"
 />
 ```
+
+The default UI and interaction design follows Material Design specifications. All animations use CSS transforms and are GPU accelerated.
 
 ## Documentation and Help
 - [Introduction](/docs/introduction.md)
