@@ -1,8 +1,9 @@
 .github/
-bin/
+docs/
 examples/
 src/
 .babelrc
-.eslintrc
 .editorcongfig
+.eslintrc
+.gitbook.yml
 .travis.yml
