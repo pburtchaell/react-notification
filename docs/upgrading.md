@@ -1,4 +1,8 @@
-# 1.0.0 to 2.0.0
+# 6.x to 7.0.0
+
+TODO
+
+# 1.x to 2.0.0
 
 The 2.0.0 release is a component with no local state and consequently, no methods to show and hide the component. Instead, you need to use the `isActive` prop to control the visibility of the component.
 

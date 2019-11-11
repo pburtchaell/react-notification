@@ -18,13 +18,3 @@
 | titleStyle      | object                  | Custom title styles                                         |           |                            |
 
 The `style` prop useful if you are not using React inline styles and would like to use CSS instead. See [styles](styles.md) for more.
-
-### For notification stack component
-
-| Name                  | Type    | Description                                              | Required  | Default  |
-|-----------------------|---------|----------------------------------------------------------|-----------|----------|
-| actionStyleFactory    | func    | Create the style of the actions                          | false     | fn       |
-| activeBarStyleFactory | func    | Create the style of the active notification              | false     | fn       |
-| barStyleFactory       | func    | Create the style of the notification                     | false     | fn       |
-| dismissInOrder        | boolean | If false, notification dismiss timers start immediately  | false     | true     |
-| notifications         | array   | Array of notifications to render                         | true      |          |
