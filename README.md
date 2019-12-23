@@ -3,6 +3,9 @@
 
 React Notification provides snackbar notification messages and notification stacks. The default visual style and interaction follows [Material Design guidelines for snackbars](http://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-usage) and can be fully customized.
 
+## Warning
+As of 2019 December 3, this project is deprecated and unmaintained. The package is [still available on npm](https://www.npmjs.com/package/react-notification) and can be installed, but I would recommend finding an alternative that supports new versions of React. [Material UI includes a snackbar component](https://material-ui.com/components/snackbars/) and is a good option.
+
 ## Documentation and Help
 - [Guides](/docs/guides/)
 - [Introduction](/docs/introduction.md)
